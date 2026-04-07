@@ -104,19 +104,17 @@ The whole website should feel:
 
 ## Technical direction
 
-Use the Nitida repo stack and implementation philosophy as the reference.
+Use Nitida-style stack assumptions as a reference.
 
 Preferred direction:
-- **Astro**
-- reuse Nitida-style patterns where sensible
-- align with Nitida’s actual app simplicity: minimal dependencies, standard Astro scripts, plain `astro.config.mjs`
+- WordPress
+- Astra as the base theme
 - lightweight implementation
-- avoid dependency bloat
-- avoid CMS/page-builder thinking unless there is a real need
-- use reusable components/sections
+- avoid plugin bloat
+- avoid overbuilt page-builder complexity
+- use reusable patterns/components
 - strong mobile UX
 - performance-conscious build
-- bilingual structure if shipping PT + EN from launch
 
 Assume this is a clean business site, not a bloated funnel machine.
 
@@ -220,7 +218,7 @@ Please create:
 3. page-by-page content outlines
 4. first-pass service page copy drafts in PT + EN
 5. brand/visual direction recommendations
-6. technical build spec for **Astro**, aligned with Nitida’s actual lean implementation style
+6. technical build spec for WordPress + Astra
 7. component/section system for reuse
 8. implementation plan
 
@@ -229,7 +227,7 @@ Please create:
 - keep it lean
 - do not over-engineer
 - do not make it look like generic AI startup sludge
-- do not overcomplicate content management
+- do not overcomplicate the CMS
 - optimize for fast launch and easy future iteration
 
 ## Existing discovery docs

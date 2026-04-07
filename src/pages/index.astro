@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CTABlock from '../components/CTABlock.astro';
+import { useTranslations } from '../i18n/index';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="MAU Marketing — Websites, Landing Pages e Follow-up para Pequenos Negócios"
+  description="Marketing prático para negócios reais. Landing pages que convertem, visibilidade local real e sistemas de follow-up que fecham negócios."
+  lang={lang}
+  alternateLangUrl="/en/"
+>
+  <!-- Hero -->
+  <Hero t={t} lang={lang} />
+
+  <!-- Services block -->
+  <section class="section section--surface">
+    <div class="container">
+      <h2 class="section-heading">{t('home.services.heading')}</h2>
+      <p class="section-subheading">{t('home.services.subheading')}</p>
+      <div class="service-grid">
+        <ServiceCard
+          title={t('service.landing.title')}
+          problem={t('service.landing.problem')}
+          outcome={t('service.landing.outcome')}
+          href={t('service.landing.href')}
+          ctaLabel={t('service.cta')}
+        />
+        <ServiceCard
+          title={t('service.local.title')}
+          problem={t('service.local.problem')}
+          outcome={t('service.local.outcome')}
+          href={t('service.local.href')}
+          ctaLabel={t('service.cta')}
+        />
+        <ServiceCard
+          title={t('service.crm.title')}
+          problem={t('service.crm.problem')}
+          outcome={t('service.crm.outcome')}
+          href={t('service.crm.href')}
+          ctaLabel={t('service.cta')}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- AI + Human block -->
+  <section class="section">
+    <div class="container">
+      <div class="ai-block">
+        <h2>{t('home.ai.heading')}</h2>
+        <p>{t('home.ai.body')}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process preview -->
+  <ProcessSteps t={t} />
+
+  <!-- Trust / Nitida block -->
+  <section class="section section--surface">
+    <div class="container">
+      <h2 class="section-heading">{t('home.trust.heading')}</h2>
+      <p style="max-width: 580px; font-size: 1.0625rem; line-height: 1.7; color: var(--mau-muted);">
+        {t('home.trust.body')}
+      </p>
+      <a
+        href={t('home.trust.nitida-url')}
+        class="btn btn--secondary"
+        style="margin-top: 1.5rem;"
+        target="_blank"
+        rel="noopener"
+      >
+        {t('home.trust.nitida')}
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA block -->
+  <CTABlock
+    heading={t('home.cta.heading')}
+    body={t('home.cta.body')}
+    buttonLabel={t('home.cta.button')}
+    buttonHref="/contacto"
+  />
+</BaseLayout>

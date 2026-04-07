@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CTABlock from '../../../components/CTABlock.astro';
+import { useTranslations } from '../../../i18n/index';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('crm-page.title')}
+  description={t('crm-page.description')}
+  lang={lang}
+  alternateLangUrl="/servicos/crm-follow-up"
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1>{t('crm-page.hero.heading')}</h1>
+      <p>{t('crm-page.hero.subheading')}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container service-detail">
+      <div class="detail-section">
+        <h2>{t('crm-page.problem.heading')}</h2>
+        <p>{t('crm-page.problem.body')}</p>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('crm-page.what.heading')}</h2>
+        <p>{t('crm-page.what.body')}</p>
+        <ul>
+          <li>{t('crm-page.what.item1')}</li>
+          <li>{t('crm-page.what.item2')}</li>
+          <li>{t('crm-page.what.item3')}</li>
+          <li>{t('crm-page.what.item4')}</li>
+          <li>{t('crm-page.what.item5')}</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('crm-page.outcome.heading')}</h2>
+        <p>{t('crm-page.outcome.body')}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABlock
+    heading={t('cta.default.heading')}
+    body={t('cta.default.body')}
+    buttonLabel={t('cta.default.button')}
+    buttonHref="/en/contact"
+  />
+</BaseLayout>

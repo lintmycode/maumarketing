@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { useTranslations } from '../i18n/index';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('contact-page.title')}
+  description={t('contact-page.description')}
+  lang={lang}
+  alternateLangUrl="/en/contact"
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1>{t('contact-page.heading')}</h1>
+      <p>{t('contact-page.subheading')}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <ContactForm t={t} />
+    </div>
+  </section>
+</BaseLayout>

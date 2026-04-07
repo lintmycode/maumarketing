@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import { useTranslations } from '../../i18n/index';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('local-page.title')}
+  description={t('local-page.description')}
+  lang={lang}
+  alternateLangUrl="/en/services/local-visibility"
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1>{t('local-page.hero.heading')}</h1>
+      <p>{t('local-page.hero.subheading')}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container service-detail">
+      <div class="detail-section">
+        <h2>{t('local-page.problem.heading')}</h2>
+        <p>{t('local-page.problem.body')}</p>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('local-page.what.heading')}</h2>
+        <p>{t('local-page.what.body')}</p>
+        <ul>
+          <li>{t('local-page.what.item1')}</li>
+          <li>{t('local-page.what.item2')}</li>
+          <li>{t('local-page.what.item3')}</li>
+          <li>{t('local-page.what.item4')}</li>
+          <li>{t('local-page.what.item5')}</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('local-page.outcome.heading')}</h2>
+        <p>{t('local-page.outcome.body')}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABlock
+    heading={t('cta.default.heading')}
+    body={t('cta.default.body')}
+    buttonLabel={t('cta.default.button')}
+    buttonHref="/contacto"
+  />
+</BaseLayout>

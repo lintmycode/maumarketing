@@ -1,0 +1,118 @@
+---
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+
+// The form posts to the current page; Netlify handles the submission.
+// On success Netlify redirects to ?sent=true (or we set action to redirect).
+// We detect ?sent=true client-side and show the thank-you message.
+---
+
+<div class="contact-form-wrap">
+  <!-- Thank-you message, shown via JS when ?sent=true -->
+  <div class="contact-thanks" id="contact-thanks">
+    <h3>{t('contact.thanks.heading')}</h3>
+    <p>{t('contact.thanks.body')}</p>
+  </div>
+
+  <!-- Netlify form -->
+  <form
+    class="contact-form"
+    id="contact-form"
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action={`?sent=true`}
+  >
+    <!-- Netlify hidden field -->
+    <input type="hidden" name="form-name" value="contact" />
+
+    <!-- Honeypot — bots fill this, humans don't -->
+    <label style="display:none" aria-hidden="true">
+      Do not fill this out
+      <input name="bot-field" tabindex="-1" autocomplete="off" />
+    </label>
+
+    <div class="form-row">
+      <label>
+        {t('contact.name')} *
+        <input
+          type="text"
+          name="name"
+          placeholder={t('contact.name-placeholder')}
+          required
+          aria-required="true"
+        />
+      </label>
+      <label>
+        {t('contact.business')}
+        <input
+          type="text"
+          name="business"
+          placeholder={t('contact.business-placeholder')}
+        />
+      </label>
+    </div>
+
+    <label>
+      {t('contact.website')}
+      <input
+        type="url"
+        name="website"
+        placeholder={t('contact.website-placeholder')}
+      />
+    </label>
+
+    <label>
+      {t('contact.service')} *
+      <select name="service" required aria-required="true">
+        <option value="" disabled selected>{t('contact.service-placeholder')}</option>
+        <option value="landing">{t('contact.service-landing')}</option>
+        <option value="local">{t('contact.service-local')}</option>
+        <option value="crm">{t('contact.service-crm')}</option>
+        <option value="other">{t('contact.service-other')}</option>
+      </select>
+    </label>
+
+    <label>
+      {t('contact.message')} *
+      <textarea
+        name="message"
+        placeholder={t('contact.message-placeholder')}
+        required
+        aria-required="true"
+        rows="5"
+      ></textarea>
+    </label>
+
+    <label>
+      {t('contact.budget')}
+      <select name="budget">
+        <option value="" disabled selected>{t('contact.budget-placeholder')}</option>
+        <option value="lt500">{t('contact.budget-500')}</option>
+        <option value="500-1000">{t('contact.budget-1000')}</option>
+        <option value="1000-2500">{t('contact.budget-2500')}</option>
+        <option value="2500-5000">{t('contact.budget-5000')}</option>
+        <option value="gt5000">{t('contact.budget-plus')}</option>
+      </select>
+    </label>
+
+    <div>
+      <button type="submit" class="btn btn--primary">{t('contact.submit')}</button>
+    </div>
+  </form>
+</div>
+
+<!-- Detect ?sent=true and show thank-you, hide form -->
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === 'true') {
+    const form = document.getElementById('contact-form');
+    const thanks = document.getElementById('contact-thanks');
+    if (form) form.style.display = 'none';
+    if (thanks) thanks.style.display = 'block';
+  }
+</script>

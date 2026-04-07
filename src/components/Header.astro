@@ -1,0 +1,83 @@
+---
+import type { Lang } from '../i18n/index';
+
+interface Props {
+  lang: Lang;
+  alternateLangUrl: string;
+  t: (key: string) => string;
+}
+
+const { lang, alternateLangUrl, t } = Astro.props;
+
+const navLinks =
+  lang === 'pt'
+    ? [
+        { label: t('nav.services'), href: '/servicos/' },
+        { label: t('nav.how-it-works'), href: '/como-funciona' },
+        { label: t('nav.about'), href: '/sobre' },
+        { label: t('nav.contact'), href: '/contacto' },
+      ]
+    : [
+        { label: t('nav.services'), href: '/en/services/' },
+        { label: t('nav.how-it-works'), href: '/en/how-it-works' },
+        { label: t('nav.about'), href: '/en/about' },
+        { label: t('nav.contact'), href: '/en/contact' },
+      ];
+
+const homeHref = lang === 'pt' ? '/' : '/en/';
+---
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav-inner" id="main-nav" data-open="false">
+      <a href={homeHref} class="nav-logo">
+        <span>MAU</span> Marketing
+      </a>
+
+      <!-- Hamburger toggle -->
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label={t('nav.menu-open')}
+      >
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <!-- Nav links -->
+      <ul class="nav-links">
+        {navLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+
+      <!-- Actions: lang switcher + CTA -->
+      <div class="nav-actions">
+        <a href={alternateLangUrl} class="nav-lang" aria-label={`Switch to ${t('nav.lang-label')}`}>
+          {t('nav.lang-label')}
+        </a>
+        <a
+          href={lang === 'pt' ? '/contacto' : '/en/contact'}
+          class="nav-cta"
+        >
+          {t('nav.cta')}
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Minimal inline JS for mobile nav toggle — no framework dependency -->
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.getAttribute('data-open') === 'true';
+      nav.setAttribute('data-open', isOpen ? 'false' : 'true');
+      toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    });
+  }
+</script>

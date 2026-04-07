@@ -1,0 +1,28 @@
+---
+interface Props {
+  t: (key: string) => string;
+  lang: 'pt' | 'en';
+}
+
+const { t, lang } = Astro.props;
+const ctaHref = lang === 'pt' ? '/contacto' : '/en/contact';
+const servicesHref = lang === 'pt' ? '/servicos/' : '/en/services/';
+---
+
+<section class="hero section">
+  <div class="container">
+    <span class="hero__eyebrow">{t('hero.eyebrow')}</span>
+
+    <h1 class="hero__headline">
+      {t('hero.headline')}
+      <span class="hero__headline--accent">{t('hero.headline-accent')}</span>
+    </h1>
+
+    <p class="hero__subheadline">{t('hero.subheadline')}</p>
+
+    <div class="hero__actions">
+      <a href={ctaHref} class="btn btn--primary">{t('hero.cta-primary')}</a>
+      <a href={servicesHref} class="btn btn--secondary">{t('hero.cta-secondary')}</a>
+    </div>
+  </div>
+</section>

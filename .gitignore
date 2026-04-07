@@ -1,3 +1,2 @@
-.llemy/.env
-.llemy/policies/executor-policy.md
-.llemy/policies/planner-policy.md
+.llemy/
+node_modules/

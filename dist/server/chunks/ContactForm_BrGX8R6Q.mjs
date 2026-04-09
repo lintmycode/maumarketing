@@ -13,7 +13,7 @@ const $$ContactForm = createComponent(async ($$result, $$props, $$slots) => {
   const { t } = Astro2.props;
   return renderTemplate(_a || (_a = __template(["", '<div class="contact-form-wrap"> <!-- Thank-you message, shown after successful submit --> <div class="contact-thanks" id="contact-thanks"> <h3>', "</h3> <p>", `</p> </div> <div class="contact-error" id="contact-error" role="alert" aria-live="polite"></div> <!-- Resend-backed form --> <form class="contact-form" id="contact-form" name="contact" method="POST" action="/api/contact"> <!-- Honeypot \u2014 bots fill this, humans don't --> <label style="display:none" aria-hidden="true">
 Do not fill this out
-<input name="bot-field" tabindex="-1" autocomplete="off"> </label> <div class="form-row"> <label> `, ' *\n<input type="text" name="name"', ' required aria-required="true"> </label> <label> ', ' <input type="text" name="business"', "> </label> </div> <label> ", ' <input type="url" name="website"', "> </label> <label> ", ' *\n<select name="service" required aria-required="true"> <option value="" disabled selected>', '</option> <option value="landing">', '</option> <option value="local">', '</option> <option value="crm">', '</option> <option value="other">', "</option> </select> </label> <label> ", ' *\n<textarea name="message"', ' required aria-required="true" rows="5"></textarea> </label> <label> ', ' <select name="budget"> <option value="" disabled selected>', '</option> <option value="lt500">', '</option> <option value="500-1000">', '</option> <option value="1000-2500">', '</option> <option value="2500-5000">', '</option> <option value="gt5000">', '</option> </select> </label> <div> <button type="submit" class="btn btn--primary">', "</button> </div> </form> </div> <script>(function(){", `
+<input name="bot-field" tabindex="-1" autocomplete="off"> </label> <div class="form-row"> <label> `, ' *\n<input type="text" name="name"', ' required aria-required="true"> </label> <label> ', ' <input type="text" name="business"', "> </label> </div> <label> ", ' <input type="text" inputmode="url" name="website"', "> </label> <label> ", ' *\n<select name="service" required aria-required="true"> <option value="" disabled selected>', '</option> <option value="landing">', '</option> <option value="local">', '</option> <option value="crm">', '</option> <option value="other">', "</option> </select> </label> <label> ", ' *\n<textarea name="message"', ' required aria-required="true" rows="5"></textarea> </label> <label> ', ' <select name="budget"> <option value="" disabled selected>', '</option> <option value="lt500">', '</option> <option value="500-1000">', '</option> <option value="1000-2500">', '</option> <option value="2500-5000">', '</option> <option value="gt5000">', '</option> </select> </label> <div> <button type="submit" class="btn btn--primary">', "</button> </div> </form> </div> <script>(function(){", `
   const form = document.getElementById('contact-form');
   const thanks = document.getElementById('contact-thanks');
   const errorBox = document.getElementById('contact-error');
@@ -56,10 +56,25 @@ Do not fill this out
           headers: { Accept: 'application/json' },
         });
 
-        if (!response.ok) throw new Error('submit failed');
+        let payload = null;
+        try {
+          payload = await response.json();
+        } catch {
+          payload = null;
+        }
+
+        if (!response.ok) {
+          const message =
+            payload && typeof payload.error === 'string' && payload.error.length > 0
+              ? payload.error
+              : errorLabel;
+          throw new Error(message);
+        }
         showSuccess();
-      } catch {
-        showError(errorLabel);
+      } catch (error) {
+        const message =
+          error instanceof Error && error.message ? error.message : errorLabel;
+        showError(message);
       } finally {
         if (submitButton instanceof HTMLButtonElement) {
           submitButton.disabled = false;
@@ -73,6 +88,6 @@ Do not fill this out
     sendingLabel: t("contact.submitting"),
     errorLabel: t("contact.error")
   }));
-}, "/Volumes/echo.ops/maumarketing/src/components/ContactForm.astro", void 0);
+}, "/Volumes/DATA/projects/maumarketing/src/components/ContactForm.astro", void 0);
 
 export { $$ContactForm as $ };

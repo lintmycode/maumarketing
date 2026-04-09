@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_BnuGuNV_.mjs';
-import { manifest } from './manifest_CHxNjbVV.mjs';
+import { manifest } from './manifest_C_91va3F.mjs';
 
 const _page0 = () => import('./pages/_image.astro.mjs');
 const _page1 = () => import('./pages/api/contact.astro.mjs');
@@ -50,8 +50,8 @@ const _manifest = Object.assign(manifest, {
 });
 const _args = {
     "mode": "standalone",
-    "client": "file:///Volumes/echo.ops/maumarketing/dist/client/",
-    "server": "file:///Volumes/echo.ops/maumarketing/dist/server/",
+    "client": "file:///Volumes/DATA/projects/maumarketing/dist/client/",
+    "server": "file:///Volumes/DATA/projects/maumarketing/dist/server/",
     "host": false,
     "port": 4321,
     "assets": "_astro"

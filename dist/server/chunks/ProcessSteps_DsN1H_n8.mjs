@@ -30,6 +30,6 @@ const $$ProcessSteps = createComponent(($$result, $$props, $$slots) => {
     }
   ];
   return renderTemplate`${maybeRenderHead()}<section class="section"> <div class="container"> <h2 class="section-heading">${t("process.heading")}</h2> <div class="process-grid"> ${steps.map((step) => renderTemplate`<div class="process-step"> <div class="process-step__number">${step.number}</div> <h3 class="process-step__title">${step.title}</h3> <p class="process-step__body">${step.body}</p> </div>`)} </div> </div> </section>`;
-}, "/Volumes/echo.ops/maumarketing/src/components/ProcessSteps.astro", void 0);
+}, "/Volumes/DATA/projects/maumarketing/src/components/ProcessSteps.astro", void 0);
 
 export { $$ProcessSteps as $ };

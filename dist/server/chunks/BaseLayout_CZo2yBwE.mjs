@@ -22,7 +22,7 @@ const $$Header = createComponent(($$result, $$props, $$slots) => {
   const homeHref = lang === "pt" ? "/" : "/en/";
   return renderTemplate`${maybeRenderHead()}<header class="site-header"> <div class="container"> <nav class="nav-inner" id="main-nav" data-open="false"> <a${addAttribute(homeHref, "href")} class="nav-logo"> <span>MAU</span> MARKETING
 </a> <!-- Hamburger toggle --> <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false"${addAttribute(t("nav.menu-open"), "aria-label")}> <span aria-hidden="true">☰</span> </button> <!-- Nav links --> <ul class="nav-links"> ${navLinks.map((link) => renderTemplate`<li><a${addAttribute(link.href, "href")}>${link.label}</a></li>`)} </ul> <!-- Actions: lang switcher + CTA --> <div class="nav-actions"> <a${addAttribute(alternateLangUrl, "href")} class="nav-lang"${addAttribute(`Switch to ${t("nav.lang-label")}`, "aria-label")}> ${t("nav.lang-label")} </a> <a${addAttribute(lang === "pt" ? "/contacto" : "/en/contact", "href")} class="nav-cta"> ${t("nav.cta")} </a> </div> </nav> </div> </header> <!-- Minimal inline JS for mobile nav toggle — no framework dependency --> `;
-}, "/Volumes/echo.ops/maumarketing/src/components/Header.astro", void 0);
+}, "/Volumes/DATA/projects/maumarketing/src/components/Header.astro", void 0);
 
 const $$Astro$1 = createAstro("https://maumarketing.pt");
 const $$Footer = createComponent(($$result, $$props, $$slots) => {
@@ -43,7 +43,7 @@ const $$Footer = createComponent(($$result, $$props, $$slots) => {
   ];
   return renderTemplate`${maybeRenderHead()}<footer class="site-footer"> <div class="container"> <div class="footer-inner"> <!-- Brand --> <div class="footer-brand"> <a${addAttribute(homeHref, "href")} class="footer-logo"> <span>MAU</span> MARKETING
 </a> <p class="footer-tagline">${t("footer.tagline")}</p> <a${addAttribute(t("footer.N\xCDTIDA-link"), "href")} class="footer-NÍTIDA" target="_blank" rel="noopener"> ${t("footer.brand")} </a> </div> <!-- Nav --> <nav class="footer-nav" aria-label="Footer navigation"> <h4>${t("footer.nav-heading")}</h4> <ul> ${navLinks.map((link) => renderTemplate`<li><a${addAttribute(link.href, "href")}>${link.label}</a></li>`)} </ul> </nav> </div> <div class="footer-bottom"> <span>${t("footer.rights")}</span> </div> </div> </footer>`;
-}, "/Volumes/echo.ops/maumarketing/src/components/Footer.astro", void 0);
+}, "/Volumes/DATA/projects/maumarketing/src/components/Footer.astro", void 0);
 
 const pt = {
   // ─── Navigation ───────────────────────────────────────────────────────────────
@@ -458,6 +458,6 @@ const $$BaseLayout = createComponent(($$result, $$props, $$slots) => {
   const altLang = lang === "pt" ? "en" : "pt";
   const alternateFull = new URL(alternateLangUrl, "https://maumarketing.pt").href;
   return renderTemplate`<html${addAttribute(lang, "lang")}> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><meta name="description"${addAttribute(description, "content")}><!-- Canonical --><link rel="canonical"${addAttribute(canonicalUrl, "href")}><!-- Alternate language --><link rel="alternate"${addAttribute(altLang, "hreflang")}${addAttribute(alternateFull, "href")}><link rel="alternate" hreflang="x-default" href="https://maumarketing.pt/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url"${addAttribute(canonicalUrl, "content")}><meta property="og:title"${addAttribute(title, "content")}><meta property="og:description"${addAttribute(description, "content")}><meta property="og:locale"${addAttribute(lang === "pt" ? "pt_PT" : "en_GB", "content")}><!-- Favicon --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><!-- Prevent Pico's dark mode from kicking in — we only ship light --><meta name="color-scheme" content="light">${renderHead()}</head> <body> ${renderComponent($$result, "Header", $$Header, { "lang": lang, "alternateLangUrl": alternateLangUrl, "t": t })} <main> ${renderSlot($$result, $$slots["default"])} </main> ${renderComponent($$result, "Footer", $$Footer, { "lang": lang, "t": t })} </body></html>`;
-}, "/Volumes/echo.ops/maumarketing/src/layouts/BaseLayout.astro", void 0);
+}, "/Volumes/DATA/projects/maumarketing/src/layouts/BaseLayout.astro", void 0);
 
 export { $$BaseLayout as $, useTranslations as u };

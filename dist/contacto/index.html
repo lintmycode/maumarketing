@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="pt"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contacto — MAU Marketing</title><meta name="description" content="Fala connosco sobre o teu negócio. Sem compromisso, sem pitch agressivo."><!-- Canonical --><link rel="canonical" href="https://maumarketing.pt/contacto/"><!-- Alternate language --><link rel="alternate" hreflang="en" href="https://maumarketing.pt/en/contact"><link rel="alternate" hreflang="x-default" href="https://maumarketing.pt/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://maumarketing.pt/contacto/"><meta property="og:title" content="Contacto — MAU Marketing"><meta property="og:description" content="Fala connosco sobre o teu negócio. Sem compromisso, sem pitch agressivo."><meta property="og:locale" content="pt_PT"><!-- Favicon --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><!-- Prevent Pico's dark mode from kicking in — we only ship light --><meta name="color-scheme" content="light"><link rel="stylesheet" href="/_astro/como-funciona.B3ousRra.css"><script type="module">const t=document.getElementById("nav-toggle"),e=document.getElementById("main-nav");t&&e&&t.addEventListener("click",()=>{const n=e.getAttribute("data-open")==="true";e.setAttribute("data-open",n?"false":"true"),t.setAttribute("aria-expanded",n?"false":"true")});
+</script></head> <body> <header class="site-header"> <div class="container"> <nav class="nav-inner" id="main-nav" data-open="false"> <a href="/" class="nav-logo"> <span>MAU</span> MARKETING
+</a> <!-- Hamburger toggle --> <button class="nav-toggle" id="nav-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menu"> <span aria-hidden="true">☰</span> </button> <!-- Nav links --> <ul class="nav-links"> <li><a href="/servicos/">Serviços</a></li><li><a href="/como-funciona">Como Funciona</a></li><li><a href="/sobre">Sobre</a></li><li><a href="/contacto">Contacto</a></li> </ul> <!-- Actions: lang switcher + CTA --> <div class="nav-actions"> <a href="/en/contact" class="nav-lang" aria-label="Switch to EN"> EN </a> <a href="/contacto" class="nav-cta"> Falar connosco </a> </div> </nav> </div> </header> <!-- Minimal inline JS for mobile nav toggle — no framework dependency -->  <main>  <div class="page-hero"> <div class="container"> <h1>Fala connosco</h1> <p>Conta-nos o problema. Não precisas de ter tudo definido — só precisas de começar a conversa.</p> </div> </div> <section class="section"> <div class="container"> <div class="contact-form-wrap"> <div class="form-message" id="form-message" role="status" aria-live="polite"></div> <form class="contact-form" id="contact-form" name="contact" method="POST"> <!-- Honeypot — bots fill this, humans don't --> <label style="display:none" aria-hidden="true">
+Do not fill this out
+<input name="bot-field" tabindex="-1" autocomplete="off"> </label> <div class="form-row"> <label> Nome *
+<input type="text" name="name" placeholder="O teu nome" required aria-required="true"> </label> <label> Email *
+<input type="email" inputmode="email" name="email" placeholder="O teu email" required aria-required="true"> </label> </div> <label> Website <input type="url" name="website" placeholder="Opcional — ex: https://exemplo.pt"> </label> <label> Em que precisas de ajuda? *
+<select name="subject" required aria-required="true"> <option value="" disabled selected>Escolhe uma área</option> <option value="landing">Landing pages / website de conversão</option> <option value="local">Visibilidade local / Google Business</option> <option value="crm">CRM / follow-up</option> <option value="other">Outra coisa</option> </select> </label> <label> Mensagem *
+<textarea name="message" placeholder="Descreve o que está a falhar ou o que precisas" required aria-required="true" rows="5"></textarea> </label> <div> <button type="submit" id="submit-btn" class="btn btn--primary"> <span class="btn-text">Enviar</span> <span class="btn-loading" style="display:none;">A enviar...</span> </button> </div> </form> </div> <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> <script>(function(){const successMessage = "Voltamos a ti em breve — sem fanfarra, só resposta.";
+const errorMessage = "Não foi possível enviar a mensagem. Tenta novamente dentro de momentos.";
+
+  // EmailJS configuration constants
+  const EMAILJS_PUBLIC_KEY = '35n5lDzpu_p_TvSBF';
+  const EMAILJS_SERVICE_ID = 'service_wcvn6c8';
+  const EMAILJS_TEMPLATE_ID = 'template_3kfyjva';
+
+  // Check if EmailJS is loaded and initialize
+  function initEmailJS() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      setupForm();
+    } else {
+      setTimeout(initEmailJS, 100);
+    }
+  }
+
+  function setupForm() {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const messageDiv = document.getElementById('form-message');
+
+    if (!(form instanceof HTMLFormElement) || !(submitBtn instanceof HTMLButtonElement) || !(messageDiv instanceof HTMLDivElement)) {
+      return;
+    }
+
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+    if (!(btnText instanceof HTMLElement) || !(btnLoading instanceof HTMLElement)) {
+      return;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Show loading state
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      submitBtn.disabled = true;
+      messageDiv.style.display = 'none';
+
+      try {
+        // Send email using EmailJS
+        const result = await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          form
+        );
+
+        if (result.status === 200) {
+          messageDiv.className = 'form-message success';
+          messageDiv.textContent = successMessage;
+          form.reset();
+        } else {
+          throw new Error('EmailJS failed');
+        }
+      } catch (error) {
+        console.error('EmailJS error:', error);
+        messageDiv.className = 'form-message error';
+        messageDiv.textContent = errorMessage;
+      } finally {
+        // Reset button state
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
+        messageDiv.style.display = 'block';
+      }
+    });
+  }
+
+  // Start initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailJS);
+  } else {
+    initEmailJS();
+  }
+})();</script> </div> </section>  </main> <footer class="site-footer"> <div class="container"> <div class="footer-inner"> <!-- Brand --> <div class="footer-brand"> <a href="/" class="footer-logo"> <span>MAU</span> MARKETING
+</a> <p class="footer-tagline">Marketing prático para negócios reais.</p> <a href="https://nitida.pt" class="footer-NÍTIDA" target="_blank" rel="noopener"> A NÍTIDA Digital brand </a> </div> <!-- Nav --> <nav class="footer-nav" aria-label="Footer navigation"> <h4>Navegação</h4> <ul> <li><a href="/servicos/">Serviços</a></li><li><a href="/como-funciona">Como Funciona</a></li><li><a href="/sobre">Sobre</a></li><li><a href="/contacto">Contacto</a></li> </ul> </nav> </div> <div class="footer-bottom"> <span>© 2026 MAU MARKETING. Todos os direitos reservados.</span> </div> </div> </footer> </body></html>

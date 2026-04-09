@@ -4,32 +4,17 @@ interface Props {
 }
 
 const { t } = Astro.props;
-
-// The form posts to the current page; Netlify handles the submission.
-// On success Netlify redirects to ?sent=true (or we set action to redirect).
-// We detect ?sent=true client-side and show the thank-you message.
 ---
 
 <div class="contact-form-wrap">
-  <!-- Thank-you message, shown via JS when ?sent=true -->
-  <div class="contact-thanks" id="contact-thanks">
-    <h3>{t('contact.thanks.heading')}</h3>
-    <p>{t('contact.thanks.body')}</p>
-  </div>
+  <div class="form-message" id="form-message" role="status" aria-live="polite"></div>
 
-  <!-- Netlify form -->
   <form
     class="contact-form"
     id="contact-form"
     name="contact"
     method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-    action={`?sent=true`}
   >
-    <!-- Netlify hidden field -->
-    <input type="hidden" name="form-name" value="contact" />
-
     <!-- Honeypot — bots fill this, humans don't -->
     <label style="display:none" aria-hidden="true">
       Do not fill this out
@@ -48,11 +33,14 @@ const { t } = Astro.props;
         />
       </label>
       <label>
-        {t('contact.business')}
+        {t('contact.email')} *
         <input
-          type="text"
-          name="business"
-          placeholder={t('contact.business-placeholder')}
+          type="email"
+          inputmode="email"
+          name="email"
+          placeholder={t('contact.email-placeholder')}
+          required
+          aria-required="true"
         />
       </label>
     </div>
@@ -68,7 +56,7 @@ const { t } = Astro.props;
 
     <label>
       {t('contact.service')} *
-      <select name="service" required aria-required="true">
+      <select name="subject" required aria-required="true">
         <option value="" disabled selected>{t('contact.service-placeholder')}</option>
         <option value="landing">{t('contact.service-landing')}</option>
         <option value="local">{t('contact.service-local')}</option>
@@ -88,31 +76,96 @@ const { t } = Astro.props;
       ></textarea>
     </label>
 
-    <label>
-      {t('contact.budget')}
-      <select name="budget">
-        <option value="" disabled selected>{t('contact.budget-placeholder')}</option>
-        <option value="lt500">{t('contact.budget-500')}</option>
-        <option value="500-1000">{t('contact.budget-1000')}</option>
-        <option value="1000-2500">{t('contact.budget-2500')}</option>
-        <option value="2500-5000">{t('contact.budget-5000')}</option>
-        <option value="gt5000">{t('contact.budget-plus')}</option>
-      </select>
-    </label>
-
     <div>
-      <button type="submit" class="btn btn--primary">{t('contact.submit')}</button>
+      <button type="submit" id="submit-btn" class="btn btn--primary">
+        <span class="btn-text">{t('contact.submit')}</span>
+        <span class="btn-loading" style="display:none;">{t('contact.submitting')}</span>
+      </button>
     </div>
   </form>
 </div>
 
-<!-- Detect ?sent=true and show thank-you, hide form -->
-<script>
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('sent') === 'true') {
+<script is:inline type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script
+  is:inline
+  define:vars={{
+    successMessage: t('contact.thanks.body'),
+    errorMessage: t('contact.error'),
+  }}
+>
+  // EmailJS configuration constants
+  const EMAILJS_PUBLIC_KEY = '35n5lDzpu_p_TvSBF';
+  const EMAILJS_SERVICE_ID = 'service_wcvn6c8';
+  const EMAILJS_TEMPLATE_ID = 'template_3kfyjva';
+
+  // Check if EmailJS is loaded and initialize
+  function initEmailJS() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      setupForm();
+    } else {
+      setTimeout(initEmailJS, 100);
+    }
+  }
+
+  function setupForm() {
     const form = document.getElementById('contact-form');
-    const thanks = document.getElementById('contact-thanks');
-    if (form) form.style.display = 'none';
-    if (thanks) thanks.style.display = 'block';
+    const submitBtn = document.getElementById('submit-btn');
+    const messageDiv = document.getElementById('form-message');
+
+    if (!(form instanceof HTMLFormElement) || !(submitBtn instanceof HTMLButtonElement) || !(messageDiv instanceof HTMLDivElement)) {
+      return;
+    }
+
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+    if (!(btnText instanceof HTMLElement) || !(btnLoading instanceof HTMLElement)) {
+      return;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Show loading state
+      btnText.style.display = 'none';
+      btnLoading.style.display = 'inline';
+      submitBtn.disabled = true;
+      messageDiv.style.display = 'none';
+
+      try {
+        // Send email using EmailJS
+        const result = await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          form
+        );
+
+        if (result.status === 200) {
+          messageDiv.className = 'form-message success';
+          messageDiv.textContent = successMessage;
+          form.reset();
+        } else {
+          throw new Error('EmailJS failed');
+        }
+      } catch (error) {
+        console.error('EmailJS error:', error);
+        messageDiv.className = 'form-message error';
+        messageDiv.textContent = errorMessage;
+      } finally {
+        // Reset button state
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
+        messageDiv.style.display = 'block';
+      }
+    });
+  }
+
+  // Start initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailJS);
+  } else {
+    initEmailJS();
   }
 </script>

@@ -688,6 +688,29 @@ a {
 }
 
 // Contact form feedback states
+.form-message {
+  display: none;
+  margin-bottom: 1rem;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--mau-border);
+  background-color: var(--mau-surface);
+  color: var(--mau-text);
+  font-size: 0.9375rem;
+}
+
+.form-message.success {
+  border-color: #b6d1bb;
+  background-color: #eef7ef;
+  color: #1f5d2b;
+}
+
+.form-message.error {
+  border-color: #d8b6b6;
+  background-color: #f7e9e9;
+  color: #6f1d1b;
+}
+
 .contact-error {
   display: none;
   margin-bottom: 1rem;

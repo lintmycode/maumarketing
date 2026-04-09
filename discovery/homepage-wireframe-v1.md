@@ -66,7 +66,7 @@ Option C:
 
 ### Supporting paragraph
 Example direction:
-MAU Marketing é uma marca da Nitida Digital focada em pequenas empresas que precisam de páginas que convertam, presença local melhor afinada, e sistemas de follow-up mais úteis — sem teatro de agência e sem promessas ocas.
+MAU Marketing é uma marca da NÍTIDA Digital focada em pequenas empresas que precisam de páginas que convertam, presença local melhor afinada, e sistemas de follow-up mais úteis — sem teatro de agência e sem promessas ocas.
 
 ### CTAs
 Primary:
@@ -78,7 +78,7 @@ Secondary:
 
 ### Micro-proof under CTA
 Short line examples:
-- Marca da Nitida Digital
+- Marca da NÍTIDA Digital
 - Execução humana com apoio de IA
 - Foco em pequenas empresas e negócios locais
 
@@ -135,7 +135,7 @@ It should help:
 - reduce friction
 - support follow-up
 
-This section reinforces the bridge between Nitida’s existing strengths and MAU’s marketing positioning.
+This section reinforces the bridge between NÍTIDA’s existing strengths and MAU’s marketing positioning.
 
 ## Section 5 — How MAU works
 
@@ -183,7 +183,7 @@ MAU approach:
 Make the business feel real and anchored.
 
 ### Content direction
-- MAU Marketing is a Nitida Digital brand
+- MAU Marketing is a NÍTIDA Digital brand
 - founded/operated by someone with 10+ years in digital delivery
 - practical background in websites, systems, execution, and client work
 - built for businesses that need useful work, not agency theatre
@@ -213,7 +213,7 @@ Tell us what you are trying to sell, what is not working, or where leads are lea
 
 Include:
 - MAU Marketing
-- A Nitida Digital brand
+- A NÍTIDA Digital brand
 - contact email
 - links
 - legal/privacy links

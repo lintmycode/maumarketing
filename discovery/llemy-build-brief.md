@@ -1,10 +1,10 @@
 # MAU Marketing — build brief for Llemy
 
-Build the first public website for **MAU Marketing**, a **Nitida Digital brand**.
+Build the first public website for **MAU Marketing**, a **NÍTIDA Digital brand**.
 
 ## Context
 
-MAU Marketing is a marketing-facing branch of Nitida. It should feel distinct, sharper, more playful, and more explicitly commercial than Nitida, but still grounded in real delivery capability.
+MAU Marketing is a marketing-facing branch of NÍTIDA. It should feel distinct, sharper, more playful, and more explicitly commercial than NÍTIDA, but still grounded in real delivery capability.
 
 The offer is **not** “full-service marketing agency for everything.”
 It is a tighter, practical service business for small/local businesses that need:
@@ -47,7 +47,7 @@ Important:
 - brand should be presented as **MAU Marketing**
 - do not over-explain the acronym or force a fake expansion
 - let the name create curiosity, but resolve it fast with clear commercial copy
-- include the line **“A Nitida Digital brand”** in appropriate places
+- include the line **“A NÍTIDA Digital brand”** in appropriate places
 
 ## Positioning
 
@@ -104,12 +104,12 @@ The whole website should feel:
 
 ## Technical direction
 
-Use the Nitida repo stack and implementation philosophy as the reference.
+Use the NÍTIDA repo stack and implementation philosophy as the reference.
 
 Preferred direction:
 - **Astro**
-- reuse Nitida-style patterns where sensible
-- align with Nitida’s actual app simplicity: minimal dependencies, standard Astro scripts, plain `astro.config.mjs`
+- reuse NÍTIDA-style patterns where sensible
+- align with NÍTIDA’s actual app simplicity: minimal dependencies, standard Astro scripts, plain `astro.config.mjs`
 - lightweight implementation
 - avoid dependency bloat
 - avoid CMS/page-builder thinking unless there is a real need
@@ -143,7 +143,7 @@ The homepage should likely include:
 - “web as a marketing tool” explanation
 - “AI, but supervised” explanation
 - why MAU is different from generic agencies
-- credibility / Nitida relationship
+- credibility / NÍTIDA relationship
 - CTA
 
 Hero headline direction can be explored, but the page must not spend too long explaining the name.
@@ -198,11 +198,11 @@ Be explicit but sane:
 - humans remain responsible for review, judgment, and delivery
 - do not position MAU as an autonomous AI agency
 
-## Relationship with Nitida
+## Relationship with NÍTIDA
 
 This should be visible and positive.
 Use wording like:
-- **A Nitida Digital brand**
+- **A NÍTIDA Digital brand**
 
 But MAU should still feel like:
 - its own brand
@@ -220,7 +220,7 @@ Please create:
 3. page-by-page content outlines
 4. first-pass service page copy drafts in PT + EN
 5. brand/visual direction recommendations
-6. technical build spec for **Astro**, aligned with Nitida’s actual lean implementation style
+6. technical build spec for **Astro**, aligned with NÍTIDA’s actual lean implementation style
 7. component/section system for reuse
 8. implementation plan
 

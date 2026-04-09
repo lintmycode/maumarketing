@@ -5,10 +5,10 @@ Date: 2026-04-07
 
 ## Working idea
 
-**Mau Marketing** would be a Nitida Digital brand focused on marketing services delivered in an AI-native, no-BS way.
+**Mau Marketing** would be a NÍTIDA Digital brand focused on marketing services delivered in an AI-native, no-BS way.
 
 Core framing:
-- Nitida already sells websites, landing pages, and digital execution.
+- NÍTIDA already sells websites, landing pages, and digital execution.
 - Mau Marketing would package web development as a **marketing tool**, not as an isolated build artifact.
 - Mau Marketing would also offer selected marketing services beyond web work.
 - Positioning should avoid fake guru strategy language and avoid pretending AI can magically do everything.
@@ -26,7 +26,7 @@ This is a stronger foundation than generic “AI marketing agency” positioning
 ## Refined positioning hypothesis
 
 Mau Marketing should be positioned as:
-- a **marketing-facing Nitida brand**
+- a **marketing-facing NÍTIDA brand**
 - execution-heavy rather than theory-heavy
 - useful for businesses who are frustrated with weak marketing service, weak websites, weak local visibility, or poor operational follow-up
 - playful and irreverent in tone, but serious in delivery
@@ -50,7 +50,7 @@ Services:
 - booking/contact flow improvements
 
 Why it fits:
-- strongest overlap with existing Nitida capability
+- strongest overlap with existing NÍTIDA capability
 - easy to explain
 - measurable outcomes
 
@@ -96,7 +96,7 @@ Why it fits:
 - highly valuable
 - under-served in many small businesses
 - process-driven and measurable
-- aligned with existing Nitida/custom systems capability
+- aligned with existing NÍTIDA/custom systems capability
 
 ### 5) Local business marketing systems
 Services:
@@ -136,7 +136,7 @@ Based on Nuno’s replies, the strongest initial focus should be:
 3. **EspoCRM setup, customization, and follow-up workflows**
 
 Optional adjacent offer:
-- AI integration work where it creates a real operational gain, similar to the more useful AI work already done at Nitida
+- AI integration work where it creates a real operational gain, similar to the more useful AI work already done at NÍTIDA
 
 This is a stronger starting mix than generic “content marketing” because it is:
 - easier to explain
@@ -309,7 +309,7 @@ Directions to test:
 - “AI-native marketing execution with human supervision.”
 - “Fast marketing systems for small businesses that need results, not jargon.”
 - “Less bullshit. More useful marketing.”
-- “A Nitida Digital brand.”
+- “A NÍTIDA Digital brand.”
 
 ## Discovery conclusions so far
 
@@ -340,8 +340,8 @@ Directions to test:
 - intake should be structured almost always to reduce ambiguity
 
 ### Brand architecture
-- Mau Marketing should be transparently linked to Nitida
-- recommended wording: **“A Nitida Digital brand”**
+- Mau Marketing should be transparently linked to NÍTIDA
+- recommended wording: **“A NÍTIDA Digital brand”**
 - relationship should be public and clear, but Mau Marketing should still have its own identity and workflow
 - separate site, domain, and voice are preferred
 
@@ -416,7 +416,7 @@ Mau Marketing helps small businesses get more from their websites, local presenc
 - 3 core offers
 - “Web as a marketing tool” section
 - “AI, but supervised” section
-- credibility / Nitida relationship
+- credibility / NÍTIDA relationship
 - CTA
 
 ### 4) Delivery workflow with AI/human boundaries
@@ -475,14 +475,14 @@ Strong rule:
 - the name is a strategic asset, not just a joke
 
 #### Brand
-- should be visibly linked to Nitida
+- should be visibly linked to NÍTIDA
 - should still feel like its own thing
 - should not read as a random microsite with no backbone
 
 #### Legal/commercial
 To assess later:
 - trademark/basic conflict check
-- whether contracts/invoicing stay under Nitida
+- whether contracts/invoicing stay under NÍTIDA
 - whether MM is only a brand/trading name versus something more formal
 - privacy/data implications if offering hosted CRM or AI-connected workflows
 

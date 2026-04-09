@@ -1,1 +1,0 @@
-const t=document.getElementById("nav-toggle"),e=document.getElementById("main-nav");t&&e&&t.addEventListener("click",()=>{const n=e.getAttribute("data-open")==="true";e.setAttribute("data-open",n?"false":"true"),t.setAttribute("aria-expanded",n?"false":"true")});

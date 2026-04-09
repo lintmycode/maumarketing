@@ -5,7 +5,7 @@ Date: 2026-04-07
 
 ## Purpose
 
-Create a fast, credible, lightweight website for **MAU Marketing**, a Nitida Digital brand offering practical, AI-native marketing services with human supervision.
+Create a fast, credible, lightweight website for **MAU Marketing**, a NÍTIDA Digital brand offering practical, AI-native marketing services with human supervision.
 
 The site should:
 - explain the offer clearly
@@ -18,12 +18,12 @@ The site should:
 
 ### Platform
 - Astro
-- reuse Nitida repo patterns and implementation philosophy as reference
+- reuse NÍTIDA repo patterns and implementation philosophy as reference
 - lightweight customizations over framework bloat
 - performance-first approach
 
 ### Likely stack assumptions
-Based on Nitida’s actual repo structure:
+Based on NÍTIDA’s actual repo structure:
 - Astro site structure
 - minimal setup (`astro`, simple scripts, plain `astro.config.mjs`)
 - reusable components/layouts
@@ -64,7 +64,7 @@ Initial audience hypothesis:
 - businesses with poor websites, weak follow-up, inconsistent local presence, or messy lead handling
 
 Secondary audience:
-- existing Nitida-adjacent clients who need marketing help beyond a normal website build
+- existing NÍTIDA-adjacent clients who need marketing help beyond a normal website build
 - somewhat more sophisticated businesses who appreciate a sharper tone
 
 ## Site goals by priority
@@ -98,7 +98,7 @@ Sections:
 - selected service blocks
 - “how we work” / AI + human explanation
 - why this is different from normal agencies
-- proof / credibility / relation to Nitida
+- proof / credibility / relation to NÍTIDA
 - CTA
 
 ### 2) Services overview
@@ -139,7 +139,7 @@ Include:
 
 ### 5) About
 Purpose:
-- explain MAU Marketing as a Nitida Digital brand
+- explain MAU Marketing as a NÍTIDA Digital brand
 - give the founder/operator context
 - establish competence and tone
 
@@ -159,7 +159,7 @@ Purpose:
 - credibility and proof
 
 Could start with:
-- selected Nitida-style work reframed through marketing outcomes
+- selected NÍTIDA-style work reframed through marketing outcomes
 
 ## Homepage spec
 
@@ -209,7 +209,7 @@ Say this plainly:
 
 ### Trust / credibility block
 Potential elements:
-- operated by Nitida Digital
+- operated by NÍTIDA Digital
 - years of digital delivery experience
 - practical execution across websites, systems, and client work
 
@@ -326,14 +326,14 @@ Potential intake fields:
 - budget range (optional)
 - urgency
 
-## Relationship with Nitida
+## Relationship with NÍTIDA
 
 The site should clarify the relationship without confusion.
 Recommended framing:
-- **MAU Marketing is a Nitida Digital brand.**
+- **MAU Marketing is a NÍTIDA Digital brand.**
 
 Need to avoid making the two brands feel redundant.
-Nitida = broader web/digital execution brand.
+NÍTIDA = broader web/digital execution brand.
 MAU Marketing = marketing-facing, offer/conversion/follow-up/local-visibility branch.
 
 ## Suggested v1 launch scope
@@ -353,8 +353,8 @@ MAU Marketing = marketing-facing, offer/conversion/follow-up/local-visibility br
 
 ## Implementation notes
 
-- use Astro and Nitida-style implementation patterns
-- Nitida’s actual site app is very lean: Astro with minimal dependencies and a plain `astro.config.mjs`; MAU should follow that spirit unless a real need appears
+- use Astro and NÍTIDA-style implementation patterns
+- NÍTIDA’s actual site app is very lean: Astro with minimal dependencies and a plain `astro.config.mjs`; MAU should follow that spirit unless a real need appears
 - create reusable sections/components for service pages and CTAs
 - keep dependency count low
 - prioritize editable, maintainable content structure without overcomplicating the stack
@@ -366,7 +366,7 @@ MAU Marketing = marketing-facing, offer/conversion/follow-up/local-visibility br
 - how playful the homepage should be
 - whether pricing is visible at launch
 - whether the founder appears explicitly on the homepage
-- whether early case studies reuse Nitida work or wait for MAU-native work
+- whether early case studies reuse NÍTIDA work or wait for MAU-native work
 
 ## Recommended next deliverables
 

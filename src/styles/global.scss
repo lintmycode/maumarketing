@@ -3,7 +3,8 @@
 // Pico is imported in BaseLayout.astro; these rules cascade over it.
 
 :root,
-[data-theme='light'] {
+[data-theme='light'],
+:where(:not([data-theme='dark'])) {
   // Brand colors
   --mau-bg:         #F7F4EE; // warm off-white
   --mau-text:       #161616; // near-black
@@ -14,12 +15,17 @@
   --mau-border:     #DDD5C8; // subtle border
 
   // Override Pico CSS custom properties
-  --pico-background-color:          var(--mau-bg);
-  --pico-color:                     var(--mau-text);
-  --pico-h1-color:                  var(--mau-text);
-  --pico-h2-color:                  var(--mau-text);
-  --pico-h3-color:                  var(--mau-text);
-  --pico-h4-color:                  var(--mau-text);
+  --pico-background-color:          var(--mau-bg) !important;
+  --pico-color:                     var(--mau-text) !important;
+
+  // Force all heading colors to use brand text color for proper contrast
+  --pico-h1-color:                  var(--mau-text) !important;
+  --pico-h2-color:                  var(--mau-text) !important;
+  --pico-h3-color:                  var(--mau-text) !important;
+  --pico-h4-color:                  var(--mau-text) !important;
+  --pico-h5-color:                  var(--mau-text) !important;
+  --pico-h6-color:                  var(--mau-text) !important;
+
   --pico-primary:                   var(--mau-accent);
   --pico-primary-background:        var(--mau-accent);
   --pico-primary-border:            var(--mau-accent);
@@ -38,10 +44,18 @@
   --pico-muted-border-color:        var(--mau-border);
   --pico-border-color:              var(--mau-border);
 
-  // Typography — system font stack, no external loading
-  --pico-font-family-sans-serif:
-    system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --pico-font-family: var(--pico-font-family-sans-serif);
+  // Typography — Google Fonts
+  // Uncomment one pair to test different combinations:
+
+  // Option 1: Jost + IBM Plex Sans (your request — geometric display + technical body)
+  --font-display: 'Jost', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --pico-font-family-sans-serif: var(--font-body);
+  --pico-font-family: var(--font-body);
+
+  // Reset Pico's fluid font sizing — use fixed 16px base
+  --pico-font-size: 116% !important;
 }
 
 // ─── Base overrides ───────────────────────────────────────────────────────────
@@ -51,14 +65,25 @@ body {
   color: var(--mau-text);
 }
 
-// Sharper heading weight
-h1, h2, h3 {
+// Headings — h1 uses display font, h2+ use body font
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-h1 { line-height: 1.1; }
-h2 { line-height: 1.2; }
+h1 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-body);
+}
+
+h2 {
+  line-height: 1.2;
+  text-transform: uppercase;
+}
 
 // Links
 a {
@@ -69,7 +94,7 @@ a {
 // ─── Layout helpers ───────────────────────────────────────────────────────────
 
 .container {
-  max-width: 1100px;
+  max-width: 1300px;
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
@@ -80,6 +105,15 @@ a {
 
 .section--surface {
   background-color: var(--mau-surface);
+
+  // Override Pico heading colors for better contrast on mau-surface
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--mau-text);
+  }
+
+  p, li {
+    color: var(--mau-text);
+  }
 }
 
 .section--dark {
@@ -103,19 +137,26 @@ a {
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 3rem;
   padding-block: 1rem;
 }
 
 .nav-logo {
-  font-weight: 700;
-  font-size: 1.125rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.85rem;
   color: var(--mau-text);
   text-decoration: none;
-  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.0325em;
+  margin-right: auto; // Push nav items/toggle to the right of the logo
+  order: 0;
 
-  span { color: var(--mau-accent); }
+  span {
+    color: var(--mau-accent);
+    // letter-spacing: 0.1875em;
+    font-weight: 900; // Fat weight for MAU
+  }
 
   &:hover { color: var(--mau-text); }
 }
@@ -123,16 +164,18 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  order: 2;
 
   a {
     color: var(--mau-text);
     text-decoration: none;
     font-size: 0.9375rem;
     font-weight: 500;
+    text-transform: uppercase;
 
     &:hover { color: var(--mau-accent); }
   }
@@ -142,6 +185,7 @@ a {
   display: flex;
   align-items: center;
   gap: 1rem;
+  order: 3;
 }
 
 .nav-lang {
@@ -174,6 +218,7 @@ a {
 // Mobile nav
 .nav-toggle {
   display: none;
+  order: 1;
   background: none;
   border: none;
   cursor: pointer;
@@ -183,7 +228,7 @@ a {
   line-height: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1170px) {
   .nav-toggle {
     display: block;
   }
@@ -232,6 +277,11 @@ a {
   color: var(--mau-bg);
   padding-block: 3rem;
   margin-top: 0;
+
+  a {
+    --pico-background-color: transparent;
+    background-color: transparent;
+  }
 }
 
 .footer-inner {
@@ -248,13 +298,18 @@ a {
 
 .footer-brand {
   .footer-logo {
+    font-family: var(--font-display);
     font-size: 1.125rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--mau-bg);
     text-decoration: none;
+    text-transform: uppercase;
     letter-spacing: -0.01em;
 
-    span { color: var(--mau-accent); }
+    span {
+      color: var(--mau-accent);
+      font-weight: 900; // Fat weight for MAU
+    }
   }
 
   .footer-tagline {
@@ -263,7 +318,7 @@ a {
     color: rgba(247, 244, 238, 0.6);
   }
 
-  .footer-nitida {
+  .footer-NÍTIDA {
     display: inline-block;
     margin-top: 0.75rem;
     font-size: 0.8125rem;
@@ -275,6 +330,11 @@ a {
 }
 
 .footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
   h4 {
     font-size: 0.8125rem;
     font-weight: 600;
@@ -290,10 +350,18 @@ a {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  li {
+    display: block;
+    margin: 0;
+    padding: 0;
   }
 
   a {
+    margin: 0;
     color: rgba(247, 244, 238, 0.75);
     text-decoration: none;
     font-size: 0.9375rem;
@@ -334,7 +402,7 @@ a {
   font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.0225em;
   color: var(--mau-text);
   margin-bottom: 0.25rem;
 }
@@ -369,6 +437,7 @@ a {
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
+  text-transform: uppercase;
   cursor: pointer;
   border: 2px solid transparent;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
@@ -439,6 +508,11 @@ a {
   flex-direction: column;
   gap: 0.75rem;
 
+  // Ensure text has proper contrast on surface background
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--mau-text);
+  }
+
   &__title {
     font-size: 1.125rem;
     font-weight: 700;
@@ -486,7 +560,8 @@ a {
     padding: 2rem 1.5rem;
   }
 
-  h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--mau-text);
     margin-bottom: 1rem;
   }
 
@@ -612,7 +687,19 @@ a {
   }
 }
 
-// Thank-you message (shown via JS when ?sent=true)
+// Contact form feedback states
+.contact-error {
+  display: none;
+  margin-bottom: 1rem;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #d8b6b6;
+  background-color: #f7e9e9;
+  color: #6f1d1b;
+  font-size: 0.9375rem;
+}
+
+// Thank-you message
 .contact-thanks {
   display: none;
   padding: 2rem;
@@ -621,7 +708,11 @@ a {
   border-radius: 6px;
   border-left: 4px solid var(--mau-accent);
 
-  h3 { margin-bottom: 0.5rem; }
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--mau-text);
+    margin-bottom: 0.5rem;
+  }
+
   p { color: var(--mau-muted); margin: 0; }
 }
 
@@ -648,7 +739,7 @@ a {
 
 // ─── About page ───────────────────────────────────────────────────────────────
 
-.nitida-badge {
+.NÍTIDA-badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   background-color: var(--mau-surface);
@@ -656,7 +747,7 @@ a {
   border-radius: 2rem;
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--mau-muted);
+  color: var(--mau-text); // Changed from --mau-muted for better contrast
   letter-spacing: 0.04em;
   margin-bottom: 1.5rem;
 }

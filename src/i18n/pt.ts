@@ -11,18 +11,18 @@ export const pt: Record<string, string> = {
   'nav.menu-close': 'Fechar menu',
 
   // ─── Footer ───────────────────────────────────────────────────────────────────
-  'footer.brand': 'A Nitida Digital brand',
+  'footer.brand': 'A NÍTIDA Digital brand',
   'footer.tagline': 'Marketing prático para negócios reais.',
   'footer.nav-heading': 'Navegação',
   'footer.services': 'Serviços',
   'footer.how-it-works': 'Como Funciona',
   'footer.about': 'Sobre',
   'footer.contact': 'Contacto',
-  'footer.rights': '© 2026 MAU Marketing. Todos os direitos reservados.',
-  'footer.nitida-link': 'https://nitida.pt',
+  'footer.rights': '© 2026 MAU MARKETING. Todos os direitos reservados.',
+  'footer.NÍTIDA-link': 'https://nitida.pt',
 
   // ─── Homepage Hero ────────────────────────────────────────────────────────────
-  'hero.eyebrow': 'A Nitida Digital brand',
+  'hero.eyebrow': 'A NÍTIDA Digital brand',
   'hero.headline': 'Provavelmente não precisas de mais marketing.',
   'hero.headline-accent': 'Precisas de marketing melhor.',
   'hero.subheadline': 'Websites, landing pages e sistemas de follow-up para negócios que já estão fartos de conversa.',
@@ -39,9 +39,9 @@ export const pt: Record<string, string> = {
 
   // ─── Homepage — Trust block ────────────────────────────────────────────────────
   'home.trust.heading': 'Não inventámos o marketing ontem',
-  'home.trust.body': 'A MAU Marketing é uma marca da Nitida Digital, com anos de entrega digital real: websites, sistemas, integrações e trabalho de cliente. Sabemos a diferença entre teoria de marketing e execução que funciona.',
-  'home.trust.nitida': 'Conhecer a Nitida Digital',
-  'home.trust.nitida-url': 'https://nitida.pt',
+  'home.trust.body': 'A MAU Marketing é uma marca da NÍTIDA Digital, com anos de entrega digital real: websites, sistemas, integrações e trabalho de cliente. Sabemos a diferença entre teoria de marketing e execução que funciona.',
+  'home.trust.NÍTIDA': 'Conhecer a NÍTIDA Digital',
+  'home.trust.NÍTIDA-url': 'https://nitida.pt',
 
   // ─── Homepage — CTA block ─────────────────────────────────────────────────────
   'home.cta.heading': 'O teu website está a custar-te clientes?',
@@ -114,6 +114,8 @@ export const pt: Record<string, string> = {
   'contact.budget-5000': '2.500€ – 5.000€',
   'contact.budget-plus': 'Mais de 5.000€',
   'contact.submit': 'Enviar',
+  'contact.submitting': 'A enviar...',
+  'contact.error': 'Não foi possível enviar a mensagem. Tenta novamente dentro de momentos.',
   'contact.thanks.heading': 'Recebemos.',
   'contact.thanks.body': 'Voltamos a ti em breve — sem fanfarra, só resposta.',
   'contact.required': 'Campo obrigatório',
@@ -187,18 +189,18 @@ export const pt: Record<string, string> = {
   'how-page.ai.body2': 'O que a IA não faz: tomar decisões estratégicas, validar o tom de voz do teu negócio, ou substituir o julgamento sobre o que funciona no teu mercado específico. Isso fica do nosso lado — humano, responsável e revisado.',
 
   // ─── About Page ───────────────────────────────────────────────────────────────
-  'about-page.title': 'Sobre a MAU Marketing — A Nitida Digital brand',
-  'about-page.description': 'MAU Marketing é uma marca da Nitida Digital, focada em execução prática de marketing para pequenos negócios.',
+  'about-page.title': 'Sobre a MAU Marketing — A NÍTIDA Digital brand',
+  'about-page.description': 'MAU Marketing é uma marca da NÍTIDA Digital, focada em execução prática de marketing para pequenos negócios.',
   'about-page.heading': 'Sobre a MAU Marketing',
-  'about-page.nitida-badge': 'A Nitida Digital brand',
+  'about-page.NÍTIDA-badge': 'A NÍTIDA Digital brand',
   'about-page.intro.heading': 'Sim, o nome é esse mesmo.',
   'about-page.intro.body1': 'MAU Marketing. Em português, soa ao que parece. Isso é intencional. Há demasiado marketing mau por aí — genérico, inflado, desligado da realidade dos negócios. Quisemos deixar isso claro logo no nome.',
   'about-page.intro.body2': 'O que fazemos é diferente: marketing que serve a função comercial do teu negócio, não o ego da agência. Páginas que convertem. Presença local que aparece. Sistemas que fecham negócios sem depender de boa memória.',
-  'about-page.nitida.heading': 'A ligação à Nitida Digital',
-  'about-page.nitida.body1': 'A MAU Marketing é uma marca da Nitida Digital. A Nitida faz entrega digital real — websites, sistemas, integrações, trabalho de cliente com anos de histórico. A MAU é a face mais focada em marketing e conversão dessa capacidade.',
-  'about-page.nitida.body2': 'Não somos dois negócios diferentes. Somos a mesma equipa com um foco diferente: a Nitida para quem precisa de web e digital em geral, a MAU para quem precisa de marketing, visibilidade e mais leads.',
-  'about-page.nitida.link': 'Ver a Nitida Digital',
-  'about-page.nitida.url': 'https://nitida.pt',
+  'about-page.NÍTIDA.heading': 'A ligação à NÍTIDA Digital',
+  'about-page.NÍTIDA.body1': 'A MAU Marketing é uma marca da NÍTIDA Digital. A NÍTIDA faz entrega digital real — websites, sistemas, integrações, trabalho de cliente com anos de histórico. A MAU é a face mais focada em marketing e conversão dessa capacidade.',
+  'about-page.NÍTIDA.body2': 'Não somos dois negócios diferentes. Somos a mesma equipa com um foco diferente: a NÍTIDA para quem precisa de web e digital em geral, a MAU para quem precisa de marketing, visibilidade e mais leads.',
+  'about-page.NÍTIDA.link': 'Ver a NÍTIDA Digital',
+  'about-page.NÍTIDA.url': 'https://nitida.pt',
   'about-page.approach.heading': 'Como abordamos o trabalho',
   'about-page.approach.item1.title': 'Diretos',
   'about-page.approach.item1.body': 'Dizemos o que achamos antes de dizer o que queres ouvir. Se o problema não é o website, dizemos isso.',

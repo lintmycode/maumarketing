@@ -1,1 +1,0 @@
-import"./hoisted.Drgxb0vS.js";const n=new URLSearchParams(window.location.search);if(n.get("sent")==="true"){const t=document.getElementById("contact-form"),e=document.getElementById("contact-thanks");t&&(t.style.display="none"),e&&(e.style.display="block")}

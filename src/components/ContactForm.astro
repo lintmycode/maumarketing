@@ -48,7 +48,7 @@ const { t } = Astro.props;
     <label>
       {t('contact.website')}
       <input
-        type="url"
+        type="text"
         name="website"
         placeholder={t('contact.website-placeholder')}
       />
@@ -58,10 +58,10 @@ const { t } = Astro.props;
       {t('contact.service')} *
       <select name="subject" required aria-required="true">
         <option value="" disabled selected>{t('contact.service-placeholder')}</option>
-        <option value="landing">{t('contact.service-landing')}</option>
-        <option value="local">{t('contact.service-local')}</option>
-        <option value="crm">{t('contact.service-crm')}</option>
-        <option value="other">{t('contact.service-other')}</option>
+        <option value={t('contact.service-landing')}>{t('contact.service-landing')}</option>
+        <option value={t('contact.service-local')}>{t('contact.service-local')}</option>
+        <option value={t('contact.service-crm')}>{t('contact.service-crm')}</option>
+        <option value={t('contact.service-other')}>{t('contact.service-other')}</option>
       </select>
     </label>
 

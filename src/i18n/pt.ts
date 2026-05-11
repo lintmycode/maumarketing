@@ -51,23 +51,23 @@ export const pt: Record<string, string> = {
   // ─── Service Card (reusable) ──────────────────────────────────────────────────
   'service.cta': 'Saber mais',
 
-  // ─── Service: Landing Pages ───────────────────────────────────────────────────
-  'service.landing.title': 'Landing Pages e Websites de Conversão',
-  'service.landing.problem': 'O teu website existe. Mas não converte.',
-  'service.landing.outcome': 'Páginas que explicam o que ofereces, captam contactos e empurram visitantes para ação.',
-  'service.landing.href': '/servicos/landing-pages',
+  // ─── Service: 2-Day Launch ────────────────────────────────────────────────────
+  'service.landing.title': 'Lançamento em 2 Dias',
+  'service.landing.problem': 'Do zero até online em 2 dias.',
+  'service.landing.outcome': 'Uma forma rápida e estruturada de lançar um site com presença profissional.',
+  'service.landing.href': '/servicos/lancamento-2-dias',
 
-  // ─── Service: Local Visibility ────────────────────────────────────────────────
-  'service.local.title': 'Visibilidade Local e Melhorias Práticas',
-  'service.local.problem': 'Não apareces onde os teus clientes te procuram.',
-  'service.local.outcome': 'Google Business otimizado, presença local real e correções que têm impacto imediato.',
-  'service.local.href': '/servicos/visibilidade-local',
+  // ─── Service: AI Website Updates ─────────────────────────────────────────────
+  'service.local.title': 'Atualizações com Assistente IA',
+  'service.local.problem': 'Atualiza o teu site enviando uma mensagem ao teu assistente.',
+  'service.local.outcome': 'Publica conteúdo, altera textos e mantém o website atualizado sem depender do WordPress no dia a dia.',
+  'service.local.href': '/servicos/atualizacoes-ia',
 
-  // ─── Service: CRM ─────────────────────────────────────────────────────────────
-  'service.crm.title': 'CRM e Follow-up',
-  'service.crm.problem': 'Os leads entram e perdem-se.',
-  'service.crm.outcome': 'Pipeline claro, follow-up automatizado e menos dependência de memória e boa vontade.',
-  'service.crm.href': '/servicos/crm-follow-up',
+  // ─── Service: Custom CRM ──────────────────────────────────────────────────────
+  'service.crm.title': 'CRM Personalizado com Integração IA',
+  'service.crm.problem': 'Um CRM feito para o teu negócio, com utilizadores ilimitados e integração com agentes.',
+  'service.crm.outcome': 'Pipelines personalizados, estrutura flexível e fluxos preparados para automação e apoio operacional.',
+  'service.crm.href': '/servicos/crm-personalizado',
 
   // ─── Process Steps ────────────────────────────────────────────────────────────
   'process.heading': 'O processo',
@@ -122,10 +122,10 @@ export const pt: Record<string, string> = {
 
   // ─── Services Overview Page ───────────────────────────────────────────────────
   'services-page.title': 'Serviços — MAU Marketing',
-  'services-page.description': 'Landing pages, visibilidade local e CRM. Três áreas onde os negócios perdem mais — e onde ajudamos.',
+  'services-page.description': 'Lançamento em 2 dias, atualizações com assistente IA e CRM personalizado. Três soluções práticas para o teu negócio funcionar melhor online.',
   'services-page.heading': 'Serviços',
-  'services-page.subheading': 'Marketing que funciona. Nas três áreas onde o teu negócio mais perde.',
-  'services-page.intro': 'Não fazemos tudo. Fazemos bem três coisas que têm impacto direto no teu negócio.',
+  'services-page.subheading': 'Três soluções práticas. Sem floreados.',
+  'services-page.intro': 'Não fazemos tudo. Fazemos bem três coisas com impacto direto no teu negócio.',
 
   // ─── Landing Pages Service Page ───────────────────────────────────────────────
   'landing-page.title': 'Landing Pages e Websites de Conversão — MAU Marketing',
@@ -177,6 +177,57 @@ export const pt: Record<string, string> = {
   'crm-page.what.item5': 'Integração com formulários e fontes de lead',
   'crm-page.outcome.heading': 'O que podes esperar',
   'crm-page.outcome.body': 'Um pipeline que sabes como está a qualquer momento. Follow-up que acontece sem dependência de memória. Menos leads perdidos, mais negócios fechados.',
+
+  // ─── Lançamento em 2 Dias Page ────────────────────────────────────────────────
+  'launch-page.title': 'Lançamento em 2 Dias — MAU Marketing',
+  'launch-page.description': 'Passa do zero para online em 2 dias. Uma solução de lançamento rápido para negócios que precisam de estar online sem atrasos.',
+  'launch-page.hero.heading': 'Passa do zero para online em 2 dias.',
+  'launch-page.hero.subheading': 'Uma solução de lançamento rápido para negócios que precisam de estar online sem atrasos. Tratamos da estrutura, da copy, da configuração e da publicação.',
+  'launch-page.problem.heading': 'Para quem é',
+  'launch-page.problem.body': 'Ideal para negócios novos, empresas de serviços, lançamentos de ofertas — e para quem precisa de um site rapidamente, com clareza e sem complicações.',
+  'launch-page.what.heading': 'O que entregamos',
+  'launch-page.what.body': 'Tratamos de tudo: estrutura, copy, configuração e publicação. Para transformar uma ideia, um negócio novo ou uma presença fraca num site limpo, credível e pronto a funcionar.',
+  'launch-page.what.item1': 'Rapidez — do zero ao ar em 2 dias',
+  'launch-page.what.item2': 'Estrutura e copy tratadas por nós',
+  'launch-page.what.item3': 'Configuração técnica e publicação incluídas',
+  'launch-page.what.item4': 'Uma presença online credível e profissional',
+  'launch-page.what.item5': 'Um ponto de partida sólido para começar a vender ou apresentar o negócio',
+  'launch-page.outcome.heading': 'O que podes esperar',
+  'launch-page.outcome.body': 'Um site limpo, credível e pronto a funcionar — sem semanas de espera, sem complicações técnicas, sem depender de ti para cada detalhe.',
+
+  // ─── Atualizações com Assistente IA Page ──────────────────────────────────────
+  'ai-updates-page.title': 'Atualizações com Assistente IA — MAU Marketing',
+  'ai-updates-page.description': 'Atualiza o teu site enviando uma mensagem ao teu assistente. Sem entrar no WordPress, sem esperar, sem depender de ninguém.',
+  'ai-updates-page.hero.heading': 'Atualiza o teu site enviando uma mensagem.',
+  'ai-updates-page.hero.subheading': 'Em vez de entrares no WordPress, trocares emails ou dependeres de processos lentos, podes simplesmente enviar uma mensagem ao teu assistente.',
+  'ai-updates-page.problem.heading': 'O problema que resolve',
+  'ai-updates-page.problem.body': 'Manter um website atualizado devia ser simples. Na prática é um bloqueio: backoffices confusos, dependência de técnicos, emails para trás e para a frente. O resultado é um site estático que nunca reflete o estado real do negócio.',
+  'ai-updates-page.what.heading': 'Como funciona',
+  'ai-updates-page.what.body': 'O conteúdo pode vir de qualquer lado — telemóvel, chat, notas, email ou voz — e é transformado em atualizações reais no website. Não é automação vazia. É uma forma mais simples e prática de manter o site atualizado.',
+  'ai-updates-page.what.item1': 'Publicar novos serviços ou produtos',
+  'ai-updates-page.what.item2': 'Atualizar preços, horários ou contactos',
+  'ai-updates-page.what.item3': 'Publicar eventos ou novidades',
+  'ai-updates-page.what.item4': 'Alterar textos e conteúdo da homepage',
+  'ai-updates-page.what.item5': 'Carregar e publicar conteúdo a partir de uma mensagem',
+  'ai-updates-page.outcome.heading': 'O que podes esperar',
+  'ai-updates-page.outcome.body': 'Um website que se mantém atualizado sem atrito. Equipas não técnicas conseguem publicar. O WordPress deixa de ser um bloqueio no dia a dia.',
+
+  // ─── CRM Personalizado Page ───────────────────────────────────────────────────
+  'custom-crm-page.title': 'CRM Personalizado com Integração IA — MAU Marketing',
+  'custom-crm-page.description': 'Um CRM feito à medida do teu negócio. Utilizadores ilimitados, estrutura personalizável e integração com agentes IA.',
+  'custom-crm-page.hero.heading': 'Um CRM feito para o teu negócio.',
+  'custom-crm-page.hero.subheading': 'Em vez de usares um sistema genérico, limitado e caro por utilizador, criamos e adaptamos um CRM ao teu processo real.',
+  'custom-crm-page.problem.heading': 'O problema com os CRMs genéricos',
+  'custom-crm-page.problem.body': 'A maioria dos CRMs força o negócio a adaptar-se à ferramenta — com campos que não fazem sentido, pipelines fixos e preços por utilizador que escalam mal. O resultado é um sistema que a equipa evita.',
+  'custom-crm-page.what.heading': 'O que construímos',
+  'custom-crm-page.what.body': 'Criamos e adaptamos um CRM ao teu processo real. Com utilizadores ilimitados, estrutura personalizável e integração com agentes IA, o sistema pode apoiar a operação de forma prática e adaptada ao teu negócio.',
+  'custom-crm-page.what.item1': 'Pipelines personalizados às etapas reais do teu processo',
+  'custom-crm-page.what.item2': 'Campos e fluxos ajustados à realidade da operação',
+  'custom-crm-page.what.item3': 'Utilizadores ilimitados sem custos adicionais',
+  'custom-crm-page.what.item4': 'Integração por API com outros sistemas',
+  'custom-crm-page.what.item5': 'Agentes IA que atualizam registos, criam follow-ups e apoiam tarefas recorrentes',
+  'custom-crm-page.outcome.heading': 'O que podes esperar',
+  'custom-crm-page.outcome.body': 'Um CRM que a equipa usa porque faz sentido. Uma estrutura flexível que acompanha o crescimento da empresa sem forçar migração para outra plataforma.',
 
   // ─── How It Works Page ────────────────────────────────────────────────────────
   'how-page.title': 'Como Funciona — MAU Marketing',

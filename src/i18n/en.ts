@@ -51,23 +51,23 @@ export const en: Record<string, string> = {
   // ─── Service Card (reusable) ──────────────────────────────────────────────────
   'service.cta': 'Learn more',
 
-  // ─── Service: Landing Pages ───────────────────────────────────────────────────
-  'service.landing.title': 'Landing Pages and Conversion Websites',
-  'service.landing.problem': 'Your website exists. But it doesn\'t convert.',
-  'service.landing.outcome': 'Pages that explain your offer, capture contacts and push visitors toward action.',
-  'service.landing.href': '/en/services/landing-pages',
+  // ─── Service: 2-Day Launch ────────────────────────────────────────────────────
+  'service.landing.title': '2-Day Launch',
+  'service.landing.problem': 'From nothing to online in 2 days.',
+  'service.landing.outcome': 'A fast, clean website launch for businesses that need a real presence now.',
+  'service.landing.href': '/en/services/2-day-launch',
 
-  // ─── Service: Local Visibility ────────────────────────────────────────────────
-  'service.local.title': 'Local Visibility and Practical Improvements',
-  'service.local.problem': "You don't show up where your customers are looking.",
-  'service.local.outcome': 'Optimised Google Business, real local presence and fixes that have immediate impact.',
-  'service.local.href': '/en/services/local-visibility',
+  // ─── Service: AI Website Updates ─────────────────────────────────────────────
+  'service.local.title': 'Agent-Assisted Website Updates',
+  'service.local.problem': 'Update your website by texting your agent.',
+  'service.local.outcome': 'Change content, publish updates, and keep your site moving without logging into WordPress.',
+  'service.local.href': '/en/services/ai-updates',
 
-  // ─── Service: CRM ─────────────────────────────────────────────────────────────
-  'service.crm.title': 'CRM and Follow-up',
-  'service.crm.problem': 'Leads come in and disappear.',
-  'service.crm.outcome': 'Clear pipeline, automated follow-up and less reliance on memory and goodwill.',
-  'service.crm.href': '/en/services/crm-follow-up',
+  // ─── Service: Custom CRM ──────────────────────────────────────────────────────
+  'service.crm.title': 'Custom CRM + Agent Integrations',
+  'service.crm.problem': 'A CRM built for your business, with unlimited users and AI-ready workflows.',
+  'service.crm.outcome': 'Custom pipelines, flexible structure, and API-powered agent support baked in.',
+  'service.crm.href': '/en/services/custom-crm',
 
   // ─── Process Steps ────────────────────────────────────────────────────────────
   'process.heading': 'The process',
@@ -122,9 +122,9 @@ export const en: Record<string, string> = {
 
   // ─── Services Overview Page ───────────────────────────────────────────────────
   'services-page.title': 'Services — MAU Marketing',
-  'services-page.description': 'Landing pages, local visibility and CRM. Three areas where businesses lose most — and where we help.',
+  'services-page.description': '2-day launch, AI-assisted updates and custom CRM. Three practical solutions for getting your business working properly online.',
   'services-page.heading': 'Services',
-  'services-page.subheading': 'Marketing that works. In the three areas where your business loses most.',
+  'services-page.subheading': 'Three practical solutions. No filler.',
   'services-page.intro': "We don't do everything. We do three things well that have direct impact on your business.",
 
   // ─── Landing Pages Service Page ───────────────────────────────────────────────
@@ -177,6 +177,57 @@ export const en: Record<string, string> = {
   'crm-page.what.item5': 'Integration with forms and lead sources',
   'crm-page.outcome.heading': 'What you can expect',
   'crm-page.outcome.body': 'A pipeline you can see the state of at any moment. Follow-up that happens without relying on memory. Fewer lost leads, more closed deals.',
+
+  // ─── 2-Day Launch Page ────────────────────────────────────────────────────────
+  'launch-page.title': '2-Day Launch — MAU Marketing',
+  'launch-page.description': 'Go from nothing to online in 2 days. A fast-launch website for businesses that need a real online presence now.',
+  'launch-page.hero.heading': 'From nothing to online in 2 days.',
+  'launch-page.hero.subheading': 'A fast-launch website offer for businesses that need to exist properly online now, not in three months. We handle the structure, copy shaping, setup, and publishing.',
+  'launch-page.problem.heading': 'Best for',
+  'launch-page.problem.body': 'New businesses, simple service businesses, offer launches — and people stuck in "we need a site" limbo who just need to move.',
+  'launch-page.what.heading': 'What we deliver',
+  'launch-page.what.body': 'We handle the structure, copy shaping, setup, and publishing so you can move from no site — or a useless placeholder — to a clean, credible online presence in two days.',
+  'launch-page.what.item1': 'Speed — from nothing to live in 2 days',
+  'launch-page.what.item2': 'Structure and copy handled by us',
+  'launch-page.what.item3': 'Technical setup and publishing included',
+  'launch-page.what.item4': 'A clean, credible online presence',
+  'launch-page.what.item5': 'A solid starting point for selling or presenting your business',
+  'launch-page.outcome.heading': 'What you can expect',
+  'launch-page.outcome.body': "A clean, credible site that's live and working — without weeks of back-and-forth, without technical headaches, without depending on you for every detail.",
+
+  // ─── Agent-Assisted Website Updates Page ─────────────────────────────────────
+  'ai-updates-page.title': 'Agent-Assisted Website Updates — MAU Marketing',
+  'ai-updates-page.description': 'Update your website by texting your agent. No WordPress login, no delays, no depending on anyone.',
+  'ai-updates-page.hero.heading': 'Update your website by texting your agent.',
+  'ai-updates-page.hero.subheading': 'Instead of logging into WordPress, chasing admins, or sending messy update requests, you just message your agent.',
+  'ai-updates-page.problem.heading': 'The problem it solves',
+  'ai-updates-page.problem.body': "Keeping a website updated should be simple. In practice it's a blocker: confusing backends, dependence on developers, emails back and forth. The result is a static site that never reflects what's actually happening in the business.",
+  'ai-updates-page.what.heading': 'How it works',
+  'ai-updates-page.what.body': "Content can be updated from wherever you are — phone, chat, notes, email, or voice-to-text — and the agent turns that into real website updates. This is not \"AI content magic.\" It's operational convenience.",
+  'ai-updates-page.what.item1': 'Publish new services or products',
+  'ai-updates-page.what.item2': 'Update prices, opening hours or contact info',
+  'ai-updates-page.what.item3': 'Post events or news',
+  'ai-updates-page.what.item4': 'Change homepage copy',
+  'ai-updates-page.what.item5': 'Upload and publish content from a message',
+  'ai-updates-page.outcome.heading': 'What you can expect',
+  'ai-updates-page.outcome.body': 'A website that stays updated without friction. Non-technical teams can publish. WordPress stops being a daily blocker.',
+
+  // ─── Custom CRM + Agent Integrations Page ────────────────────────────────────
+  'custom-crm-page.title': 'Custom CRM + Agent Integrations — MAU Marketing',
+  'custom-crm-page.description': "A CRM built for your business, not forced around someone else's template. Unlimited users, customizable structure and AI agent integrations.",
+  'custom-crm-page.hero.heading': 'A CRM built for your business.',
+  'custom-crm-page.hero.subheading': "Instead of paying per seat for bloated software you barely control, we build and adapt a CRM around your real workflow.",
+  'custom-crm-page.problem.heading': 'The problem with generic CRMs',
+  'custom-crm-page.problem.body': "Most CRMs force the business to bend around the tool — with fields that don't make sense, fixed pipelines, and per-user pricing that scales badly. The result is a system the team avoids.",
+  'custom-crm-page.what.heading': 'What we build',
+  'custom-crm-page.what.body': 'We build and adapt a CRM around your real workflow. Unlimited users, customizable structure, and integrations with AI agents that can help update records, log work, create follow-ups, and support operations.',
+  'custom-crm-page.what.item1': 'Custom pipelines tailored to your actual process stages',
+  'custom-crm-page.what.item2': 'Tailored fields and workflows that match how you operate',
+  'custom-crm-page.what.item3': 'Unlimited users at no extra cost',
+  'custom-crm-page.what.item4': 'API access for integrations with other systems',
+  'custom-crm-page.what.item5': 'AI agents that update records, create follow-ups and support recurring tasks',
+  'custom-crm-page.outcome.heading': 'What you can expect',
+  'custom-crm-page.outcome.body': "A CRM your team actually uses because it makes sense. A flexible structure that grows with the business without forcing a migration to another platform.",
 
   // ─── How It Works Page ────────────────────────────────────────────────────────
   'how-page.title': 'How It Works — MAU Marketing',

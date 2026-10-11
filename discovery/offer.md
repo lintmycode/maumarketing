@@ -30,9 +30,13 @@ Value to show on a phone: their Google Maps listing fixed, a site with their sto
 - MUITO MAU: custom theme ~25–30 h. Kept well under NÍTIDA's custom work — the page says "bigger than this is a NÍTIDA job".
 - Monthly cost is mostly human review time; the agent's model cost is cents per edit. Request caps limit review time.
 
+## Decided (2026-10-11)
+
+- €1,490 sits clearly below NÍTIDA's entry price.
+- Agent caps: 10 requests/mo (MAU), 25 requests/mo (MUITO MAU).
+- MAU: 12-month minimum, no early exit. Inspeção: no fixes, €249.
+
 ## Open decisions
 
-- Confirm that €1,490 sits clearly below NÍTIDA's entry price.
-- Agent caps (10 / 25 requests a month) — are those the right numbers?
 - Existing hosting clients on cheap annual plans: move them to MAU or leave them as they are?
 - Old service URLs redirect via `astro.config.mjs`. Earlier drafts (2-day launch, AI updates, custom CRM) are in `_drafts/`.

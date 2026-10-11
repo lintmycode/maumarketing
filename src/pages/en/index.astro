@@ -11,8 +11,8 @@ const t = useTranslations(lang);
 ---
 
 <BaseLayout
-  title="MAU Marketing — Websites, Landing Pages and Follow-up for Small Businesses"
-  description="Practical marketing for real businesses. Landing pages that convert, real local visibility and follow-up systems that close deals."
+  title="MAU Marketing — Website, Google and an Agent from €49/month"
+  description="Not all marketing is MAU. But it should be. A website, Google Business and an agent that updates your site by message, from €49/month."
   lang={lang}
   alternateLangUrl="/"
 >
@@ -26,24 +26,27 @@ const t = useTranslations(lang);
       <p class="section-subheading">{t('home.services.subheading')}</p>
       <div class="service-grid">
         <ServiceCard
-          title={t('service.landing.title')}
-          problem={t('service.landing.problem')}
-          outcome={t('service.landing.outcome')}
-          href={t('service.landing.href')}
+          title={t('service.mau.title')}
+          problem={t('service.mau.problem')}
+          outcome={t('service.mau.outcome')}
+          price={t('service.mau.price')}
+          href={t('service.mau.href')}
           ctaLabel={t('service.cta')}
         />
         <ServiceCard
-          title={t('service.local.title')}
-          problem={t('service.local.problem')}
-          outcome={t('service.local.outcome')}
-          href={t('service.local.href')}
+          title={t('service.muito-mau.title')}
+          problem={t('service.muito-mau.problem')}
+          outcome={t('service.muito-mau.outcome')}
+          price={t('service.muito-mau.price')}
+          href={t('service.muito-mau.href')}
           ctaLabel={t('service.cta')}
         />
         <ServiceCard
-          title={t('service.crm.title')}
-          problem={t('service.crm.problem')}
-          outcome={t('service.crm.outcome')}
-          href={t('service.crm.href')}
+          title={t('service.inspecao.title')}
+          problem={t('service.inspecao.problem')}
+          outcome={t('service.inspecao.outcome')}
+          price={t('service.inspecao.price')}
+          href={t('service.inspecao.href')}
           ctaLabel={t('service.cta')}
         />
       </div>

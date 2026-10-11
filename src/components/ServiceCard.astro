@@ -3,16 +3,18 @@ interface Props {
   title: string;
   problem: string;
   outcome: string;
+  price?: string;
   href: string;
   ctaLabel: string;
 }
 
-const { title, problem, outcome, href, ctaLabel } = Astro.props;
+const { title, problem, outcome, price, href, ctaLabel } = Astro.props;
 ---
 
 <article class="service-card">
   <h3 class="service-card__title">{title}</h3>
   <p class="service-card__problem">{problem}</p>
   <p class="service-card__outcome">{outcome}</p>
+  {price && <p class="service-card__price">{price}</p>}
   <a href={href} class="service-card__cta">{ctaLabel}</a>
 </article>

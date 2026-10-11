@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTABlock from '../../components/CTABlock.astro';
+import { useTranslations } from '../../i18n/index';
+import { serviceSchema } from '../../lib/schema';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('inspecao-page.title')}
+  description={t('inspecao-page.description')}
+  lang={lang}
+  jsonLd={[serviceSchema('inspecao', lang)]}
+  alternateLangUrl="/en/services/inspection"
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1>{t('inspecao-page.hero.heading')}</h1>
+      <p>{t('inspecao-page.hero.subheading')}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container service-detail">
+      <div class="detail-section">
+        <h2>{t('inspecao-page.problem.heading')}</h2>
+        <p>{t('inspecao-page.problem.body')}</p>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('inspecao-page.what.heading')}</h2>
+        <p>{t('inspecao-page.what.body')}</p>
+        <ul>
+          <li>{t('inspecao-page.what.item1')}</li>
+          <li>{t('inspecao-page.what.item2')}</li>
+          <li>{t('inspecao-page.what.item3')}</li>
+          <li>{t('inspecao-page.what.item4')}</li>
+          <li>{t('inspecao-page.what.item5')}</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('inspecao-page.outcome.heading')}</h2>
+        <p>{t('inspecao-page.outcome.body')}</p>
+      </div>
+
+      <div class="detail-section detail-section--price">
+        <h2>{t('inspecao-page.price.heading')}</h2>
+        <ul>
+          <li>{t('inspecao-page.price.item1')}</li>
+        </ul>
+        <p>{t('inspecao-page.price.note')}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABlock
+    heading={t('cta.default.heading')}
+    body={t('cta.default.body')}
+    buttonLabel={t('cta.default.button')}
+    buttonHref="/contacto"
+  />
+</BaseLayout>

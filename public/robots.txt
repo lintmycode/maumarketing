@@ -1,2 +1,16 @@
+# Everyone is welcome, including AI assistants — being cited by them is the point.
 User-agent: *
 Allow: /
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://maumarketing.pt/sitemap.xml

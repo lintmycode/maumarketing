@@ -9,9 +9,9 @@ Headline: **Nem todo o marketing é MAU. / Mas devia.** (EN: *Not all marketing 
 
 | Tier | Price | What | i18n keys | PT / EN page |
 |---|---|---|---|---|
-| **MAU** | €99 setup + €49/mo, 12-mo min | Static (Astro) site ≤6 pages, Google Business, WhatsApp/call buttons, hosting, monthly report, agent (≤10 simple requests/mo) | `service.mau.*`, `mau-page.*` | `/servicos/mau` · `/en/services/mau` |
-| **MUITO MAU** | €1,490 + €99/mo, 12-mo min | WordPress with custom theme, unlimited pages, catalogue/stock/blog, WP updates, GA4 + GSC, agent (≤25 requests/mo) | `service.muito-mau.*`, `muito-mau-page.*` | `/servicos/muito-mau` · `/en/services/muito-mau` |
-| **Inspeção** | €249 one-off | Audit + priority repair list + GBP, GA4, Search Console setup — no fixes (quoted separately, or move to MAU) | `service.inspecao.*`, `inspecao-page.*` | `/servicos/inspecao` · `/en/services/inspection` |
+| **MAU** | €99 setup + €49/mo, 12-mo min | Static (Astro) site ≤6 pages, Google trio (GBP + GA4 + Search Console) + schema JSON-LD, WhatsApp/call buttons, hosting, monthly report, agent (≤10 simple requests/mo) | `service.mau.*`, `mau-page.*` | `/servicos/mau` · `/en/services/mau` |
+| **MUITO MAU** | €1,490 + €99/mo, 12-mo min | WordPress with custom theme, unlimited pages, catalogue/stock/blog, WP updates, custom schema for catalogue/events, agent (≤25 requests/mo) | `service.muito-mau.*`, `muito-mau-page.*` | `/servicos/muito-mau` · `/en/services/muito-mau` |
+| **Inspeção** | €249 one-off | Audit + priority repair list + GBP, GA4, Search Console + schema setup — no fixes (quoted separately, or move to MAU) | `service.inspecao.*`, `inspecao-page.*` | `/servicos/inspecao` · `/en/services/inspection` |
 
 The agent works on both stacks: on static sites it edits the Astro content and a human approves the build/deploy;
 on WordPress it edits through WP. Every change gets a human review before it goes live.
@@ -34,6 +34,7 @@ Value to show on a phone: their Google Maps listing fixed, a site with their sto
 
 - €1,490 sits clearly below NÍTIDA's entry price.
 - Agent caps: 10 requests/mo (MAU), 25 requests/mo (MUITO MAU).
+- Google trio (GBP, GA4, Search Console) + schema JSON-LD are in every tier.
 - MAU: 12-month minimum, no early exit. Inspeção: no fixes, €249.
 
 ## Open decisions

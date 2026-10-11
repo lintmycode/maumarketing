@@ -21,7 +21,8 @@ const chars = (s: string) =>
 const a = chars(t('home.h1.a'));
 const b = chars(t('home.h1.b'));
 const mau = chars(t('home.h1.mau'));
-// The closing full stop is part of the fill and turns lime too (Nuno, 2026-10-11)
+// Full stops are round .dot elements (Archivo Black's "." is square). Each dot is one typed
+// character; the closing one turns lime when the fill ends (handoff "round dots").
 const c = chars(t('home.h1.c'));
 ---
 
@@ -31,8 +32,8 @@ const c = chars(t('home.h1.c'));
     <span class="anim" aria-hidden="true">
       {/* Beats: 160ms after segment a and b, 420ms after the dot (before the last line) */}
       {a.map((p, i) => 'ch' in p && <span class="c" data-after={i === a.length - 1 ? 160 : undefined}>{p.ch}</span>)}<br />
-      {b.map((p, i) => 'br' in p ? <br class="mbr" /> : <span class="c" data-after={i === b.length - 1 ? 160 : undefined}>{p.ch}</span>)}<span class="mau">{mau.map((p) => 'ch' in p && <span class="c">{p.ch}</span>)}</span><span class="c" data-after="420">.</span><br />
-      <span class="fill" data-fill>{c.map((p) => 'br' in p ? <br class="mbr" /> : <span class="c">{p.ch}</span>)}</span>
+      {b.map((p, i) => 'br' in p ? <br class="mbr" /> : <span class="c" data-after={i === b.length - 1 ? 160 : undefined}>{p.ch}</span>)}<span class="mau">{mau.map((p) => 'ch' in p && <span class="c">{p.ch}</span>)}</span><span class="c dot" data-after="420"></span><br />
+      <span class="fill" data-fill>{c.map((p) => 'br' in p ? <br class="mbr" /> : p.ch === '.' ? <span class="c dot dot--end"></span> : <span class="c">{p.ch}</span>)}</span>
     </span>
   </h1>
   <div class="ctas">
@@ -113,6 +114,18 @@ const c = chars(t('home.h1.c'));
     color: $lime;
   }
 
+  // Round full stop: Archivo Black's "." is square (handoff "round dots", hero only).
+  // Sized in em so it scales with the H1; colour follows the text via currentColor.
+  .dot {
+    display: inline-block;
+    width: 0.2em;
+    height: 0.2em;
+    border-radius: 50%;
+    margin-left: 0.04em;
+    vertical-align: baseline;
+    background: currentColor;
+  }
+
   // "Mas devia." / "But it should be.": lime in the final state. The padding + equal negative
   // margin gives accents/descenders room so background-clip:text doesn't cut them.
   .fill {
@@ -139,6 +152,14 @@ const c = chars(t('home.h1.c'));
     .mau .c {
       color: $lime;
     }
+    // background-clip:text doesn't paint child elements, so the closing dot is coloured on
+    // its own: paper while typing/filling, lime the moment the .9s fill ends
+    .fill .dot--end {
+      background: $paper;
+    }
+    .fill.go .dot--end {
+      animation: dot-lime 0s linear 0.9s forwards;
+    }
     .fill.go {
       color: transparent;
       background: linear-gradient(90deg, $lime 50%, $paper 50%);
@@ -152,6 +173,9 @@ const c = chars(t('home.h1.c'));
     }
   }
 
+  @keyframes dot-lime {
+    to { background: $lime; }
+  }
   @keyframes karaoke {
     from { background-position: 100% 0; }
     to { background-position: 0 0; }

@@ -69,7 +69,7 @@ export const en: Record<string, string> = {
   'service.inspecao.title': 'Inspection',
   'service.inspecao.problem': 'Already have a site? Bring it in for inspection.',
   'service.inspecao.outcome': 'A full audit with a priority list, plus Google Business, Analytics and Search Console connected. Leaves with an inspection report.',
-  'service.inspecao.price': '€349, once',
+  'service.inspecao.price': '€249, once',
   'service.inspecao.href': '/en/services/inspection',
 
   // ─── Process Steps ────────────────────────────────────────────────────────────
@@ -174,7 +174,7 @@ export const en: Record<string, string> = {
 
   // ─── Inspeção Page ────────────────────────────────────────────────────────────────
   'inspecao-page.title': 'Inspection — Audit and Google — MAU Marketing',
-  'inspecao-page.description': 'Already have a site? A full audit with priorities, plus Google Business, Analytics and Search Console connected. €349.',
+  'inspecao-page.description': 'Already have a site? A full audit with priorities, plus Google Business, Analytics and Search Console connected. €249.',
   'inspecao-page.hero.heading': 'Already have a site? Bring it in for inspection.',
   'inspecao-page.hero.subheading': "We find what's broken, tell you what to fix first and connect everything to Google: Business Profile, Analytics and Search Console. Leaves with an inspection report.",
   'inspecao-page.problem.heading': 'The problem',
@@ -189,7 +189,7 @@ export const en: Record<string, string> = {
   'inspecao-page.outcome.heading': 'What to expect',
   'inspecao-page.outcome.body': 'Know exactly where your site stands, show up on Google and start counting the contacts that come in. Want the repairs done? We quote them separately — or move to MAU and it all gets sorted.',
   'inspecao-page.price.heading': 'Price',
-  'inspecao-page.price.item1': 'Full inspection — €349',
+  'inspecao-page.price.item1': 'Full inspection — €249',
   'inspecao-page.price.note': 'Price excludes VAT, one-off payment.',
 
   // ─── How It Works Page ────────────────────────────────────────────────────────

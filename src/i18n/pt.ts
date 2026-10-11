@@ -69,7 +69,7 @@ export const pt: Record<string, string> = {
   'service.inspecao.title': 'Inspeção',
   'service.inspecao.problem': 'Já tens site? Leva-o à inspeção.',
   'service.inspecao.outcome': 'Auditoria completa com lista de prioridades, e Google Business, Analytics e Search Console ligados. Sai com a ficha da inspeção.',
-  'service.inspecao.price': '349€, uma vez',
+  'service.inspecao.price': '249€, uma vez',
   'service.inspecao.href': '/servicos/inspecao',
 
   // ─── Process Steps ────────────────────────────────────────────────────────────
@@ -174,7 +174,7 @@ export const pt: Record<string, string> = {
 
   // ─── Inspeção Page ────────────────────────────────────────────────────────────────
   'inspecao-page.title': 'Inspeção — Auditoria e Google — MAU Marketing',
-  'inspecao-page.description': 'Já tens site? Auditoria completa com prioridades, e Google Business, Analytics e Search Console ligados. 349€.',
+  'inspecao-page.description': 'Já tens site? Auditoria completa com prioridades, e Google Business, Analytics e Search Console ligados. 249€.',
   'inspecao-page.hero.heading': 'Já tens site? Leva-o à inspeção.',
   'inspecao-page.hero.subheading': 'Vemos o que está partido, dizemos-te por que ordem arranjar e ligamos tudo ao Google: Business Profile, Analytics e Search Console. Sai com a ficha da inspeção.',
   'inspecao-page.problem.heading': 'O problema',
@@ -189,7 +189,7 @@ export const pt: Record<string, string> = {
   'inspecao-page.outcome.heading': 'O que podes esperar',
   'inspecao-page.outcome.body': 'Saber exatamente como está o site, aparecer no Google e começar a contar os contactos que chegam. Queres as reparações feitas? Orçamentamos à parte — ou passas para o MAU e fica tudo resolvido.',
   'inspecao-page.price.heading': 'Preço',
-  'inspecao-page.price.item1': 'Inspeção completa — 349€',
+  'inspecao-page.price.item1': 'Inspeção completa — 249€',
   'inspecao-page.price.note': 'Preço sem IVA, pagamento único.',
 
   // ─── How It Works Page ────────────────────────────────────────────────────────

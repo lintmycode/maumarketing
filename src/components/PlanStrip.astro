@@ -1,0 +1,259 @@
+---
+// Three plan cards pinned to the bottom of the first viewport. Each card is ONE link
+// to its tier page; the inner "CTA" is a styled span (no nested links).
+import type { Lang } from '../i18n/index';
+import type { Tier } from '../data/pricing';
+import { tierPaths } from '../data/pricing';
+import { eur, perMonth, tierPrice } from '../lib/price';
+
+interface Props {
+  lang: Lang;
+  t: (key: string) => string;
+}
+const { lang, t } = Astro.props as Props;
+
+const p = (key: string, price: string) => t(key).replace('{p}', price);
+
+const cards = ([
+  {
+    tier: 'mau',
+    tone: 'lime',
+    name: t('home.plan.mau.name'),
+    desc: t('service.mau.problem'),
+    short: t('home.plan.mau.short'),
+    cta: t('home.plan.mau.cta'),
+    monthly: eur(tierPrice('mau').monthly!, lang),
+    note: p('home.plan.setup', eur(tierPrice('mau').setup!, lang)),
+    noteShort: p('home.plan.setup-short', eur(tierPrice('mau').setup!, lang)),
+  },
+  {
+    tier: 'muito-mau',
+    tone: 'lime',
+    name: t('home.plan.muito-mau.name'),
+    desc: t('home.plan.muito-mau.desc'),
+    short: t('home.plan.muito-mau.short'),
+    cta: t('home.plan.muito-mau.cta'),
+    monthly: eur(tierPrice('muito-mau').monthly!, lang),
+    note: `+ ${eur(tierPrice('muito-mau').setup!, lang)}`,
+    noteShort: `+ ${eur(tierPrice('muito-mau').setup!, lang)}`,
+  },
+  {
+    tier: 'inspecao',
+    tone: 'paper',
+    name: t('service.inspecao.title'),
+    desc: t('service.inspecao.problem'),
+    short: t('home.plan.inspecao.short'),
+    cta: t('home.plan.inspecao.cta'),
+    monthly: null,
+    once: eur(tierPrice('inspecao').once!, lang),
+    note: t('home.plan.once'),
+    noteShort: t('home.plan.once'),
+  },
+] as const).map((c) => ({ ...c, tier: c.tier as Tier }));
+---
+
+<nav class="plans" aria-label={t('home.plans.label')}>
+  {cards.map((c) => (
+    <a class={`plan plan--${c.tone} plan--${c.tier}`} href={tierPaths[c.tier][lang]}>
+      <span class="info">
+        <span class="name">{c.name}</span>
+        <span class="desc desc--long">{c.desc}</span>
+        <span class="desc desc--short">{c.short}</span>
+        <span class="cta chev-link">{c.cta}<span class="chev" aria-hidden="true">›</span></span>
+      </span>
+      <span class="price">
+        <span class="amount">
+          {'once' in c ? c.once : c.monthly}{c.monthly && <span class="per">{perMonth(lang)}</span>}
+        </span>
+        <span class="note note--long">{c.note}</span>
+        <span class="note note--short">{c.noteShort}</span>
+      </span>
+      <span class="go" aria-hidden="true">›</span>
+    </a>
+  ))}
+</nav>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .plans {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 12px;
+    padding: 0 $gutter 40px;
+    @include bp-mobile {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 0 12px 20px;
+    }
+  }
+
+  .plan {
+    // --fg: accent (price/CTA), --mut: muted copy. Both flip to ink on hover/focus.
+    --fg: #{$lime};
+    --mut: #{$muted};
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 24px 26px;
+    border: 1.5px solid $lime;
+    border-radius: $r-card;
+    color: $paper;
+    transition: background-color 0.2s, color 0.2s;
+    @include bp-mobile {
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: $r-card-m;
+    }
+
+    &--paper {
+      --fg: #{$paper};
+      border-color: $paper;
+    }
+  }
+
+  // Hover on hover-capable devices; :focus-visible always (keyboard)
+  @mixin filled($bg) {
+    background: $bg;
+    color: $ink;
+    --fg: #{$ink};
+    --mut: #{$ink-muted};
+  }
+  @include hover-only {
+    .plan--lime:hover { @include filled($lime); }
+    .plan--paper:hover { @include filled($paper); }
+  }
+  .plan--lime:focus-visible { @include filled($lime); }
+  .plan--paper:focus-visible { @include filled($paper); }
+
+  .info,
+  .price {
+    display: block;
+  }
+  .price {
+    text-align: right;
+    flex: none;
+    @include bp-mobile {
+      margin-left: auto;
+    }
+  }
+
+  .name {
+    display: block;
+    @include display-type(28px, 0.95);
+    @include bp-mobile {
+      font-size: 22px;
+      line-height: 0.95;
+    }
+  }
+  .plan--mau .name {
+    font-size: 44px;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+    @include bp-mobile {
+      font-size: 32px;
+    }
+  }
+
+  .desc {
+    display: block;
+    margin-top: 10px;
+    font: 500 14px/1.35 $font-body;
+    color: var(--mut);
+    transition: color 0.2s;
+    @include bp-mobile {
+      font-size: 12px;
+      line-height: 1.3;
+      margin-top: 6px;
+    }
+  }
+  .plan--mau .desc--long {
+    max-width: 280px;
+  }
+  .desc--short { display: none; }
+  @include bp-mobile {
+    .desc--long { display: none; }
+    .desc--short { display: block; }
+  }
+
+  .cta {
+    margin-top: 14px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid currentColor;
+    font: 700 14px/1 $font-body;
+    color: var(--fg);
+    transition: gap 0.15s, margin 0.15s, color 0.2s;
+    @include bp-mobile {
+      display: none; // mobile rows use the › on the right instead
+    }
+  }
+  // Chevron nudge when the card (not just the CTA) is hovered; same values as the global pattern
+  @include hover-only {
+    .plan:hover .cta {
+      gap: 10px;
+      margin-right: -4px;
+    }
+  }
+
+  .amount {
+    display: block;
+    @include display-type(40px, 0.9);
+    letter-spacing: -0.04em;
+    color: var(--fg);
+    transition: color 0.2s;
+    @include bp-mobile {
+      font-size: 30px;
+    }
+  }
+  .plan--muito-mau .amount,
+  .plan--inspecao .amount {
+    font-size: 30px;
+    @include bp-mobile {
+      font-size: 24px;
+    }
+  }
+  .per {
+    font: 700 14px/1 $font-body;
+    letter-spacing: 0;
+    text-transform: none;
+    @include bp-mobile {
+      font-size: 12px;
+    }
+  }
+  .plan--muito-mau .per {
+    font-size: 13px;
+    @include bp-mobile {
+      font-size: 11px;
+    }
+  }
+
+  .note {
+    display: block;
+    margin-top: 6px;
+    font: 600 12px/1.3 $font-body;
+    color: var(--mut);
+    transition: color 0.2s;
+    @include bp-mobile {
+      font-size: 11px;
+      margin-top: 4px;
+    }
+  }
+  .note--short { display: none; }
+  @include bp-mobile {
+    .note--long { display: none; }
+    .note--short { display: block; }
+  }
+
+  .go {
+    display: none;
+    @include bp-mobile {
+      display: block;
+      margin-left: 4px;
+      font: 700 22px/1 $font-body;
+      color: var(--fg);
+      transition: color 0.2s;
+    }
+  }
+</style>

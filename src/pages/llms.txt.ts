@@ -20,8 +20,6 @@ ${tiers.map((k) => `- [${pt(`service.${k}.title`)}](${SITE}${tierPaths[k].pt}): 
 ## Páginas
 
 - [Serviços](${SITE}/servicos/): ${pt('services-page.intro')}
-- [Como funciona](${SITE}/como-funciona/): ${pt('how-page.description')}
-- [Sobre](${SITE}/sobre/): ${pt('about-page.description')}
 - [Contacto](${SITE}/contacto/): ${pt('contact-page.description')}
 
 ## English

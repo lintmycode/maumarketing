@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TierDetail from '../../components/TierDetail.astro';
+import { useTranslations } from '../../i18n/index';
+import { serviceSchema } from '../../lib/schema';
+import { tierPaths } from '../../data/pricing';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('inspecao-page.title')}
+  description={t('inspecao-page.description')}
+  lang={lang}
+  jsonLd={[serviceSchema('inspecao', lang)]}
+  alternateLangUrl={tierPaths['inspecao'].en}
+>
+  <TierDetail tier="inspecao" lang={lang} />
+</BaseLayout>

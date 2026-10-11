@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
-import CTABlock from '../../components/CTABlock.astro';
+import TierCards from '../../components/TierCards.astro';
 import { useTranslations } from '../../i18n/index';
+import { paths } from '../../data/site';
 
 const lang = 'pt';
 const t = useTranslations(lang);
@@ -12,53 +12,7 @@ const t = useTranslations(lang);
   title={t('services-page.title')}
   description={t('services-page.description')}
   lang={lang}
-  alternateLangUrl="/en/services/"
+  alternateLangUrl={paths.services.en}
 >
-  <div class="page-hero">
-    <div class="container">
-      <h1>{t('services-page.heading')}</h1>
-      <p>{t('services-page.subheading')}</p>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="container">
-      <p style="font-size: 1.0625rem; color: var(--mau-muted); max-width: 540px; margin-bottom: 3rem;">
-        {t('services-page.intro')}
-      </p>
-      <div class="service-grid">
-        <ServiceCard
-          title={t('service.mau.title')}
-          problem={t('service.mau.problem')}
-          outcome={t('service.mau.outcome')}
-          price={t('service.mau.price')}
-          href={t('service.mau.href')}
-          ctaLabel={t('service.cta')}
-        />
-        <ServiceCard
-          title={t('service.muito-mau.title')}
-          problem={t('service.muito-mau.problem')}
-          outcome={t('service.muito-mau.outcome')}
-          price={t('service.muito-mau.price')}
-          href={t('service.muito-mau.href')}
-          ctaLabel={t('service.cta')}
-        />
-        <ServiceCard
-          title={t('service.inspecao.title')}
-          problem={t('service.inspecao.problem')}
-          outcome={t('service.inspecao.outcome')}
-          price={t('service.inspecao.price')}
-          href={t('service.inspecao.href')}
-          ctaLabel={t('service.cta')}
-        />
-      </div>
-    </div>
-  </section>
-
-  <CTABlock
-    heading={t('cta.default.heading')}
-    body={t('cta.default.body')}
-    buttonLabel={t('cta.default.button')}
-    buttonHref="/contacto"
-  />
+  <TierCards lang={lang} />
 </BaseLayout>

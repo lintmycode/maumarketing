@@ -1,0 +1,93 @@
+---
+// Builds dist/404.html. nginx on jaws serves it for missing URLs (before this page existed they
+// returned a 500). One page for both languages: PT copy with a link to the EN home.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations } from '../i18n/index';
+import { paths } from '../data/site';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('notfound.title')}
+  description={t('notfound.description')}
+  lang={lang}
+  alternateLangUrl="/en/"
+  noindex
+>
+  <main class="nf">
+    <p class="lbl">{t('notfound.label')}</p>
+    <h1>{t('notfound.h1.a')} <span class="mau">{t('notfound.h1.mau')}</span>.</h1>
+    <p class="intro">{t('notfound.p')}</p>
+    <div class="ctas">
+      <a class="btn btn--primary" href={paths.home.pt}>{t('notfound.home')}<span class="chev" aria-hidden="true">›</span></a>
+      <a class="btn btn--secondary" href={paths.services.pt}>{t('notfound.services')}</a>
+    </div>
+    <p class="other"><a href={paths.home.en} hreflang="en" lang="en">{t('notfound.other-lang')} →</a></p>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .nf {
+    max-width: 1440px;
+    margin: 0 auto;
+    @include gutter;
+    padding-block: 96px 120px;
+    @include bp-mobile {
+      padding-block: 48px 64px;
+    }
+  }
+  .lbl {
+    @include mono-label(11px, $muted-2);
+    margin: 0 0 20px;
+  }
+  h1 {
+    @include display-type(clamp(48px, 7.2vw, 104px), 0.9);
+    margin: 0;
+    color: $paper;
+    @include bp-mobile {
+      font-size: min(50px, 12.8vw);
+      line-height: 1;
+    }
+  }
+  .mau {
+    color: $lime;
+  }
+  .intro {
+    margin: 28px 0 0;
+    max-width: 520px;
+    font: 500 20px/1.45 $font-body;
+    color: $muted;
+    text-wrap: pretty;
+    @include bp-mobile {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-top: 44px;
+    @include bp-mobile {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+    }
+  }
+  .other {
+    margin: 36px 0 0;
+    a {
+      @include mono-label(12px, $muted-2);
+      text-decoration: none;
+      @include hover-only {
+        &:hover {
+          color: $lime;
+        }
+      }
+    }
+  }
+</style>

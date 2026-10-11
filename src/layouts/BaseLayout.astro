@@ -3,6 +3,7 @@ import '@picocss/pico/css/pico.min.css';
 import '../styles/global.scss';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 import { useTranslations, type Lang } from '../i18n/index';
 import { baseSchema } from '../lib/schema';
 
@@ -14,24 +15,30 @@ interface Props {
   alternateLangUrl: string;
   /** Extra schema.org nodes for this page (e.g. a Service); org + website are always included */
   jsonLd?: object[];
+  /** Emit <meta name="robots" content="noindex"> (e.g. privacy page while its legal copy is placeholder) */
+  noindex?: boolean;
 }
 
-const { title, description, lang, alternateLangUrl, jsonLd = [] } = Astro.props;
+const { title, description, lang, alternateLangUrl, jsonLd = [], noindex = false } = Astro.props;
 const t = useTranslations(lang);
 const canonicalUrl = new URL(Astro.url.pathname, 'https://maumarketing.pt').href;
 const altLang = lang === 'pt' ? 'en' : 'pt';
 // Trailing slash so hreflang points at the other page's canonical URL
 const alternateFull = new URL(alternateLangUrl.replace(/([^/])$/, '$1/'), 'https://maumarketing.pt').href;
+const ogImage = 'https://maumarketing.pt/og.png';
+const ogImageAlt = t('meta.og-alt');
 const schema = { '@context': 'https://schema.org', '@graph': [...baseSchema(lang), ...jsonLd] };
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#0d0d0b" />
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalUrl} />
@@ -49,8 +56,13 @@ const schema = { '@context': 'https://schema.org', '@graph': [...baseSchema(lang
     <meta property="og:locale" content={lang === 'pt' ? 'pt_PT' : 'en_GB'} />
     <meta property="og:locale:alternate" content={lang === 'pt' ? 'en_GB' : 'pt_PT'} />
     <meta property="og:site_name" content="MAU Marketing" />
-    <!-- TODO: og:image / twitter:image once the new theme has a share image (1200×630 PNG) -->
-    <meta name="twitter:card" content="summary" />
+    <!-- Share image: public/og.png, built from design/og/og.html (see CLAUDE.md) -->
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
@@ -62,15 +74,19 @@ const schema = { '@context': 'https://schema.org', '@graph': [...baseSchema(lang
     <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- PNGs rendered from design/logo/icon.html: the handoff SVGs are live text and would
+         fall back to Arial Black, since favicons can't load web fonts. 16px is the "M"-only variant. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: display = Archivo Black, UI = Archivo, labels = IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
 
-    <!-- Prevent Pico's dark mode from kicking in — we only ship light -->
-    <meta name="color-scheme" content="light" />
+    <!-- Dark only (also keeps Pico from switching palettes) -->
+    <meta name="color-scheme" content="dark" />
   </head>
   <body>
     <Header lang={lang} alternateLangUrl={alternateLangUrl} t={t} />
@@ -78,5 +94,6 @@ const schema = { '@context': 'https://schema.org', '@graph': [...baseSchema(lang
       <slot />
     </main>
     <Footer lang={lang} t={t} />
+    <ConsentBanner lang={lang} t={t} />
   </body>
 </html>

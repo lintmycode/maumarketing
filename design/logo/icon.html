@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Source for the raster icons (handoff "MAU Logo" 2b). The handoff SVGs are live text, so
+     we render this page with the real web fonts at 512px and downscale (see CLAUDE.md).
+     ?v=m renders the 16px variant ("M" only, radius 25%). ?v=sq is the full square for
+     apple-touch-icon (iOS applies its own corner mask and turns transparency black). -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=block" rel="stylesheet">
+<style>
+html,body{margin:0;background:transparent}
+.i{width:512px;height:512px;background:#c8f000;border-radius:23.3%;display:flex;align-items:center;justify-content:center;
+   font:400 188px/1 'Archivo Black',sans-serif;letter-spacing:-.05em;color:#0d0d0b}
+.i span{margin-right:-.05em} /* cancel trailing letter-spacing so the word is optically centred */
+.m{border-radius:25%;font-size:320px}
+.sq{border-radius:0}
+</style></head><body>
+<div class="i" id="i"><span id="t">MAU</span></div>
+<script>if (location.search.includes('v=m')) { i.classList.add('m'); t.textContent = 'M'; }
+if (location.search.includes('v=sq')) i.classList.add('sq');</script>
+</body></html>

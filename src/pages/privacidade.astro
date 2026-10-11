@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations } from '../i18n/index';
+import { EMAIL } from '../data/site';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+// Section bodies are trusted i18n strings that may contain links; {EMAIL} is filled in here.
+const sections = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({
+  h: t(`privacy.s${n}.h`),
+  p: t(`privacy.s${n}.p`).replaceAll('{EMAIL}', EMAIL),
+}));
+---
+
+<BaseLayout
+  title={t('privacy.title')}
+  description={t('privacy.description')}
+  lang={lang}
+  alternateLangUrl="/en/privacy"
+>
+  <main class="privacy">
+    <header>
+      <div class="upd">{t('privacy.updated')}</div>
+      <h1>{t('privacy.h1')}<span class="dot">.</span></h1>
+      <p class="lede">{t('privacy.lede')}</p>
+    </header>
+    <div class="sections">
+      {sections.map((s) => (
+        <section>
+          <h2>{s.h}</h2>
+          <p set:html={s.p} />
+        </section>
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .privacy {
+    max-width: 1440px;
+    margin: 0 auto;
+    @include gutter;
+    padding-block: clamp(40px, 7vw, 88px) 96px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+  }
+  .upd {
+    @include mono-label(11px, $muted-2);
+    letter-spacing: 0.14em;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  h1 {
+    @include display-type(clamp(36px, 4.6vw, 88px), 0.92);
+    margin: 0;
+    // long word: never overflow the column on narrow phones
+    overflow-wrap: anywhere;
+  }
+  .dot {
+    color: $lime;
+  }
+  .lede {
+    margin: 20px 0 0;
+    max-width: 380px;
+    font: 500 18px/1.45 $font-body;
+    color: $muted;
+    text-wrap: pretty;
+  }
+  .sections {
+    max-width: 720px;
+    border-top: 1px solid $hairline;
+  }
+  section {
+    padding: 28px 0;
+    border-bottom: 1px solid $hairline;
+    display: grid;
+    gap: 10px;
+  }
+  h2 {
+    margin: 0;
+    font: 700 22px/1.2 $font-body;
+    letter-spacing: -0.01em;
+  }
+  p {
+    margin: 0;
+    font: 400 16px/1.6 $font-body;
+    color: rgba(242, 240, 233, 0.72);
+  }
+</style>

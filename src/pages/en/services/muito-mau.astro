@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CTABlock from '../../../components/CTABlock.astro';
+import { useTranslations } from '../../../i18n/index';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('muito-mau-page.title')}
+  description={t('muito-mau-page.description')}
+  lang={lang}
+  alternateLangUrl="/servicos/muito-mau"
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1>{t('muito-mau-page.hero.heading')}</h1>
+      <p>{t('muito-mau-page.hero.subheading')}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container service-detail">
+      <div class="detail-section">
+        <h2>{t('muito-mau-page.problem.heading')}</h2>
+        <p>{t('muito-mau-page.problem.body')}</p>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('muito-mau-page.what.heading')}</h2>
+        <p>{t('muito-mau-page.what.body')}</p>
+        <ul>
+          <li>{t('muito-mau-page.what.item1')}</li>
+          <li>{t('muito-mau-page.what.item2')}</li>
+          <li>{t('muito-mau-page.what.item3')}</li>
+          <li>{t('muito-mau-page.what.item4')}</li>
+          <li>{t('muito-mau-page.what.item5')}</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('muito-mau-page.outcome.heading')}</h2>
+        <p>{t('muito-mau-page.outcome.body')}</p>
+      </div>
+
+      <div class="detail-section detail-section--price">
+        <h2>{t('muito-mau-page.price.heading')}</h2>
+        <ul>
+          <li>{t('muito-mau-page.price.item1')}</li>
+          <li>{t('muito-mau-page.price.item2')}</li>
+        </ul>
+        <p>{t('muito-mau-page.price.note')}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABlock
+    heading={t('cta.default.heading')}
+    body={t('cta.default.body')}
+    buttonLabel={t('cta.default.button')}
+    buttonHref="/en/contact"
+  />
+</BaseLayout>

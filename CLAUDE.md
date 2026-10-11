@@ -34,5 +34,5 @@ Live on **jaws** (NÍTIDA's nginx box behind Cloudflare; static vhost serving `d
 `~/projects/sys/estate/sites.yml`. Deploying is a production write — only when Nuno asks.
 
 - [x] `ola@maumarketing.pt` inbox exists (shown on the site, used in the privacy page). Done 2026-10-11.
-- [ ] Send one real test through the contact form and check the EmailJS template still renders (subject is now "Contacto pelo site").
+- [x] Send one real test through the contact form and check the EmailJS template still renders (subject is now "Contacto pelo site"). Done 2026-10-11.
 - [ ] Rebuild `dist/` (it is tracked in git).

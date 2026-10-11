@@ -30,6 +30,9 @@ Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
 
 ## Before deploying
 
+Live on **jaws** (NÍTIDA's nginx box behind Cloudflare; static vhost serving `dist/`). Infra notes: `~/projects/sys/jaws/README.md`,
+`~/projects/sys/estate/sites.yml`. Deploying is a production write — only when Nuno asks.
+
 - [x] `ola@maumarketing.pt` inbox exists (shown on the site, used in the privacy page). Done 2026-10-11.
 - [ ] Send one real test through the contact form and check the EmailJS template still renders (subject is now "Contacto pelo site").
 - [ ] Rebuild `dist/` (it is tracked in git).

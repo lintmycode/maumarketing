@@ -30,8 +30,17 @@ Radii: pills `100px`; plan cards `20px` desktop / `18px` mobile; large cards `28
 Spacing: page gutter 48px desktop / 20px mobile (cards 12px); vertical sections 72–96px.
 No shadows anywhere.
 
+## Logo — source of truth `MAU Logo.dc.html` (2a lockup, 2b icon)
+- **Lockup**: `MAU` in a lime block + `MARKETING`, same font size, centred vertically, gap 3px at nav size (8px at 44px).
+  - MAU: Archivo Black 400, letter-spacing −0.02em, ink `#0d0d0b` on `#c8f000`; block padding `4px calc(6px + .02em) 3px 6px` at 15–16px (the extra right padding cancels letter-spacing so left/right look equal). Scale padding proportionally (44px → `8px calc(14px + .035em) 6px 14px`).
+  - MARKETING: Archivo 500, uppercase, `#f2f0e9` on dark / `#0d0d0b` on light.
+  - Nav size: 16px desktop, 15px mobile. Never set the lockup in lime text on light backgrounds.
+- **Icon / favicon**: lime `#c8f000` rounded square, ink `MAU` in Archivo Black, letter-spacing −0.05em. Radius ≈ 23% of size (180→42, 64→15, 32→7). At 16px use `M` only (radius 4).
+- Files in `logo/`: `lockup-dark.svg`, `lockup-light.svg`, `icon-180.svg` (apple-touch-icon), `icon-64.svg`, `favicon-32.svg`, `favicon-16.svg`. SVG text references Archivo/Archivo Black — **convert text to outlines** (Figma/Illustrator) before shipping, or rasterize to PNG with the fonts installed; otherwise the fallback font renders.
+- Use `MAU` icon alone for favicon, social avatar and og:image corner.
+
 ## Global components
-- **Nav**: `MAU` wordmark (Archivo Black 18) left; right: Serviços, Contacto, `PT / EN` (mono 12, .45), lime pill "Marcar chamada" (14 bold, 13×22 padding). Mobile: wordmark, `PT / EN`, 44px round menu button.
+- **Nav**: logo lockup left (see **Logo** below); right: Serviços, Contacto, `PT / EN` (mono 12, .45), lime pill "Marcar chamada" (14 bold, 13×22 padding). Mobile: lockup, `PT / EN`, 44px round menu button.
 - **Primary button**: lime bg, ink text, 700 16px, padding 20×32, pill.
 - **Secondary button**: transparent, 1px border `rgba(242,240,233,.28)`, 600 16px, same padding.
 - **Chevron**: all forward CTAs end in `›` (never `→`).
@@ -78,7 +87,7 @@ Keep motion minimal; everything plays **once**, nothing loops. Respect `prefers-
 - Contacto: form fields, validation errors, submit status (idle / sending / sent / error).
 
 ## Assets
-No images. Fonts from Google Fonts (Archivo, Archivo Black, IBM Plex Mono). Real screenshots/photos not yet supplied.
+No images. Fonts from Google Fonts (Archivo, Archivo Black, IBM Plex Mono). Logo SVGs in `logo/`. Real screenshots/photos not yet supplied.
 
 ## Placeholders to confirm
 `ola@maumarketing.pt`, booking-tool URL, legal entity data on Privacidade, EN translations not taken from `en.ts`.
@@ -89,4 +98,6 @@ No images. Fonts from Google Fonts (Archivo, Archivo Black, IBM Plex Mono). Real
 - `Agent Demo.dc.html` — message→site-change component (used by Serviços)
 - `MAU Contacto.dc.html` — contact (1a desktop, 1b mobile)
 - `MAU Privacidade.dc.html` — privacy template (fluid)
+- `MAU Logo.dc.html` — logo explorations; **2a lockup + 2b icon are final**
+- `logo/` — SVG lockups and icons
 - `support.js` — runtime needed only to open the mocks in a browser

@@ -19,6 +19,10 @@ Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
 - Styles (dark, SCSS only): tokens + mixins in `src/styles/_tokens.scss` (use `@use '../styles/tokens' as *;` in component `<style lang="scss">`; also exposed as `--lime`, `--paper`… CSS vars); base, Pico overrides, `.btn` / `.chev` in `src/styles/global.scss`. Pico paints text inside links lime and styles `<article>` — components set explicit colours.
 - Site constants (`EMAIL`, `bookingUrl(lang)`, `paths`) in `src/data/site.ts`; "Marcar chamada" goes to `/contacto#falar` (no booking tool, decided 2026-10-11).
 - Share image: `design/og/og.html` rendered to `public/og.png` (1200x630) with headless Chrome `--screenshot`.
+- Logo: the nav lockup is HTML/CSS in `Header.astro` (not an image). Icons are PNGs rendered from `design/logo/icon.html`
+  at 512px (`?v=m` = 16px "M" variant, `?v=sq` = full square for apple-touch-icon) with headless Chrome
+  (`--default-background-color=00000000` for transparent corners), then `sips -z` to 180/32/16. The handoff SVGs in
+  `design/handoff/.../logo/` are live text, so don't ship them as favicons. `icon-512.png` is the schema.org logo.
 - Visual QA at 390px: Chrome windows won't shrink that far — load pages in 390×844 iframes on a localhost page instead.
 - `node_modules` may come from another machine; if the build fails on `@rollup/rollup-darwin-arm64`, run
   `npm i --no-save @rollup/rollup-darwin-arm64@<rollup version>`.

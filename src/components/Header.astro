@@ -22,7 +22,7 @@ const pt = lang === 'pt';
 
 <header class="site-header" data-open="false">
   <div class="bar">
-    <a href={paths.home[lang]} class="logo" aria-label="MAU Marketing">MAU</a>
+    <a href={paths.home[lang]} class="logo" aria-label="MAU Marketing"><span class="logo__mau" aria-hidden="true">MAU</span><span class="logo__word" aria-hidden="true">MARKETING</span></a>
 
     <!-- Desktop nav -->
     <nav class="links" aria-label={t('nav.menu-label')}>
@@ -113,13 +113,31 @@ const pt = lang === 'pt';
       padding: 18px $gutter-m;
     }
   }
+  // Logo lockup (handoff "MAU Logo" 2a): lime block "MAU" + "MARKETING" at the same size.
+  // Built in HTML so it uses the loaded web fonts; the handoff SVGs are live text and
+  // would fall back to Arial Black. Padding is in em so it scales with the font size;
+  // padding is tuned by eye (wider on the left), not the handoff values.
   .logo {
-    font: 400 18px/1 $font-display;
-    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1875em; // 3px at 16px
+    font-size: 16px;
+    line-height: 1;
     color: $paper;
     @include bp-mobile {
-      font-size: 17px;
+      font-size: 15px;
     }
+  }
+  .logo__mau {
+    font: 400 1em/1 $font-display;
+    letter-spacing: -0.02em;
+    background: $lime;
+    color: $ink;
+    padding: 0.25em 0.375em 0.1875em 0.45em; // set by Nuno 2026-10-11 (optical balance over the handoff's values)
+  }
+  .logo__word {
+    font: 500 1em/1 $font-body;
+    text-transform: uppercase;
   }
   .links {
     display: flex;

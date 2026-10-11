@@ -13,7 +13,7 @@ export function baseSchema(lang: Lang) {
       '@id': ORG_ID,
       name: 'MAU Marketing',
       url: `${SITE}/`,
-      logo: `${SITE}/favicon.svg`,
+      logo: `${SITE}/icon-512.png`, // Google wants a raster logo ≥112px, not SVG
       slogan: lang === 'pt' ? 'Nem todo o marketing é MAU. Mas devia.' : 'Not all marketing is MAU. But it should be.',
       areaServed: { '@type': 'Country', name: 'Portugal' },
       knowsLanguage: ['pt-PT', 'en'],

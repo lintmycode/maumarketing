@@ -18,8 +18,9 @@ on WordPress it edits through WP. Every change gets a human review before it goe
 
 ## The roadside pitch (MAU)
 
-"Mandas a foto do carro por WhatsApp com 'Golf 2018, 120 mil km, 12.900€' — aparece no site. 49€ por mês, menos do que o café da equipa."
-Value to show on a phone: their Google Maps listing fixed, a site with their stock, the WhatsApp button, the agent demo.
+"Mandas mensagem, o site muda. 49€ por mês, menos do que o café da equipa."
+Value to show on a phone: their Google Maps listing fixed, the WhatsApp button, the agent demo.
+Businesses with stock or a catalogue (e.g. car dealers) are MUITO MAU — MAU has no listing pages.
 
 ## Pricing rationale (internal — never show the hourly rate)
 
@@ -35,6 +36,7 @@ Value to show on a phone: their Google Maps listing fixed, a site with their sto
 - €1,490 sits clearly below NÍTIDA's entry price.
 - Agent caps: 10 requests/mo (MAU), 25 requests/mo (MUITO MAU).
 - Google trio (GBP, GA4, Search Console) + schema JSON-LD are in every tier.
+- AI-ready in every tier: llms.txt, robots.txt allowing AI crawlers, sitemap. maumarketing.pt itself ships all of it.
 - MAU: 12-month minimum, no early exit. Inspeção: no fixes, €249.
 
 ## Open decisions

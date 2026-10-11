@@ -4,6 +4,7 @@ import '../styles/global.scss';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { useTranslations, type Lang } from '../i18n/index';
+import { baseSchema } from '../lib/schema';
 
 interface Props {
   title: string;
@@ -11,13 +12,17 @@ interface Props {
   lang: Lang;
   /** URL of the equivalent page in the other language */
   alternateLangUrl: string;
+  /** Extra schema.org nodes for this page (e.g. a Service); org + website are always included */
+  jsonLd?: object[];
 }
 
-const { title, description, lang, alternateLangUrl } = Astro.props;
+const { title, description, lang, alternateLangUrl, jsonLd = [] } = Astro.props;
 const t = useTranslations(lang);
 const canonicalUrl = new URL(Astro.url.pathname, 'https://maumarketing.pt').href;
 const altLang = lang === 'pt' ? 'en' : 'pt';
-const alternateFull = new URL(alternateLangUrl, 'https://maumarketing.pt').href;
+// Trailing slash so hreflang points at the other page's canonical URL
+const alternateFull = new URL(alternateLangUrl.replace(/([^/])$/, '$1/'), 'https://maumarketing.pt').href;
+const schema = { '@context': 'https://schema.org', '@graph': [...baseSchema(lang), ...jsonLd] };
 ---
 
 <!doctype html>
@@ -31,7 +36,8 @@ const alternateFull = new URL(alternateLangUrl, 'https://maumarketing.pt').href;
     <!-- Canonical -->
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Alternate language -->
+    <!-- Alternate language (hreflang must list the page itself too) -->
+    <link rel="alternate" hreflang={lang} href={canonicalUrl} />
     <link rel="alternate" hreflang={altLang} href={alternateFull} />
     <link rel="alternate" hreflang="x-default" href="https://maumarketing.pt/" />
 
@@ -41,6 +47,19 @@ const alternateFull = new URL(alternateLangUrl, 'https://maumarketing.pt').href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={lang === 'pt' ? 'pt_PT' : 'en_GB'} />
+    <meta property="og:locale:alternate" content={lang === 'pt' ? 'en_GB' : 'pt_PT'} />
+    <meta property="og:site_name" content="MAU Marketing" />
+    <!-- TODO: og:image / twitter:image once the new theme has a share image (1200×630 PNG) -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <!-- Sitemap and the plain-text summary for AI assistants -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

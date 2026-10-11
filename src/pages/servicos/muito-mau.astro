@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTABlock from '../../components/CTABlock.astro';
 import { useTranslations } from '../../i18n/index';
+import { serviceSchema } from '../../lib/schema';
 
 const lang = 'pt';
 const t = useTranslations(lang);
@@ -11,6 +12,7 @@ const t = useTranslations(lang);
   title={t('muito-mau-page.title')}
   description={t('muito-mau-page.description')}
   lang={lang}
+  jsonLd={[serviceSchema('muito-mau', lang)]}
   alternateLangUrl="/en/services/muito-mau"
 >
   <div class="page-hero">

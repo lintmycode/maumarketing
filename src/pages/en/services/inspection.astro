@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CTABlock from '../../../components/CTABlock.astro';
 import { useTranslations } from '../../../i18n/index';
+import { serviceSchema } from '../../../lib/schema';
 
 const lang = 'en';
 const t = useTranslations(lang);
@@ -11,6 +12,7 @@ const t = useTranslations(lang);
   title={t('inspecao-page.title')}
   description={t('inspecao-page.description')}
   lang={lang}
+  jsonLd={[serviceSchema('inspecao', lang)]}
   alternateLangUrl="/servicos/inspecao"
 >
   <div class="page-hero">

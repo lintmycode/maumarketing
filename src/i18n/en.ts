@@ -256,4 +256,14 @@ export const en: Record<string, string> = {
   'privacy.s7.p': 'The site sets no cookies of its own. If that changes (for example, for analytics), we will ask for your consent first.',
   'privacy.s8.h': 'Your rights',
   'privacy.s8.p': 'You have the right to access, rectification, erasure, restriction, portability and objection. To exercise any of them, write to <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>. You can also complain to the Portuguese data protection authority, CNPD (<a class="link" href="https://www.cnpd.pt" target="_blank" rel="noopener">cnpd.pt</a>), or use the <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Complaints Book</a>.',
+  // 404 (not rendered yet: dist has a single PT 404.html; kept in sync with pt.ts)
+  'notfound.title': 'Page not found — MAU Marketing',
+  'notfound.description': 'This page does not exist.',
+  'notfound.label': 'Error 404',
+  'notfound.h1.a': 'Now this is',
+  'notfound.h1.mau': 'MAU',
+  'notfound.p': 'The page you’re after doesn’t exist, has moved, or never should have existed. The rest of the site is fine.',
+  'notfound.home': 'Back to home',
+  'notfound.services': 'See the plans',
+  'notfound.other-lang': 'Site em português',
 };

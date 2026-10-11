@@ -13,6 +13,7 @@ Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
   - Serviços: `TierCards` (overview), `TierDetail` (one template for the 3 tiers, props `tier`, `lang`), `AgentDemo`. Keys `sv.*`.
   - Contacto: `ContactPanel` (EmailJS from the browser; sends `name`, `email`, `message`, hidden `website`/`subject`). Keys `contactx.*`.
   - Privacidade: `/privacidade`, `/en/privacy`. Controller is NÍTIDA Digital (no NIF/address, same as nitida.pt). Keys `privacy.*`.
+  - 404: `src/pages/404.astro` → `dist/404.html` (one PT page with a link to `/en/`, noindex, not in the sitemap). Keys `notfound.*`.
 - SEO/AI meta: `src/lib/schema.ts` (JSON-LD; org + website on every page via BaseLayout, `Service` on tier pages via `jsonLd` prop),
   `src/pages/sitemap.xml.ts` and `src/pages/llms.txt.ts` (generated from the i18n copy), `public/robots.txt` (AI crawlers allowed).
   No GA4 yet (needs a measurement ID + a consent banner; update the privacy page's cookie section when added).

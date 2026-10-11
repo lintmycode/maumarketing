@@ -257,4 +257,14 @@ export const pt: Record<string, string> = {
   'privacy.s7.p': 'O site não usa cookies próprios. Se isso mudar (por exemplo, para análise), pedimos o teu consentimento primeiro.',
   'privacy.s8.h': 'Os teus direitos',
   'privacy.s8.p': 'Tens direito de acesso, rectificação, apagamento, limitação, portabilidade e oposição. Para exercer qualquer um, escreve para <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>. Podes também reclamar junto da CNPD (<a class="link" href="https://www.cnpd.pt" target="_blank" rel="noopener">cnpd.pt</a>) ou através do <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a>.',
+  // 404 (one page for both languages: PT copy + a link to the EN home)
+  'notfound.title': 'Página não encontrada — MAU Marketing',
+  'notfound.description': 'Esta página não existe.',
+  'notfound.label': 'Erro 404',
+  'notfound.h1.a': 'Isto sim, é',
+  'notfound.h1.mau': 'MAU',
+  'notfound.p': 'A página que procuras não existe, mudou de sítio ou nunca devia ter existido. O resto do site está óptimo.',
+  'notfound.home': 'Voltar ao início',
+  'notfound.services': 'Ver os planos',
+  'notfound.other-lang': 'English site',
 };

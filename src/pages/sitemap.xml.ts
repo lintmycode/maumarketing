@@ -1,10 +1,10 @@
-// Hand-rolled sitemap (no @astrojs/sitemap dependency): every .astro page except /api.
+// Hand-rolled sitemap (no @astrojs/sitemap dependency): every .astro page except /api and 404.
 // Old service URLs are config redirects, so they never show up here.
 import type { APIRoute } from 'astro';
 import { SITE } from '../lib/schema';
 
 const pages = Object.keys(import.meta.glob('./**/*.astro'))
-  .filter((f) => !f.startsWith('./api/'))
+  .filter((f) => !f.startsWith('./api/') && f !== './404.astro')
   .map((f) => f.replace(/^\./, '').replace(/\.astro$/, '').replace(/\/index$/, '/'))
   // Trailing slash to match the canonical URLs of the directory build
   .map((path) => (path.endsWith('/') ? path : `${path}/`))

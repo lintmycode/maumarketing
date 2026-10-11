@@ -3,6 +3,7 @@
 Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
 
 - All copy lives in `src/i18n/pt.ts` and `src/i18n/en.ts` — pages only call `t('key')`. Keep both files in sync.
+- PT copy is European Portuguese **pre-AO90** (no 1990 spelling agreement): actualizar, directo, projecto, acção, inspecção, rectificação; months capitalised (Outubro). Applies to meta descriptions in pages too.
   Some keys are looked up dynamically (`sv.d.${tier}…`, `service.${tier}.*`, `privacy.s${n}.*`) — grep for the prefix before deleting.
 - Offer (Oct 2026): MAU (€99 + €49/mo), MUITO MAU (€1,490 + €99/mo), Auditoria (€249; code key `inspecao`, URLs `/servicos/auditoria`, `/en/services/audit`). Tone: informal, bold, funny. Details and open decisions: `discovery/offer.md`.
 - Prices: numbers live in `src/data/pricing.ts` and are formatted by `src/lib/price.ts` (`eur`, `perMonth`) for cards, detail pages,

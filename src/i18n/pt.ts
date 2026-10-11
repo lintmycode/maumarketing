@@ -41,7 +41,7 @@ export const pt: Record<string, string> = {
   'home.plan.muito-mau.short': 'Tema à medida',
   'home.plan.muito-mau.cta': 'Quero ser muito MAU',
   'home.plan.inspecao.short': 'Já tens site?',
-  'home.plan.inspecao.cta': 'Marcar inspeção',
+  'home.plan.inspecao.cta': 'Marcar inspecção',
   'home.plan.setup': '+ {p} de arranque',
   'home.plan.setup-short': '+ {p} arranque',
   'home.plan.once': 'uma vez',
@@ -60,10 +60,10 @@ export const pt: Record<string, string> = {
   'service.muito-mau.outcome': 'Tudo do MAU, mais páginas, catálogo, blog e uma cara que ninguém confunde.',
   'service.muito-mau.price': '1.490€ + 99€/mês',
 
-  // ─── Inspeção ─────────────────────────────────────────────────────────────────────
+  // ─── Auditoria ─────────────────────────────────────────────────────────────────────
   'service.inspecao.title': 'Auditoria',
-  'service.inspecao.problem': 'Já tens site? Leva-o à inspeção.',
-  'service.inspecao.outcome': 'Auditoria completa com lista de prioridades, e Google Business, Analytics e Search Console ligados. Sai com a ficha da inspeção.',
+  'service.inspecao.problem': 'Já tens site? Leva-o à inspecção.',
+  'service.inspecao.outcome': 'Auditoria completa com lista de prioridades, e Google Business, Analytics e Search Console ligados. Sai com a ficha da inspecção.',
   'service.inspecao.price': '249€, uma vez',
 
   // ─── Services Overview Page ───────────────────────────────────────────────────
@@ -73,13 +73,13 @@ export const pt: Record<string, string> = {
 
   // ─── MAU Plan Page ────────────────────────────────────────────────────────────────
   'mau-page.title': 'MAU — Site, Google e Agente por 49€/mês — MAU Marketing',
-  'mau-page.description': 'Site até 6 páginas, Google Business, alojamento e um agente que atualiza o site por mensagem. 99€ de arranque + 49€/mês.',
+  'mau-page.description': 'Site até 6 páginas, Google Business, alojamento e um agente que actualiza o site por mensagem. 99€ de arranque + 49€/mês.',
 
   // ─── MUITO MAU Plan Page ──────────────────────────────────────────────────────────
   'muito-mau-page.title': 'MUITO MAU — WordPress com Tema à Medida — MAU Marketing',
-  'muito-mau-page.description': 'WordPress com design à medida, agente para atualizações por mensagem, manutenção e relatórios. 1.490€ + 99€/mês.',
+  'muito-mau-page.description': 'WordPress com design à medida, agente para actualizações por mensagem, manutenção e relatórios. 1.490€ + 99€/mês.',
 
-  // ─── Inspeção Page ────────────────────────────────────────────────────────────────
+  // ─── Auditoria Page ────────────────────────────────────────────────────────────────
   'inspecao-page.title': 'Auditoria — SEO e Google — MAU Marketing',
   'inspecao-page.description': 'Já tens site? Auditoria completa com prioridades, e Google Business, Analytics e Search Console ligados. 249€.',
 
@@ -95,7 +95,7 @@ export const pt: Record<string, string> = {
   'sv.once': 'uma vez',
   'sv.mau.cta': 'Quero ser MAU',
   'sv.mm.cta': 'Quero ser muito MAU',
-  'sv.in.cta': 'Marcar inspeção',
+  'sv.in.cta': 'Marcar inspecção',
   'sv.mau.l1': 'Site até 6 páginas',
   'sv.mau.l2': 'Google Business, Analytics e Search Console',
   'sv.mau.l3': 'Schema e llms.txt — o Google e a IA percebem o negócio',
@@ -108,16 +108,16 @@ export const pt: Record<string, string> = {
   'sv.mm.l3': 'Catálogo, stock ou blog',
   'sv.mm.l4': 'Agente: até 25 pedidos por mês',
   'sv.mm.l5': 'Schema à medida',
-  'sv.in.sheet': 'Ficha de inspeção nº 0001',
+  'sv.in.sheet': 'Ficha de inspecção nº 0001',
   'sv.in.l1': 'Auditoria e lista de prioridades',
   'sv.in.l2': 'Google Business',
   'sv.in.l3': 'Analytics e Search Console',
   'sv.in.l4': 'Schema e llms.txt',
-  'sv.in.foot': 'Sais com a ficha da inspeção. Reparações orçamentadas à parte.',
-  'sv.in.stamp1': 'Inspeção',
+  'sv.in.foot': 'Sais com a ficha da inspecção. Reparações orçamentadas à parte.',
+  'sv.in.stamp1': 'Inspecção',
   'sv.in.stamp2': 'MAU · OK',
   // Agent demo (illustration)
-  'sv.demo.label': 'Ilustração: uma mensagem de WhatsApp a dizer que ao sábado abrem das 9h às 13h e, 40 segundos depois, o horário do site atualizado.',
+  'sv.demo.label': 'Ilustração: uma mensagem de WhatsApp a dizer que ao sábado abrem das 9h às 13h e, 40 segundos depois, o horário do site actualizado.',
   'sv.demo.from': 'Tu → agente MAU',
   'sv.demo.msg': 'sábado abrimos das 9h às 13h',
   'sv.demo.after': '40 s depois',
@@ -136,7 +136,7 @@ export const pt: Record<string, string> = {
   'sv.d.includes': 'O que inclui',
   'sv.d.agent.h': 'Pedidos ao agente',
   'sv.d.agent.p': 'Escreves como escreverias a um empregado. Ele trata do resto.',
-  'sv.d.steps.h': 'Como corre a inspeção',
+  'sv.d.steps.h': 'Como corre a inspecção',
   'sv.d.steps.p': 'Três passos. Sem obras.',
   'sv.d.mau.note': 'Custa menos do que o café da equipa. E trabalha mais.',
   'sv.d.mau.ready': 'Pronto para ser MAU?',
@@ -153,7 +153,7 @@ export const pt: Record<string, string> = {
   'sv.d.mau.i6.t': 'Alojamento e relatório mensal',
   'sv.d.mau.i6.d': 'Nós tratamos do servidor. Tu recebes um resumo por mês.',
   'sv.d.mau.r1.m': 'sábado abrimos das 9h às 13h',
-  'sv.d.mau.r1.r': 'Horário atualizado em todas as páginas',
+  'sv.d.mau.r1.r': 'Horário actualizado em todas as páginas',
   'sv.d.mau.r2.m': 'acabou o bacalhau, tira do menu',
   'sv.d.mau.r2.r': 'Prato removido da página Menu',
   'sv.d.mau.r3.m': 'põe esta foto na página inicial',
@@ -172,16 +172,16 @@ export const pt: Record<string, string> = {
   'sv.d.mm.i5.t': 'Agente por mensagem',
   'sv.d.mm.i5.d': 'Mais fôlego: até 25 pedidos por mês.',
   'sv.d.mm.i6.t': 'WordPress sempre em dia',
-  'sv.d.mm.i6.d': 'Atualizações, plugins e segurança todos os meses. Tu não fazes nada.',
+  'sv.d.mm.i6.d': 'Actualizações, plugins e segurança todos os meses. Tu não fazes nada.',
   'sv.d.mm.r1.m': 'acabou o stock, marca como esgotado',
   'sv.d.mm.r1.r': 'Produto marcado como esgotado no catálogo',
   'sv.d.mm.r2.m': 'publica este texto no blog',
   'sv.d.mm.r2.f': '[texto.docx]',
   'sv.d.mm.r2.r': 'Artigo novo no blog',
-  'sv.d.mm.r3.m': 'a promoção de outubro passa para o topo',
+  'sv.d.mm.r3.m': 'a promoção de Outubro passa para o topo',
   'sv.d.mm.r3.r': 'Promoção no topo da página inicial',
-  'sv.d.in.note': 'Sais com a ficha da inspeção. Reparações orçamentadas à parte.',
-  'sv.d.in.ready': 'Pronto para a inspeção?',
+  'sv.d.in.note': 'Sais com a ficha da inspecção. Reparações orçamentadas à parte.',
+  'sv.d.in.ready': 'Pronto para a inspecção?',
   'sv.d.in.i1.t': 'Auditoria técnica e de SEO',
   'sv.d.in.i1.d': 'Vemos o que está partido, lento ou escondido do Google.',
   'sv.d.in.i2.t': 'Lista de prioridades',
@@ -233,14 +233,14 @@ export const pt: Record<string, string> = {
   'contactx.err-required': 'Campo obrigatório',
   'contactx.err-email': 'Email inválido',
   'contactx.sent': 'Recebido. Respondemos ASAP.',
-  'contactx.send-error': 'Não conseguimos enviar. Escreve-nos diretamente para',
+  'contactx.send-error': 'Não conseguimos enviar. Escreve-nos directamente para',
 
   // ─── Privacidade ───
   'privacy.title': 'Privacidade — MAU Marketing',
   'privacy.description': 'Que dados recolhemos, para que servem, com quem os partilhamos e quais são os teus direitos.',
   'privacy.h1': 'Privacidade',
   'privacy.lede': 'A parte chata. Mas é importante, por isso está aqui.',
-  'privacy.updated': 'Atualizado: 11/10/2026',
+  'privacy.updated': 'Actualizado: 11/10/2026',
   'privacy.s1.h': 'Quem trata os dados',
   'privacy.s1.p': 'NÍTIDA Digital. MAU Marketing é uma marca NÍTIDA Digital. Contacto: <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>.',
   'privacy.s2.h': 'Que dados recolhemos',
@@ -256,5 +256,5 @@ export const pt: Record<string, string> = {
   'privacy.s7.h': 'Cookies',
   'privacy.s7.p': 'O site não usa cookies próprios. Se isso mudar (por exemplo, para análise), pedimos o teu consentimento primeiro.',
   'privacy.s8.h': 'Os teus direitos',
-  'privacy.s8.p': 'Tens direito de acesso, retificação, apagamento, limitação, portabilidade e oposição. Para exercer qualquer um, escreve para <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>. Podes também reclamar junto da CNPD (<a class="link" href="https://www.cnpd.pt" target="_blank" rel="noopener">cnpd.pt</a>) ou através do <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a>.',
+  'privacy.s8.p': 'Tens direito de acesso, rectificação, apagamento, limitação, portabilidade e oposição. Para exercer qualquer um, escreve para <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>. Podes também reclamar junto da CNPD (<a class="link" href="https://www.cnpd.pt" target="_blank" rel="noopener">cnpd.pt</a>) ou através do <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a>.',
 };

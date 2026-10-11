@@ -59,7 +59,7 @@ export const en: Record<string, string> = {
   'service.muito-mau.outcome': 'Everything in MAU, plus more pages, a catalogue, a blog and a look nobody mistakes for someone else.',
   'service.muito-mau.price': '€1,490 + €99/month',
 
-  // ─── Inspeção ─────────────────────────────────────────────────────────────────────
+  // ─── Auditoria ─────────────────────────────────────────────────────────────────────
   'service.inspecao.title': 'Audit',
   'service.inspecao.problem': 'Already have a site? Bring it in for inspection.',
   'service.inspecao.outcome': 'A full audit with a priority list, plus Google Business, Analytics and Search Console connected. Leaves with an inspection report.',
@@ -78,7 +78,7 @@ export const en: Record<string, string> = {
   'muito-mau-page.title': 'MUITO MAU — WordPress with a Custom Theme — MAU Marketing',
   'muito-mau-page.description': 'WordPress with a custom design, an agent for updates by message, maintenance and reports. €1,490 + €99/month.',
 
-  // ─── Inspeção Page ────────────────────────────────────────────────────────────────
+  // ─── Auditoria Page ────────────────────────────────────────────────────────────────
   'inspecao-page.title': 'Audit — SEO and Google — MAU Marketing',
   'inspecao-page.description': 'Already have a site? A full audit with priorities, plus Google Business, Analytics and Search Console connected. €249.',
 

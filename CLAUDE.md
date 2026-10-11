@@ -8,7 +8,7 @@ Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
 - Prices: numbers live in `src/data/pricing.ts` and are formatted by `src/lib/price.ts` (`eur`, `perMonth`) for cards, detail pages,
   schema.org Offers and `/llms.txt`. A few older i18n strings (`service.*.price`, meta descriptions) also spell prices out — update them too.
 - Pages and components (redesign; design handoff in `design/handoff/design_handoff_mau_site/`):
-  - Home: `HomeHero` (typewriter H1 — final markup is the end state, JS only animates; the closing "." stays paper), `PlanStrip`, `TalkBand`.
+  - Home: `HomeHero` (typewriter H1 — final markup is the end state, JS only animates; the lime fill includes the closing "."), `PlanStrip`, `TalkBand`.
   - Serviços: `TierCards` (overview), `TierDetail` (one template for the 3 tiers, props `tier`, `lang`), `AgentDemo`. Keys `sv.*`.
   - Contacto: `ContactPanel` (EmailJS from the browser; sends `name`, `email`, `message`, hidden `website`/`subject`). Keys `contactx.*`.
   - Privacidade: `/privacidade`, `/en/privacy`. Controller is NÍTIDA Digital (no NIF/address, same as nitida.pt). Keys `privacy.*`.

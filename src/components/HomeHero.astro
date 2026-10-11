@@ -21,11 +21,8 @@ const chars = (s: string) =>
 const a = chars(t('home.h1.a'));
 const b = chars(t('home.h1.b'));
 const mau = chars(t('home.h1.mau'));
-// The closing full stop stays paper: only the words of "Mas devia" get the lime fill
-const cAll = chars(t('home.h1.c'));
-const cEnd = cAll.at(-1);
-const cDot = cEnd && 'ch' in cEnd && cEnd.ch === '.';
-const c = cDot ? cAll.slice(0, -1) : cAll;
+// The closing full stop is part of the fill and turns lime too (Nuno, 2026-10-11)
+const c = chars(t('home.h1.c'));
 ---
 
 <section class="hero">
@@ -35,7 +32,7 @@ const c = cDot ? cAll.slice(0, -1) : cAll;
       {/* Beats: 160ms after segment a and b, 420ms after the dot (before the last line) */}
       {a.map((p, i) => 'ch' in p && <span class="c" data-after={i === a.length - 1 ? 160 : undefined}>{p.ch}</span>)}<br />
       {b.map((p, i) => 'br' in p ? <br class="mbr" /> : <span class="c" data-after={i === b.length - 1 ? 160 : undefined}>{p.ch}</span>)}<span class="mau">{mau.map((p) => 'ch' in p && <span class="c">{p.ch}</span>)}</span><span class="c" data-after="420">.</span><br />
-      <span class="fill" data-fill>{c.map((p) => 'br' in p ? <br class="mbr" /> : <span class="c">{p.ch}</span>)}</span>{cDot && <span class="c">.</span>}
+      <span class="fill" data-fill>{c.map((p) => 'br' in p ? <br class="mbr" /> : <span class="c">{p.ch}</span>)}</span>
     </span>
   </h1>
   <div class="ctas">

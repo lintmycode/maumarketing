@@ -17,6 +17,7 @@ export const pt: Record<string, string> = {
   'footer.rights-short': '© 2026 MAU MARKETING',
   'footer.vat': 'Preços sem IVA.',
   'footer.privacy': 'Privacidade',
+  'footer.cookies': 'Cookies',
 
   // ─── Homepage Hero ────────────────────────────────────────────────────────────
   'hero.headline': 'Nem todo o marketing é MAU.',
@@ -244,17 +245,17 @@ export const pt: Record<string, string> = {
   'privacy.s1.h': 'Quem trata os dados',
   'privacy.s1.p': 'NÍTIDA Digital. MAU Marketing é uma marca NÍTIDA Digital. Contacto: <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>.',
   'privacy.s2.h': 'Que dados recolhemos',
-  'privacy.s2.p': 'Os que nos dás no formulário de contacto: nome, email e mensagem. Não usamos cookies de análise nem de publicidade.',
+  'privacy.s2.p': 'Os que nos dás no formulário de contacto: nome, email e mensagem. Se aceitares cookies, o Google Analytics recolhe dados de utilização: páginas vistas, de onde vieste, dispositivo e localização aproximada. Não usamos cookies de publicidade.',
   'privacy.s3.h': 'Para que servem',
-  'privacy.s3.p': 'Responder ao teu contacto, preparar propostas e prestar os serviços contratados. Não vendemos dados a ninguém.',
+  'privacy.s3.p': 'Responder ao teu contacto, preparar propostas, prestar os serviços contratados e, se aceitares cookies, perceber como o site é usado. Não vendemos dados a ninguém.',
   'privacy.s4.h': 'Base legal',
-  'privacy.s4.p': 'O teu consentimento (ao enviares o formulário) e diligências pré-contratuais a pedido teu, nos termos do RGPD.',
+  'privacy.s4.p': 'O teu consentimento (ao enviares o formulário ou ao aceitares cookies) e diligências pré-contratuais a pedido teu, nos termos do RGPD.',
   'privacy.s5.h': 'Quanto tempo guardamos',
-  'privacy.s5.p': 'Até 24 meses após o último contacto. Se fores cliente, durante a relação contratual e pelos prazos legais aplicáveis (por exemplo, fiscais).',
+  'privacy.s5.p': 'Até 24 meses após o último contacto. Se fores cliente, durante a relação contratual e pelos prazos legais aplicáveis (por exemplo, fiscais). Os dados do Google Analytics ficam no máximo 14 meses.',
   'privacy.s6.h': 'Com quem partilhamos',
-  'privacy.s6.p': 'EmailJS, que envia as mensagens do formulário (serviço sediado fora da UE); o nosso fornecedor de email; e o alojamento do site. O Google Fonts carrega as fontes do site, por isso o teu endereço IP é visível para a Google.',
+  'privacy.s6.p': 'EmailJS, que envia as mensagens do formulário (serviço sediado fora da UE); a Google, com o Google Analytics, só se aceitares cookies (pode transferir dados para fora da UE); o nosso fornecedor de email; e o alojamento do site. O Google Fonts carrega as fontes do site, por isso o teu endereço IP é visível para a Google.',
   'privacy.s7.h': 'Cookies',
-  'privacy.s7.p': 'O site não usa cookies próprios. Se isso mudar (por exemplo, para análise), pedimos o teu consentimento primeiro.',
+  'privacy.s7.p': 'Só usamos os cookies do Google Analytics (_ga e _ga_*, até 2 anos), e só depois de aceitares no aviso. A tua escolha fica guardada no teu navegador e podes mudá-la quando quiseres em “Cookies”, no rodapé.',
   'privacy.s8.h': 'Os teus direitos',
   'privacy.s8.p': 'Tens direito de acesso, rectificação, apagamento, limitação, portabilidade e oposição. Para exercer qualquer um, escreve para <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>. Podes também reclamar junto da CNPD (<a class="link" href="https://www.cnpd.pt" target="_blank" rel="noopener">cnpd.pt</a>) ou através do <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Livro de Reclamações</a>.',
   // 404 (one page for both languages: PT copy + a link to the EN home)
@@ -267,4 +268,10 @@ export const pt: Record<string, string> = {
   'notfound.home': 'Voltar ao início',
   'notfound.services': 'Ver os planos',
   'notfound.other-lang': 'English site',
+  // Cookie consent banner (ConsentBanner.astro). GA only loads after "Aceitar".
+  'consent.label': 'Cookies',
+  'consent.text': 'Cookies? Só os do Google Analytics, para sabermos se isto funciona. Nada de publicidade.',
+  'consent.accept': 'Aceitar',
+  'consent.decline': 'Recusar',
+  'consent.more': 'Saber mais',
 };

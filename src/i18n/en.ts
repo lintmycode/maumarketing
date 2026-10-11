@@ -16,6 +16,7 @@ export const en: Record<string, string> = {
   'footer.rights-short': '© 2026 MAU MARKETING',
   'footer.vat': 'Prices excl. VAT.',
   'footer.privacy': 'Privacy',
+  'footer.cookies': 'Cookies',
 
   // ─── Homepage Hero ────────────────────────────────────────────────────────────
   'hero.headline': 'Not all marketing is MAU.',
@@ -243,17 +244,17 @@ export const en: Record<string, string> = {
   'privacy.s1.h': 'Who handles the data',
   'privacy.s1.p': 'NÍTIDA Digital. MAU Marketing is a NÍTIDA Digital brand. Contact: <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>.',
   'privacy.s2.h': 'What data we collect',
-  'privacy.s2.p': 'What you give us in the contact form: name, email and message. We use no analytics or advertising cookies.',
+  'privacy.s2.p': 'What you give us in the contact form: name, email and message. If you accept cookies, Google Analytics collects usage data: pages viewed, where you came from, device and approximate location. We use no advertising cookies.',
   'privacy.s3.h': 'What it is for',
-  'privacy.s3.p': 'Replying to your message, preparing proposals and delivering the services you hire. We never sell data to anyone.',
+  'privacy.s3.p': 'Replying to your message, preparing proposals, delivering the services you hire and, if you accept cookies, understanding how the site is used. We never sell data to anyone.',
   'privacy.s4.h': 'Legal basis',
-  'privacy.s4.p': 'Your consent (when you submit the form) and pre-contractual steps taken at your request, under the GDPR.',
+  'privacy.s4.p': 'Your consent (when you submit the form or accept cookies) and pre-contractual steps taken at your request, under the GDPR.',
   'privacy.s5.h': 'How long we keep it',
-  'privacy.s5.p': 'Up to 24 months after the last contact. If you become a client, for the duration of the contract and the applicable legal periods (for example, tax).',
+  'privacy.s5.p': 'Up to 24 months after the last contact. If you become a client, for the duration of the contract and the applicable legal periods (for example, tax). Google Analytics data is kept for at most 14 months.',
   'privacy.s6.h': 'Who we share it with',
-  'privacy.s6.p': 'EmailJS, which sends the form messages (a service based outside the EU); our email provider; and the site hosting. Google Fonts loads the site fonts, so your IP address is visible to Google.',
+  'privacy.s6.p': 'EmailJS, which sends the form messages (a service based outside the EU); Google, through Google Analytics, only if you accept cookies (it may transfer data outside the EU); our email provider; and the site hosting. Google Fonts loads the site fonts, so your IP address is visible to Google.',
   'privacy.s7.h': 'Cookies',
-  'privacy.s7.p': 'The site sets no cookies of its own. If that changes (for example, for analytics), we will ask for your consent first.',
+  'privacy.s7.p': 'We only use the Google Analytics cookies (_ga and _ga_*, up to 2 years), and only after you accept them in the notice. Your choice is stored in your browser and you can change it any time under “Cookies” in the footer.',
   'privacy.s8.h': 'Your rights',
   'privacy.s8.p': 'You have the right to access, rectification, erasure, restriction, portability and objection. To exercise any of them, write to <a class="link" href="mailto:{EMAIL}">{EMAIL}</a>. You can also complain to the Portuguese data protection authority, CNPD (<a class="link" href="https://www.cnpd.pt" target="_blank" rel="noopener">cnpd.pt</a>), or use the <a class="link" href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener">Complaints Book</a>.',
   // 404 (not rendered yet: dist has a single PT 404.html; kept in sync with pt.ts)
@@ -266,4 +267,10 @@ export const en: Record<string, string> = {
   'notfound.home': 'Back to home',
   'notfound.services': 'See the plans',
   'notfound.other-lang': 'Site em português',
+  // Cookie consent banner (ConsentBanner.astro). GA only loads after "Accept".
+  'consent.label': 'Cookies',
+  'consent.text': 'Cookies? Only Google Analytics, so we know whether this works. No advertising.',
+  'consent.accept': 'Accept',
+  'consent.decline': 'Decline',
+  'consent.more': 'Learn more',
 };

@@ -3,6 +3,9 @@ import type { Lang } from '../i18n/index';
 
 export const EMAIL = 'ola@maumarketing.pt';
 
+// GA4 property. Loaded by ConsentBanner only after consent, and only in production builds.
+export const GA_ID = 'G-FPTQ0SHX6T';
+
 // Canonical page paths per language (trailing slash matches the directory build)
 export const paths = {
   home: { pt: '/', en: '/en/' },

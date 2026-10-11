@@ -1,0 +1,134 @@
+---
+// Cookie consent + GA4. gtag.js is only injected after "Aceitar" (or a stored "granted"), so
+// nothing reaches Google before consent. The choice lives in localStorage ("mau-consent");
+// the footer's "Cookies" button ([data-consent-open]) reopens the banner to change it.
+// GA never loads in `astro dev` (enabled = PROD), so local testing doesn't pollute the stats.
+import type { Lang } from '../i18n/index';
+import { GA_ID, paths } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  t: (key: string) => string;
+}
+const { lang, t } = Astro.props;
+const enabled = import.meta.env.PROD;
+---
+
+<div class="consent" id="consent" role="region" aria-label={t('consent.label')} hidden>
+  <p>{t('consent.text')} <a href={paths.privacy[lang]}>{t('consent.more')}</a></p>
+  <div class="actions">
+    <button type="button" class="btn btn--secondary" data-consent="denied">{t('consent.decline')}</button>
+    <button type="button" class="btn btn--primary" data-consent="granted">{t('consent.accept')}</button>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GA_ID, enabled }}>
+  (function () {
+    var KEY = 'mau-consent';
+    var banner = document.getElementById('consent');
+    var loaded = false;
+    var get = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+    var set = function (v) { try { localStorage.setItem(KEY, v); } catch (e) {} };
+
+    // Google's snippet, run on demand instead of in <head>
+    function loadGa() {
+      if (loaded || !enabled) return;
+      loaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+    }
+
+    // Withdrawing consent: drop the _ga cookies (set on the bare domain, e.g. .maumarketing.pt)
+    function clearGa() {
+      var domain = location.hostname.replace(/^www\./, '');
+      document.cookie.split(';').forEach(function (c) {
+        var name = c.split('=')[0].trim();
+        if (name === '_ga' || name.indexOf('_ga_') === 0) {
+          document.cookie = name + '=; Max-Age=0; path=/; domain=.' + domain;
+          document.cookie = name + '=; Max-Age=0; path=/';
+        }
+      });
+    }
+
+    var choice = get();
+    if (choice === 'granted') loadGa();
+    else if (choice !== 'denied') banner.hidden = false;
+
+    banner.querySelectorAll('[data-consent]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = b.getAttribute('data-consent');
+        set(v);
+        banner.hidden = true;
+        if (v === 'granted') return loadGa();
+        clearGa();
+        if (loaded) location.reload(); // gtag.js is already running; a reload unloads it
+      });
+    });
+
+    document.querySelectorAll('[data-consent-open]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        banner.hidden = false;
+        banner.querySelector('[data-consent="granted"]').focus();
+      });
+    });
+  })();
+</script>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .consent {
+    position: fixed;
+    z-index: 50;
+    left: $gutter;
+    bottom: 24px;
+    max-width: 560px;
+    display: flex;
+    align-items: center;
+    gap: 16px 24px;
+    padding: 18px 20px;
+    background: $ink;
+    border: 1px solid $border-ui;
+    border-radius: $r-input;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    &[hidden] {
+      display: none;
+    }
+    @include bp-mobile {
+      left: $gutter-m;
+      right: $gutter-m;
+      bottom: 16px;
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  p {
+    margin: 0;
+    font: 500 14px/1.45 $font-body;
+    color: $paper;
+    a {
+      color: $muted;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+  }
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    @include bp-mobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+</style>

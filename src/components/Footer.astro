@@ -18,8 +18,11 @@ const { lang, t } = Astro.props;
     {t('footer.brand-prefix')}
     <a href={t('footer.NÍTIDA-link')} target="_blank" rel="noopener">{t('footer.brand-name')}</a>
   </span>
-  <!-- Legally required even though the mock omits it -->
-  <a class="privacy" href={paths.privacy[lang]}>{t('footer.privacy')}</a>
+  <!-- Legally required even though the mock omits it. "Cookies" reopens the consent banner. -->
+  <span class="legal">
+    <a href={paths.privacy[lang]}>{t('footer.privacy')}</a>
+    <button type="button" data-consent-open>{t('footer.cookies')}</button>
+  </span>
 </footer>
 
 <style lang="scss">
@@ -49,7 +52,15 @@ const { lang, t } = Astro.props;
   .brand a {
     color: $nitida;
   }
-  .privacy {
+  .legal {
+    display: flex;
+    gap: 20px;
+  }
+  // The button is reset (Pico styles every <button>) to look like the privacy link
+  .legal a,
+  .legal button {
+    all: unset;
+    cursor: pointer;
     color: inherit;
     text-decoration: underline;
     text-underline-offset: 0.25em;
@@ -58,15 +69,19 @@ const { lang, t } = Astro.props;
         color: $paper;
       }
     }
+    &:focus-visible {
+      outline: 2px solid $lime;
+      outline-offset: 2px;
+    }
   }
-  // Desktop order: © left, privacy middle, brand right
+  // Desktop order: © left, privacy + cookies middle, brand right
   .rights { order: 1; }
-  .privacy { order: 2; margin-right: auto; }
+  .legal { order: 2; margin-right: auto; }
   .brand { order: 3; }
   @include bp-mobile {
     .rights { order: 1; }
     .vat { order: 2; }
     .brand { order: 3; }
-    .privacy { order: 4; margin-right: 0; }
+    .legal { order: 4; margin-right: 0; }
   }
 </style>

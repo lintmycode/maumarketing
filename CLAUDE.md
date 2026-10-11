@@ -16,7 +16,9 @@ Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
   - 404: `src/pages/404.astro` → `dist/404.html` (one PT page with a link to `/en/`, noindex, not in the sitemap). Keys `notfound.*`.
 - SEO/AI meta: `src/lib/schema.ts` (JSON-LD; org + website on every page via BaseLayout, `Service` on tier pages via `jsonLd` prop),
   `src/pages/sitemap.xml.ts` and `src/pages/llms.txt.ts` (generated from the i18n copy), `public/robots.txt` (AI crawlers allowed).
-  No GA4 yet (needs a measurement ID + a consent banner; update the privacy page's cookie section when added).
+  GA4 (`GA_ID` in `site.ts`) is loaded by `ConsentBanner.astro` only after consent and only in production builds
+  (never in `astro dev`). Choice stored in localStorage `mau-consent`; footer "Cookies" reopens the banner. Keys `consent.*`.
+  If tracking changes, update the privacy page (`privacy.s2/s6/s7`).
 - Old URLs are redirected in `astro.config.mjs` (old services, Como funciona, Sobre) — add a redirect when renaming a page.
 - Styles (dark, SCSS only): tokens + mixins in `src/styles/_tokens.scss` (use `@use '../styles/tokens' as *;` in component `<style lang="scss">`; also exposed as `--lime`, `--paper`… CSS vars); base, Pico overrides, `.btn` / `.chev` in `src/styles/global.scss`. Pico paints text inside links lime and styles `<article>` — components set explicit colours.
 - Site constants (`EMAIL`, `bookingUrl(lang)`, `paths`) in `src/data/site.ts`; "Marcar chamada" goes to `/contacto#falar` (no booking tool, decided 2026-10-11).

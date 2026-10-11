@@ -1,0 +1,551 @@
+---
+// Tier detail page template (mock 1d): hero with price + CTA, "O que inclui" grid, agent requests
+// (or "Como corre a inspeção" for Inspeção, which has no agent), closing lime band.
+// Same template for all three tiers; copy lives under sv.d.<mau|mm|in>.* in the i18n files.
+import { useTranslations, type Lang } from '../i18n/index';
+import { pricing, type Tier } from '../data/pricing';
+import { eur, perMonth } from '../lib/price';
+import { bookingUrl, paths } from '../data/site';
+import AgentDemo from './AgentDemo.astro';
+
+interface Props {
+  tier: Tier;
+  lang: Lang;
+}
+const { tier, lang } = Astro.props;
+const t = useTranslations(lang);
+const mo = perMonth(lang);
+
+// i18n short key per tier
+const k = { mau: 'mau', 'muito-mau': 'mm', inspecao: 'in' }[tier];
+const isInspection = tier === 'inspecao';
+const p = pricing[tier] as { setup?: number; monthly?: number; once?: number };
+const tierName = tier === 'mau' ? 'MAU' : tier === 'muito-mau' ? 'MUITO MAU' : t('service.inspecao.title');
+const cta = t(`sv.${k}.cta`);
+const book = bookingUrl(lang);
+
+const items = [1, 2, 3, 4, 5, 6].map((n) => ({
+  title: t(`sv.d.${k}.i${n}.t`),
+  desc: t(`sv.d.${k}.i${n}.d`),
+  // the "Agente por mensagem" item is highlighted lime (it's the differentiator)
+  hot: !isInspection && n === 5,
+}));
+const requests = isInspection
+  ? []
+  : [1, 2, 3].map((n) => {
+      const file = t(`sv.d.${k}.r${n}.f`);
+      return {
+        msg: t(`sv.d.${k}.r${n}.m`),
+        file: file === `sv.d.${k}.r${n}.f` ? '' : file, // i18n falls back to the key when absent
+        result: t(`sv.d.${k}.r${n}.r`),
+      };
+    });
+const steps = isInspection
+  ? [1, 2, 3].map((n) => ({ title: t(`sv.d.in.s${n}.t`), desc: t(`sv.d.in.s${n}.d`) }))
+  : [];
+const sheetList = [1, 2, 3, 4].map((n) => t(`sv.in.l${n}`));
+---
+
+<div class:list={['detail', `detail--${tier}`]}>
+  <div class="hero">
+    <div class="intro">
+      <nav class="crumb" aria-label={t('sv.d.crumb')}>
+        <a href={paths.services[lang]}>{t('sv.d.crumb')}</a> / <span class="here">{tierName}</span>
+      </nav>
+      <h1 class="word">
+        {tier === 'muito-mau' ? <Fragment>MUITO<br />MAU</Fragment> : tierName}
+      </h1>
+      <p class="tagline">{t(`service.${tier}.problem`)}</p>
+      <div class="pricing">
+        <div class="amount">
+          {isInspection ? eur(p.once!, lang) : eur(p.monthly!, lang)}
+          {!isInspection && <small>{mo}</small>}
+        </div>
+        <div class="terms">
+          {!isInspection && <Fragment>{`+ ${eur(p.setup!, lang)} ${t('sv.setup')}`}<br /></Fragment>}
+          {isInspection ? t('sv.d.once') : t('sv.d.min')}
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn--primary" href={book}>{cta}<span class="chev" aria-hidden="true">›</span></a>
+        <p class="note">{t(`sv.d.${k}.note`)}</p>
+      </div>
+    </div>
+
+    {
+      isInspection ? (
+        <div class="panel panel--sheet">
+          <span class="sheetno">{t('sv.in.sheet')}</span>
+          <span class="sheetname">{tierName}</span>
+          <ul class="sheetlist">
+            {sheetList.map((l) => (
+              <li>
+                <span>{l}</span>
+                <span class="box" aria-hidden="true">✓</span>
+              </li>
+            ))}
+          </ul>
+          <span class="stamp" aria-hidden="true">
+            {t('sv.in.stamp1')}
+            <br />
+            {t('sv.in.stamp2')}
+          </span>
+        </div>
+      ) : (
+        <div class="panel panel--lime">
+          <AgentDemo lang={lang} />
+        </div>
+      )
+    }
+  </div>
+
+  <section class="block" aria-labelledby="inc-h">
+    <h2 id="inc-h" class="h2">{t('sv.d.includes')}</h2>
+    <ul class="includes">
+      {
+        items.map((i) => (
+          <li>
+            <h3 class:list={{ hot: i.hot }}>{i.title}</h3>
+            <p>{i.desc}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  {
+    isInspection ? (
+      <section class="block split" aria-labelledby="ex-h">
+        <div>
+          <h2 id="ex-h" class="h2">{t('sv.d.steps.h')}</h2>
+          <p class="sub">{t('sv.d.steps.p')}</p>
+        </div>
+        <ol class="steps">
+          {steps.map((s, i) => (
+            <li>
+              <span class="n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ) : (
+      <section class="block split" aria-labelledby="ex-h">
+        <div>
+          <h2 id="ex-h" class="h2">{t('sv.d.agent.h')}</h2>
+          <p class="sub">{t('sv.d.agent.p')}</p>
+        </div>
+        <ul class="requests">
+          {requests.map((r) => (
+            <li>
+              <span class="msg">
+                {r.msg}
+                {r.file && <> <span class="file">{r.file}</span></>}
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+              <span class="result">{r.result}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="band">
+    <h2>{t(`sv.d.${k}.ready`)}</h2>
+    <a class="btn btn--ink" href={book}>{cta}<span class="chev" aria-hidden="true">›</span></a>
+  </section>
+</div>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .detail {
+    --accent: #{$lime};
+    &.detail--inspecao {
+      --accent: #{$paper}; // Inspeção is the paper tier, like the homepage "Auditoria" card
+    }
+  }
+
+  // ── Hero ──
+  .hero {
+    @include gutter;
+    padding-block: 40px 72px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    @include bp-mobile {
+      padding-block: 16px 48px;
+      gap: 32px;
+    }
+  }
+  .crumb {
+    display: block; // Pico makes <nav> a flex row
+    font: 500 12px/1 $font-mono;
+    color: $muted-2;
+    margin-bottom: 24px;
+    a:hover {
+      color: $paper;
+    }
+  }
+  .here {
+    color: var(--accent);
+  }
+  .word {
+    font-family: $font-display;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--accent);
+    letter-spacing: -0.06em;
+    line-height: 0.78;
+    // Sized per tier so the word fills the column without overflowing
+    font-size: clamp(110px, 15vw, 220px);
+    @include bp-mobile {
+      font-size: clamp(88px, 30vw, 140px);
+    }
+  }
+  .detail--muito-mau .word {
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.84;
+    @include bp-mobile {
+      font-size: clamp(64px, 22vw, 100px);
+    }
+  }
+  .detail--inspecao .word {
+    font-size: clamp(48px, 6vw, 86px);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    @include bp-mobile {
+      // 13vw: EN "INSPECTION" (10 letters) overflowed a 390px screen at 15vw
+      font-size: clamp(40px, 13vw, 72px);
+    }
+  }
+  .tagline {
+    margin-top: 30px;
+    max-width: 560px;
+    font: 700 32px/1.15 $font-body;
+    letter-spacing: -0.02em;
+    @include bp-mobile {
+      font-size: 24px;
+      margin-top: 24px;
+    }
+  }
+  .pricing {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 34px;
+  }
+  .amount {
+    font: 400 clamp(64px, 7.2vw, 104px) / 0.82 $font-display;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    @include bp-mobile {
+      font-size: 64px;
+    }
+    small {
+      font: 700 24px/1 $font-body;
+      letter-spacing: 0;
+      @include bp-mobile {
+        font-size: 18px;
+      }
+    }
+  }
+  .terms {
+    font: 600 15px/1.45 $font-body;
+    color: $muted;
+    padding-bottom: 4px;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    margin-top: 36px;
+    .btn {
+      padding: 22px 36px;
+      font-size: 17px;
+      @include bp-mobile {
+        width: 100%;
+        height: 56px;
+        padding: 0 20px;
+        font-size: 16px;
+      }
+    }
+  }
+  .note {
+    font: 500 15px/1.4 $font-body;
+    color: $muted-2;
+    max-width: 18em;
+  }
+
+  // ── Hero right panel ──
+  .panel--lime {
+    background: $lime;
+    border-radius: $r-card-lg;
+    padding: 28px;
+    @include bp-mobile {
+      border-radius: $r-card-lg-m;
+      padding: 14px;
+    }
+  }
+  .panel--sheet {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background: $paper;
+    color: $ink;
+    border-radius: 10px;
+    padding: 32px 40px 40px;
+    @include bp-mobile {
+      padding: 20px 18px 28px;
+    }
+    .sheetno {
+      display: block;
+      @include mono-label(10px, $ink-muted-2);
+      letter-spacing: 0.14em;
+      line-height: 1;
+    }
+    .sheetname {
+      display: block;
+      @include display-type(40px, 1);
+      letter-spacing: -0.045em;
+      margin: 10px 0 18px;
+    }
+    .sheetlist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid rgba(13, 13, 11, 0.25);
+      font: 500 14px/1.2 $font-body;
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 0;
+        margin: 0;
+        list-style: none;
+        color: $ink;
+        border-bottom: 1px solid rgba(13, 13, 11, 0.14);
+      }
+    }
+    .box {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid $ink;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 800 12px/1 $font-body;
+    }
+    .stamp {
+      display: block;
+      width: max-content;
+      margin: 28px auto 0;
+      transform: rotate(-12deg);
+      border: 4px double $stamp;
+      color: $stamp;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font: 700 15px/1.1 $font-mono;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  // ── Blocks ──
+  .block {
+    @include gutter;
+    padding-bottom: 80px;
+    @include bp-mobile {
+      padding-bottom: 56px;
+    }
+  }
+  .h2 {
+    @include display-type(44px, 1);
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    @include bp-mobile {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+  }
+  .includes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: $hairline; // 1px gaps become the hairlines
+    border: 1px solid $hairline;
+    @media (max-width: 1000px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @include bp-mobile {
+      grid-template-columns: 1fr;
+    }
+    li {
+      background: $ink;
+      padding: 28px;
+      margin: 0;
+      list-style: none;
+      @include bp-mobile {
+        padding: 22px 20px;
+      }
+    }
+    h3 {
+      font: 700 20px/1.2 $font-body;
+      margin-bottom: 8px;
+      &.hot {
+        color: $lime;
+      }
+    }
+    p {
+      font: 400 15px/1.5 $font-body;
+      color: $muted-2;
+    }
+  }
+  .split {
+    display: grid;
+    grid-template-columns: 360px minmax(0, 1fr);
+    gap: 48px;
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .h2 {
+      margin-bottom: 12px;
+    }
+  }
+  .sub {
+    font: 400 15px/1.5 $font-body;
+    color: $muted-2;
+    @include bp-mobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  // Agent requests: message bubble -> result
+  .requests {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid $hairline;
+    li {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      margin: 0;
+      list-style: none;
+      border-bottom: 1px solid $hairline;
+      @include bp-mobile {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+    .msg {
+      justify-self: start;
+      background: $lime;
+      color: $ink;
+      border-radius: 14px 14px 14px 4px;
+      padding: 10px 14px;
+      font: 600 16px/1.3 $font-body;
+    }
+    .file {
+      font: 500 11px/1 $font-mono;
+    }
+    .arrow {
+      font: 500 14px/1 $font-mono;
+      color: $lime;
+      @include bp-mobile {
+        transform: rotate(90deg);
+        justify-self: start;
+        padding-left: 14px;
+      }
+    }
+    .result {
+      font: 600 16px/1.3 $font-body;
+    }
+  }
+
+  // Inspeção steps
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: $hairline;
+    border: 1px solid $hairline;
+    @include bp-mobile {
+      grid-template-columns: 1fr;
+    }
+    li {
+      background: $ink;
+      padding: 24px 28px;
+      margin: 0;
+      list-style: none;
+    }
+    .n {
+      display: block;
+      @include mono-label(12px, $muted-2);
+      margin-bottom: 14px;
+    }
+    h3 {
+      font: 700 20px/1.2 $font-body;
+      margin-bottom: 8px;
+    }
+    p {
+      font: 400 15px/1.5 $font-body;
+      color: $muted-2;
+    }
+  }
+
+  // ── Closing band ──
+  .band {
+    @include gutter;
+    background: $lime;
+    color: $ink;
+    padding-block: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    @include bp-mobile {
+      padding-block: 48px;
+    }
+    h2 {
+      @include display-type(clamp(40px, 4.4vw, 64px), 0.92);
+      letter-spacing: -0.045em;
+    }
+    .btn {
+      padding: 22px 36px;
+      font-size: 17px;
+      @include bp-mobile {
+        width: 100%;
+        height: 56px;
+        padding: 0 20px;
+        font-size: 16px;
+      }
+    }
+  }
+</style>

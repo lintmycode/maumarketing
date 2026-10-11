@@ -1,0 +1,195 @@
+---
+// Homepage hero: typewriter H1 + CTAs. The H1 text is split into per-character spans
+// (aria-hidden) with a full sentence in a visually-hidden copy for screen readers.
+// Without JS, or with prefers-reduced-motion, the markup is already the final state:
+// the inline script below only adds the `typing` class when the animation will run.
+import type { Lang } from '../i18n/index';
+import { bookingUrl, paths } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  t: (key: string) => string;
+}
+const { lang, t } = Astro.props as Props;
+
+// Turn a segment string into chars. "¶" becomes a mobile-only <br>. `after` = ms pause
+// after the segment's last char.
+type Piece = { ch: string } | { br: 'both' | 'mobile' };
+const chars = (s: string) =>
+  [...s].map((ch): Piece => (ch === '¶' ? { br: 'mobile' } : { ch }));
+
+const a = chars(t('home.h1.a'));
+const b = chars(t('home.h1.b'));
+const mau = chars(t('home.h1.mau'));
+// The closing full stop stays paper: only the words of "Mas devia" get the lime fill
+const cAll = chars(t('home.h1.c'));
+const cEnd = cAll.at(-1);
+const cDot = cEnd && 'ch' in cEnd && cEnd.ch === '.';
+const c = cDot ? cAll.slice(0, -1) : cAll;
+---
+
+<section class="hero">
+  <h1 class="h1" data-h1>
+    <span class="sr-only">{t('home.h1.sr')}</span>
+    <span class="anim" aria-hidden="true">
+      {/* Beats: 160ms after segment a and b, 420ms after the dot (before the last line) */}
+      {a.map((p, i) => 'ch' in p && <span class="c" data-after={i === a.length - 1 ? 160 : undefined}>{p.ch}</span>)}<br />
+      {b.map((p, i) => 'br' in p ? <br class="mbr" /> : <span class="c" data-after={i === b.length - 1 ? 160 : undefined}>{p.ch}</span>)}<span class="mau">{mau.map((p) => 'ch' in p && <span class="c">{p.ch}</span>)}</span><span class="c" data-after="420">.</span><br />
+      <span class="fill" data-fill>{c.map((p) => 'br' in p ? <br class="mbr" /> : <span class="c">{p.ch}</span>)}</span>{cDot && <span class="c">.</span>}
+    </span>
+  </h1>
+  <div class="ctas">
+    <a class="btn btn--primary btn--block" href={bookingUrl(lang)}>{t('home.hero.cta-primary')}<span class="chev" aria-hidden="true">›</span></a>
+    <a class="btn btn--secondary btn--block" href={paths.services[lang]}>{t('home.hero.cta-secondary')}</a>
+  </div>
+</section>
+
+<!-- Runs synchronously right after the markup so the hidden state applies before first paint -->
+<script is:inline>
+  (function () {
+    var h1 = document.querySelector('[data-h1]');
+    if (!h1) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    h1.classList.add('typing');
+  })();
+</script>
+
+<script>
+  const h1 = document.querySelector<HTMLElement>('[data-h1]');
+  if (h1 && h1.classList.contains('typing')) {
+    const chars = [...h1.querySelectorAll<HTMLElement>('.c')];
+    const fill = h1.querySelector<HTMLElement>('[data-fill]')!;
+    // Zero-width caret that sits right after the last typed char (no reflow)
+    const caret = document.createElement('span');
+    caret.className = 'caret';
+    chars[0].before(caret);
+
+    const jitter = () => 45 + Math.random() * 45; // 45-90ms
+    let i = 0;
+    const step = () => {
+      const el = chars[i];
+      el.classList.add('on');
+      el.after(caret);
+      i++;
+      if (i >= chars.length) {
+        caret.remove(); // typing finished: caret disappears
+        setTimeout(() => fill.classList.add('go'), 350); // lime sweep over "Mas devia."
+        return;
+      }
+      setTimeout(step, jitter() + Number(el.dataset.after ?? 0));
+    };
+    setTimeout(step, 500);
+  }
+</script>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .hero {
+    flex: 1; // fills the space between nav and plan strip, content centred
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include gutter;
+    padding-block: 32px;
+  }
+
+  .h1 {
+    @include display-type(clamp(48px, 7.2vw, 104px), 0.9);
+    font-weight: 400;
+    @include bp-mobile {
+      // 1 (not .9): the line starting with "É" needs room for its accent
+      font-size: min(50px, 12.8vw);
+      line-height: 1;
+    }
+  }
+
+  // Mobile-only line breaks
+  .mbr {
+    display: none;
+    @include bp-mobile {
+      display: inline;
+    }
+  }
+
+  .mau {
+    color: $lime;
+  }
+
+  // "Mas devia." / "But it should be.": lime in the final state. The padding + equal negative
+  // margin gives accents/descenders room so background-clip:text doesn't cut them.
+  .fill {
+    color: $lime;
+    padding: 0.22em 0.06em;
+    margin: -0.22em -0.06em;
+  }
+
+  // Typing state (class set by the inline script; absent for no-JS / reduced motion)
+  .typing {
+    .c {
+      opacity: 0;
+    }
+    .c.on {
+      opacity: 1;
+    }
+    // Plain paper while typing. The gradient must only switch on at .go: background-clip:text
+    // paints every descendant glyph, ignoring the per-char opacity, so applying it earlier
+    // shows the whole line before it is typed.
+    .fill {
+      color: $paper;
+    }
+    // MAU is lime as soon as it appears (it is not part of the fill)
+    .mau .c {
+      color: $lime;
+    }
+    .fill.go {
+      color: transparent;
+      background: linear-gradient(90deg, $lime 50%, $paper 50%);
+      background-size: 200% 100%;
+      background-position: 100% 0; // starts all paper, so the switch is seamless
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-box-decoration-break: clone; // keep the gradient per fragment if the line ever wraps
+      box-decoration-break: clone;
+      animation: karaoke 0.9s linear forwards;
+    }
+  }
+
+  @keyframes karaoke {
+    from { background-position: 100% 0; }
+    to { background-position: 0 0; }
+  }
+
+  // The caret is created at runtime, so :global
+  .h1 :global(.caret) {
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 0;
+  }
+  .h1 :global(.caret)::after {
+    content: '';
+    position: absolute;
+    left: 0.02em;
+    bottom: 0;
+    width: 0.09em;
+    height: 0.78em;
+    background: $lime;
+    animation: blink 0.8s steps(1) infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .ctas {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 44px;
+    @include bp-mobile {
+      display: grid;
+      gap: 10px;
+      margin-top: 28px;
+    }
+  }
+</style>

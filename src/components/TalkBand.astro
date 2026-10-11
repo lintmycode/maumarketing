@@ -1,0 +1,70 @@
+---
+// Lime "Falamos?" band, below the fold on the homepage.
+import type { Lang } from '../i18n/index';
+import { EMAIL, bookingUrl } from '../data/site';
+
+interface Props {
+  lang: Lang;
+  t: (key: string) => string;
+}
+const { lang, t } = Astro.props as Props;
+---
+
+<section class="band">
+  <h2 class="title">{t('home.talk.heading')}</h2>
+  <div class="actions">
+    <a class="mail" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+    <a class="btn btn--ink btn--block" href={bookingUrl(lang)}>{t('home.talk.cta')}<span class="chev" aria-hidden="true">›</span></a>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 72px $gutter;
+    background: $lime;
+    color: $ink;
+    @include bp-mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+      padding: 48px $gutter-m;
+    }
+  }
+
+  .title {
+    @include display-type(64px, 0.92);
+    @include bp-mobile {
+      font-size: 52px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    @include bp-mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+    }
+  }
+
+  .mail {
+    font: 500 15px/1.5 $font-mono;
+    color: $ink;
+    @include bp-mobile {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  }
+  // Keyboard focus ring: lime on lime is invisible, use ink here
+  .band :global(:focus-visible) {
+    outline-color: $ink;
+  }
+</style>

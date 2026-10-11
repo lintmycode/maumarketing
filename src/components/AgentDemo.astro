@@ -1,0 +1,152 @@
+---
+// Message -> site-change illustration (WhatsApp-style bubble, then the updated opening hours).
+// Static: it's a picture of the product, not a widget. Reusable on cards and the tier detail page.
+// Source: design/handoff/.../Agent Demo.dc.html
+import { useTranslations, type Lang } from '../i18n/index';
+
+interface Props {
+  lang: Lang;
+}
+const t = useTranslations(Astro.props.lang);
+---
+
+<div class="demo" role="img" aria-label={t('sv.demo.label')}>
+  <!-- everything inside is decorative: the label above carries the meaning -->
+  <div class="from" aria-hidden="true">
+    <span class="lbl">{t('sv.demo.from')}</span>
+    <div class="bubble">
+      {t('sv.demo.msg')}<span class="time">10:42 ✓✓</span>
+    </div>
+  </div>
+  <div class="after" aria-hidden="true">→ {t('sv.demo.after')}</div>
+  <div class="browser" aria-hidden="true">
+    <div class="bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="url">oteunegocio.pt</span>
+    </div>
+    <div class="rows">
+      <div class="title">{t('sv.demo.hours')}</div>
+      <div class="row"><span>{t('sv.demo.wk')}</span><span>{t('sv.demo.wkh')}</span></div>
+      <div class="row row--new">
+        <span>{t('sv.demo.sat')}</span>
+        <span class="new"><span class="tag">{t('sv.demo.new')}</span>{t('sv.demo.sath')}</span>
+      </div>
+      <div class="row row--off"><span>{t('sv.demo.sun')}</span><span>{t('sv.demo.closed')}</span></div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .demo {
+    background: $ink;
+    color: $paper;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    font-family: $font-body;
+  }
+  .from {
+    flex: 1 1 190px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .lbl {
+    @include mono-label(10px, rgba(242, 240, 233, 0.5));
+    letter-spacing: 0.12em;
+    line-height: 1;
+  }
+  .bubble {
+    align-self: flex-start;
+    background: $lime;
+    color: $ink;
+    border-radius: 16px 16px 16px 4px;
+    padding: 12px 14px 8px;
+    font: 600 16px/1.3 $font-body;
+    max-width: 260px;
+  }
+  .time {
+    display: block;
+    text-align: right;
+    font: 500 10px/1 $font-mono;
+    color: rgba(13, 13, 11, 0.55);
+    margin-top: 6px;
+  }
+  .after {
+    flex: none;
+    font: 500 11px/1 $font-mono;
+    color: $lime;
+    white-space: nowrap;
+  }
+  .browser {
+    flex: 1 1 210px;
+    background: $paper;
+    color: $ink;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .bar {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(13, 13, 11, 0.1);
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(13, 13, 11, 0.2);
+  }
+  .url {
+    margin-left: 6px;
+    font: 500 10px/1 $font-mono;
+    color: rgba(13, 13, 11, 0.5);
+  }
+  .rows {
+    padding: 12px 14px 14px;
+    display: grid;
+    gap: 6px;
+    font: 400 13px/1.2 $font-body;
+  }
+  .title {
+    font: 800 12px/1 $font-body;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 6px;
+  }
+  .row--new {
+    align-items: center;
+    gap: 8px;
+    background: $lime; // the changed row
+    border-radius: 4px;
+    font-weight: 700;
+  }
+  .new {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tag {
+    font: 600 9px/1 $font-mono;
+    text-transform: uppercase;
+    background: $ink;
+    color: $lime;
+    padding: 3px 4px;
+    border-radius: 3px;
+  }
+  .row--off {
+    color: rgba(13, 13, 11, 0.5);
+  }
+</style>

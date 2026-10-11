@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
-import ServiceCard from '../../components/ServiceCard.astro';
-import ProcessSteps from '../../components/ProcessSteps.astro';
-import CTABlock from '../../components/CTABlock.astro';
+import HomeHero from '../../components/HomeHero.astro';
+import PlanStrip from '../../components/PlanStrip.astro';
+import TalkBand from '../../components/TalkBand.astro';
 import { useTranslations } from '../../i18n/index';
 
 const lang = 'en';
@@ -16,80 +15,25 @@ const t = useTranslations(lang);
   lang={lang}
   alternateLangUrl="/"
 >
-  <!-- Hero -->
-  <Hero t={t} lang={lang} />
-
-  <!-- Services block -->
-  <section class="section section--surface">
-    <div class="container">
-      <h2 class="section-heading">{t('home.services.heading')}</h2>
-      <p class="section-subheading">{t('home.services.subheading')}</p>
-      <div class="service-grid">
-        <ServiceCard
-          title={t('service.mau.title')}
-          problem={t('service.mau.problem')}
-          outcome={t('service.mau.outcome')}
-          price={t('service.mau.price')}
-          href={t('service.mau.href')}
-          ctaLabel={t('service.cta')}
-        />
-        <ServiceCard
-          title={t('service.muito-mau.title')}
-          problem={t('service.muito-mau.problem')}
-          outcome={t('service.muito-mau.outcome')}
-          price={t('service.muito-mau.price')}
-          href={t('service.muito-mau.href')}
-          ctaLabel={t('service.cta')}
-        />
-        <ServiceCard
-          title={t('service.inspecao.title')}
-          problem={t('service.inspecao.problem')}
-          outcome={t('service.inspecao.outcome')}
-          price={t('service.inspecao.price')}
-          href={t('service.inspecao.href')}
-          ctaLabel={t('service.cta')}
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- AI + Human block -->
-  <section class="section">
-    <div class="container">
-      <div class="ai-block">
-        <h2>{t('home.ai.heading')}</h2>
-        <p>{t('home.ai.body')}</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process preview -->
-  <ProcessSteps t={t} />
-
-  <!-- Trust / NÍTIDA block -->
-  <section class="section section--surface">
-    <div class="container">
-      <h2 class="section-heading">{t('home.trust.heading')}</h2>
-      <p style="max-width: 580px; font-size: 1.0625rem; line-height: 1.7; color: var(--mau-muted);">
-        {t('home.trust.body')}
-      </p>
-      <a
-        href={t('home.trust.NÍTIDA-url')}
-        class="btn btn--secondary"
-        style="margin-top: 1.5rem;"
-        target="_blank"
-        rel="noopener"
-      >
-        {t('home.trust.NÍTIDA')}
-      </a>
-    </div>
-  </section>
-
-  <!-- CTA block -->
-  <CTABlock
-    heading={t('home.cta.heading')}
-    body={t('home.cta.body')}
-    buttonLabel={t('home.cta.button')}
-    buttonHref="/en/contact"
-  />
+  <!-- Above the fold = one viewport: nav (outside <main>) + hero + plan strip -->
+  <div class="fold">
+    <HomeHero lang={lang} t={t} />
+    <PlanStrip lang={lang} t={t} />
+  </div>
+  <TalkBand lang={lang} t={t} />
 </BaseLayout>
+
+<style lang="scss">
+  // --header-h = rendered Header height (28px*2 padding + 40px CTA pill; 18*2 + 44 on mobile).
+  // min-height (not height) so short screens scroll instead of overlapping.
+  .fold {
+    --header-h: 96px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
+    @media (max-width: 720px) {
+      --header-h: 80px;
+    }
+  }
+</style>

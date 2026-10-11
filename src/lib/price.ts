@@ -5,7 +5,8 @@ import type { Lang } from '../i18n/index';
 import { pricing, type Tier } from '../data/pricing';
 
 export function eur(n: number, lang: Lang): string {
-  const num = n.toLocaleString(lang === 'pt' ? 'pt-PT' : 'en-GB', { useGrouping: 'always' } as Intl.NumberFormatOptions);
+  // Manual grouping: Intl's pt-PT uses a thin space ("1 490"), the design wants "1.490"
+  const num = String(n).replace(/\B(?=(\d{3})+(?!\d))/g, lang === 'pt' ? '.' : ',');
   return lang === 'pt' ? `${num}€` : `€${num}`;
 }
 

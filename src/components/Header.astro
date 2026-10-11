@@ -1,83 +1,216 @@
 ---
 import type { Lang } from '../i18n/index';
+import { bookingUrl, paths } from '../data/site';
 
 interface Props {
   lang: Lang;
+  /** URL of the equivalent page in the other language */
   alternateLangUrl: string;
   t: (key: string) => string;
 }
 
 const { lang, alternateLangUrl, t } = Astro.props;
 
-const navLinks =
-  lang === 'pt'
-    ? [
-        { label: t('nav.services'), href: '/servicos/' },
-        { label: t('nav.how-it-works'), href: '/como-funciona' },
-        { label: t('nav.about'), href: '/sobre' },
-        { label: t('nav.contact'), href: '/contacto' },
-      ]
-    : [
-        { label: t('nav.services'), href: '/en/services/' },
-        { label: t('nav.how-it-works'), href: '/en/how-it-works' },
-        { label: t('nav.about'), href: '/en/about' },
-        { label: t('nav.contact'), href: '/en/contact' },
-      ];
-
-const homeHref = lang === 'pt' ? '/' : '/en/';
+// Only two nav links in the redesign
+const navLinks = [
+  { label: t('nav.services'), href: paths.services[lang] },
+  { label: t('nav.contact'), href: paths.contact[lang] },
+];
+const ctaHref = bookingUrl(lang);
+const pt = lang === 'pt';
 ---
 
-<header class="site-header">
-  <div class="container">
-    <nav class="nav-inner" id="main-nav" data-open="false">
-      <a href={homeHref} class="nav-logo">
-        <span>MAU</span> MARKETING
-      </a>
+<header class="site-header" data-open="false">
+  <div class="bar">
+    <a href={paths.home[lang]} class="logo" aria-label="MAU Marketing">MAU</a>
 
-      <!-- Hamburger toggle -->
+    <!-- Desktop nav -->
+    <nav class="links" aria-label={t('nav.menu-label')}>
+      {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+      <span class="lang">
+        <!-- Current language is marked; the other one links to the equivalent page -->
+        {pt ? <span aria-current="true" class="on">PT</span> : <a href={alternateLangUrl} hreflang="pt" aria-label={t('nav.lang-switch')}>PT</a>}
+        <span aria-hidden="true"> / </span>
+        {pt ? <a href={alternateLangUrl} hreflang="en" aria-label={t('nav.lang-switch')}>EN</a> : <span aria-current="true" class="on">EN</span>}
+      </span>
+      <a href={ctaHref} class="cta">{t('nav.cta')}</a>
+    </nav>
+
+    <!-- Mobile: language switch + round menu button -->
+    <div class="mobile">
+      <span class="lang">
+        {pt ? <span aria-current="true" class="on">PT</span> : <a href={alternateLangUrl} hreflang="pt" aria-label={t('nav.lang-switch')}>PT</a>}
+        <span aria-hidden="true"> / </span>
+        {pt ? <a href={alternateLangUrl} hreflang="en" aria-label={t('nav.lang-switch')}>EN</a> : <span aria-current="true" class="on">EN</span>}
+      </span>
       <button
-        class="nav-toggle"
-        id="nav-toggle"
-        aria-controls="main-nav"
+        type="button"
+        class="toggle"
+        id="menu-toggle"
+        aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label={t('nav.menu-open')}
+        data-label-open={t('nav.menu-open')}
+        data-label-close={t('nav.menu-close')}
       >
-        <span aria-hidden="true">☰</span>
+        <span aria-hidden="true">≡</span>
       </button>
-
-      <!-- Nav links -->
-      <ul class="nav-links">
-        {navLinks.map((link) => (
-          <li><a href={link.href}>{link.label}</a></li>
-        ))}
-      </ul>
-
-      <!-- Actions: lang switcher + CTA -->
-      <div class="nav-actions">
-        <a href={alternateLangUrl} class="nav-lang" aria-label={`Switch to ${t('nav.lang-label')}`}>
-          {t('nav.lang-label')}
-        </a>
-        <a
-          href={lang === 'pt' ? '/contacto' : '/en/contact'}
-          class="nav-cta"
-        >
-          {t('nav.cta')}
-        </a>
-      </div>
-    </nav>
+    </div>
   </div>
+
+  <!-- Mobile menu panel (hidden attribute toggled by the script below) -->
+  <nav class="menu" id="mobile-menu" aria-label={t('nav.menu-label')} hidden>
+    {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href={ctaHref} class="btn btn--primary btn--block">{t('nav.cta')}<span class="chev" aria-hidden="true">›</span></a>
+  </nav>
 </header>
 
-<!-- Minimal inline JS for mobile nav toggle — no framework dependency -->
 <script>
-  const toggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('main-nav');
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const toggle = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+  const menu = document.getElementById('mobile-menu');
 
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.getAttribute('data-open') === 'true';
-      nav.setAttribute('data-open', isOpen ? 'false' : 'true');
-      toggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  if (header && toggle && menu) {
+    const setOpen = (open: boolean, returnFocus = false) => {
+      menu.hidden = !open;
+      header.dataset.open = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '');
+      const icon = toggle.firstElementChild;
+      if (icon) icon.textContent = open ? '✕' : '≡';
+      if (open) (menu.querySelector('a') as HTMLElement | null)?.focus();
+      else if (returnFocus) toggle.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(menu.hidden));
+    // Esc closes and hands focus back to the button
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) setOpen(false, true);
+    });
+    // Close after choosing a link, or when the viewport grows to the desktop layout
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    window.matchMedia('(min-width: 721px)').addEventListener('change', (m) => {
+      if (m.matches) setOpen(false);
     });
   }
 </script>
+
+<style lang="scss">
+  @use '../styles/tokens' as *;
+
+  .site-header {
+    position: relative;
+    z-index: 10;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px $gutter;
+    @include bp-mobile {
+      padding: 18px $gutter-m;
+    }
+  }
+  .logo {
+    font: 400 18px/1 $font-display;
+    letter-spacing: -0.02em;
+    color: $paper;
+    @include bp-mobile {
+      font-size: 17px;
+    }
+  }
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font: 500 14px/1 $font-body;
+    color: rgba(242, 240, 233, 0.72);
+    @include bp-mobile {
+      display: none;
+    }
+    a:not(.cta) {
+      transition: color 0.15s;
+    }
+    @include hover-only {
+      a:not(.cta):hover {
+        color: $paper;
+      }
+    }
+  }
+  .lang {
+    font: 500 12px/1 $font-mono;
+    color: $muted-3;
+    letter-spacing: 0.02em;
+    a {
+      color: inherit;
+      padding: 6px 0;
+    }
+    @include hover-only {
+      a:hover {
+        color: $paper;
+      }
+    }
+    // The current language reads stronger than the link to the other one
+    .on {
+      color: $paper;
+    }
+  }
+  .cta {
+    background: $lime;
+    color: $ink;
+    font: 700 14px/1 $font-body;
+    padding: 13px 22px;
+    border-radius: $r-pill;
+  }
+  .mobile {
+    display: none;
+    align-items: center;
+    gap: 14px;
+    @include bp-mobile {
+      display: flex;
+    }
+    .lang {
+      color: $muted-2;
+    }
+  }
+  .toggle {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(242, 240, 233, 0.25);
+    border-radius: 50%;
+    color: $paper;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .menu {
+    display: grid;
+    gap: 6px;
+    padding: 12px $gutter-m 24px;
+    background: $ink;
+    border-bottom: 1px solid $hairline;
+    // [hidden] must win over display:grid above
+    &[hidden] {
+      display: none;
+    }
+    a:not(.btn) {
+      font: 600 22px/1 $font-body;
+      padding: 14px 0;
+      border-bottom: 1px solid $hairline;
+    }
+    .btn {
+      margin-top: 14px;
+    }
+    @media (min-width: #{$bp-mobile + 1}) {
+      display: none;
+    }
+  }
+</style>

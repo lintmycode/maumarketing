@@ -5,10 +5,13 @@ export const en: Record<string, string> = {
   'nav.how-it-works': 'How It Works',
   'nav.about': 'About',
   'nav.contact': 'Contact',
-  'nav.cta': 'Get in touch',
+  'nav.cta': 'Book a call',
   'nav.lang-label': 'PT',
   'nav.menu-open': 'Open menu',
   'nav.menu-close': 'Close menu',
+  'meta.og-alt': "MAU Marketing: Not all marketing is MAU. But it should be.",
+  'nav.menu-label': 'Main menu',
+  'nav.lang-switch': 'Switch to Portuguese',
 
   // ─── Footer ───────────────────────────────────────────────────────────────────
   'footer.brand': 'A NÍTIDA Digital brand',
@@ -20,6 +23,11 @@ export const en: Record<string, string> = {
   'footer.contact': 'Contact',
   'footer.rights': '© 2026 MAU MARKETING. All rights reserved.',
   'footer.NÍTIDA-link': 'https://nitida.pt',
+  'footer.brand-prefix': 'A brand by',
+  'footer.brand-name': 'NÍTIDA Digital',
+  'footer.rights-short': '© 2026 MAU MARKETING',
+  'footer.vat': 'Prices excl. VAT.',
+  'footer.privacy': 'Privacy',
 
   // ─── Homepage Hero ────────────────────────────────────────────────────────────
   'hero.eyebrow': 'A NÍTIDA Digital brand',

@@ -1,0 +1,127 @@
+// Design tokens for the MAU redesign (source of truth: design/handoff/.../README.md).
+//
+// Page/component builders: inside any `<style lang="scss">` block write
+//     @use '../styles/tokens' as *;      // adjust ../ depth to the file location
+// to get the SCSS variables and mixins below. The same values are also exposed as
+// CSS custom properties on :root (emitted once via global.scss), e.g. var(--lime),
+// for inline styles or places where SCSS isn't available.
+//
+// This partial emits NO CSS by itself except the :root block, which is wrapped in a
+// mixin (`tokens-root`) that only global.scss includes, so `@use` in components is free.
+
+// ── Colours ────────────────────────────────────────────────────────────────
+$ink: #0d0d0b;            // page background
+$paper: #f2f0e9;          // primary text
+$lime: #c8f000;           // accent: CTAs, MAU word, prices, focus
+$stamp: #d8361f;          // Inspeção stamp (Serviços page only)
+$nitida: rgb(12, 150, 238); // NÍTIDA link blue (footer only)
+
+// Paper alphas on dark
+$muted: rgba(242, 240, 233, 0.7);
+$muted-2: rgba(242, 240, 233, 0.55);
+$muted-3: rgba(242, 240, 233, 0.4);   // footer / tertiary
+$hairline: rgba(242, 240, 233, 0.16);
+$border-ui: rgba(242, 240, 233, 0.28); // inputs, ghost buttons
+$placeholder: rgba(242, 240, 233, 0.35);
+// Ink alphas on lime
+$ink-muted: rgba(13, 13, 11, 0.7);
+$ink-muted-2: rgba(13, 13, 11, 0.6);
+
+// ── Radii ──────────────────────────────────────────────────────────────────
+$r-pill: 100px;
+$r-card: 20px;       // plan cards desktop
+$r-card-m: 18px;     // plan cards mobile
+$r-card-lg: 28px;    // large cards desktop
+$r-card-lg-m: 24px;  // large cards mobile
+$r-input: 14px;
+
+// ── Layout ─────────────────────────────────────────────────────────────────
+$gutter: 48px;
+$gutter-m: 20px;
+$bp-mobile: 720px;   // max-width of the mobile layout
+
+// ── Fonts ──────────────────────────────────────────────────────────────────
+$font-display: 'Archivo Black', 'Archivo', system-ui, sans-serif;
+$font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+// ── Mixins ─────────────────────────────────────────────────────────────────
+@mixin bp-mobile {
+  @media (max-width: #{$bp-mobile}) {
+    @content;
+  }
+}
+
+// Hover only on devices that really hover (avoids sticky hover on touch)
+@mixin hover-only {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+// Archivo Black uppercase headline. Pass the line-height: .9 default, but use
+// 0.98–1 when the next line starts with an accented capital (É/Ã must not touch).
+@mixin display-type($size: null, $lh: 0.9) {
+  font-family: $font-display;
+  font-weight: 400; // Archivo Black has a single weight; avoid faux bold
+  text-transform: uppercase;
+  letter-spacing: -0.045em;
+  line-height: $lh;
+  @if $size {
+    font-size: $size;
+  }
+}
+
+// IBM Plex Mono uppercase label / meta text
+@mixin mono-label($size: 11px, $color: null) {
+  font-family: $font-mono;
+  font-weight: 500;
+  font-size: $size;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  @if $color {
+    color: $color;
+  }
+}
+
+// Horizontal page gutter (48 desktop / 20 mobile)
+@mixin gutter {
+  padding-inline: $gutter;
+  @include bp-mobile {
+    padding-inline: $gutter-m;
+  }
+}
+
+// Emitted once by global.scss
+@mixin tokens-root {
+  :root {
+    --ink: #{$ink};
+    --paper: #{$paper};
+    --lime: #{$lime};
+    --stamp: #{$stamp};
+    --nitida: #{$nitida};
+    --muted: #{$muted};
+    --muted-2: #{$muted-2};
+    --muted-3: #{$muted-3};
+    --hairline: #{$hairline};
+    --border-ui: #{$border-ui};
+    --placeholder: #{$placeholder};
+    --ink-muted: #{$ink-muted};
+    --ink-muted-2: #{$ink-muted-2};
+    --r-pill: #{$r-pill};
+    --r-card: #{$r-card};
+    --r-card-m: #{$r-card-m};
+    --r-card-lg: #{$r-card-lg};
+    --r-card-lg-m: #{$r-card-lg-m};
+    --r-input: #{$r-input};
+    --gutter: #{$gutter};
+    --font-display: #{$font-display};
+    --font-body: #{$font-body};
+    --font-mono: #{$font-mono};
+  }
+  @include bp-mobile {
+    :root {
+      --gutter: #{$gutter-m};
+    }
+  }
+}

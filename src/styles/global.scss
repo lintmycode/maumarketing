@@ -1,846 +1,244 @@
-// ─── Brand Palette ────────────────────────────────────────────────────────────
-// These CSS custom properties override Pico CSS v2 theming variables.
-// Pico is imported in BaseLayout.astro; these rules cascade over it.
+// Global styles for the dark MAU design. Tokens live in _tokens.scss.
+// Pico CSS (imported in BaseLayout) stays as the base reset; the overrides below
+// stop it from fighting the design. <html data-theme="dark"> is set in BaseLayout
+// so Pico never switches to its light palette.
+@use 'tokens' as *;
 
-:root,
-[data-theme='light'],
-:where(:not([data-theme='dark'])) {
-  // Brand colors
-  --mau-bg:         #F7F4EE; // warm off-white
-  --mau-text:       #161616; // near-black
-  --mau-accent:     #C96A2B; // burnt amber / copper
-  --mau-accent-hov: #A55421; // darker on hover
-  --mau-muted:      #6E7763; // olive-grey
-  --mau-surface:    #EFE8DD; // soft surface for cards/sections
-  --mau-border:     #DDD5C8; // subtle border
+@include tokens-root;
 
-  // Override Pico CSS custom properties
-  --pico-background-color:          var(--mau-bg) !important;
-  --pico-color:                     var(--mau-text) !important;
-
-  // Force all heading colors to use brand text color for proper contrast
-  --pico-h1-color:                  var(--mau-text) !important;
-  --pico-h2-color:                  var(--mau-text) !important;
-  --pico-h3-color:                  var(--mau-text) !important;
-  --pico-h4-color:                  var(--mau-text) !important;
-  --pico-h5-color:                  var(--mau-text) !important;
-  --pico-h6-color:                  var(--mau-text) !important;
-
-  --pico-primary:                   var(--mau-accent);
-  --pico-primary-background:        var(--mau-accent);
-  --pico-primary-border:            var(--mau-accent);
-  --pico-primary-underline:         rgba(201, 106, 43, 0.4);
-  --pico-primary-hover:             var(--mau-accent-hov);
-  --pico-primary-hover-background:  var(--mau-accent-hov);
-  --pico-primary-hover-border:      var(--mau-accent-hov);
-  --pico-primary-focus:             rgba(201, 106, 43, 0.2);
-  --pico-primary-inverse:           #F7F4EE;
-  --pico-secondary:                 var(--mau-muted);
-  --pico-secondary-background:      var(--mau-muted);
-  --pico-secondary-border:          var(--mau-muted);
-  --pico-card-background-color:     var(--mau-surface);
-  --pico-card-border-color:         var(--mau-border);
-  --pico-muted-color:               var(--mau-muted);
-  --pico-muted-border-color:        var(--mau-border);
-  --pico-border-color:              var(--mau-border);
-
-  // Typography — Google Fonts
-  // Uncomment one pair to test different combinations:
-
-  // Option 1: Jost + IBM Plex Sans (your request — geometric display + technical body)
-  --font-display: 'Jost', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-
-  --pico-font-family-sans-serif: var(--font-body);
-  --pico-font-family: var(--font-body);
-
-  // Reset Pico's fluid font sizing — use fixed 16px base
-  --pico-font-size: 116% !important;
+// ── Pico overrides ─────────────────────────────────────────────────────────
+// Same specificity as Pico's dark block, but this file loads after it.
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --pico-font-family: #{$font-body};
+  --pico-font-family-sans-serif: #{$font-body};
+  --pico-font-size: 100%; // Pico scales this fluidly; keep a fixed 16px base
+  --pico-line-height: 1.5;
+  --pico-background-color: #{$ink};
+  --pico-color: #{$paper};
+  --pico-muted-color: #{$muted-2};
+  --pico-muted-border-color: #{$hairline};
+  --pico-border-color: #{$hairline};
+  --pico-border-radius: #{$r-input};
+  --pico-primary: #{$lime};
+  --pico-primary-background: #{$lime};
+  --pico-primary-border: #{$lime};
+  --pico-primary-hover: #{$lime};
+  --pico-primary-hover-background: #{$lime};
+  --pico-primary-hover-border: #{$lime};
+  --pico-primary-underline: transparent;
+  --pico-primary-focus: rgba(200, 240, 0, 0.35);
+  --pico-primary-inverse: #{$ink};
+  --pico-secondary: #{$muted};
+  --pico-h1-color: #{$paper};
+  --pico-h2-color: #{$paper};
+  --pico-h3-color: #{$paper};
+  --pico-h4-color: #{$paper};
+  --pico-h5-color: #{$paper};
+  --pico-h6-color: #{$paper};
+  --pico-form-element-background-color: transparent;
+  --pico-form-element-border-color: #{$border-ui};
+  --pico-form-element-color: #{$paper};
+  --pico-form-element-placeholder-color: #{$placeholder};
+  --pico-form-element-active-background-color: transparent;
+  --pico-form-element-active-border-color: #{$lime};
+  --pico-form-element-focus-color: #{$lime};
+  --pico-form-element-invalid-border-color: #{$lime};
+  --pico-form-element-invalid-focus-color: #{$lime};
+  --pico-form-element-spacing-vertical: 0.9rem;
+  --pico-form-element-spacing-horizontal: 1.1rem;
+  --pico-block-spacing-vertical: 0;
+  --pico-block-spacing-horizontal: 0;
 }
 
-// ─── Base overrides ───────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: $ink;
+  scroll-behavior: smooth;
+}
 
 body {
-  background-color: var(--mau-bg);
-  color: var(--mau-text);
-}
-
-// Headings — h1 uses display font, h2+ use body font
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-h1 {
-  font-family: var(--font-display);
-  line-height: 1.1;
-}
-
-h2, h3, h4, h5, h6 {
-  font-family: var(--font-body);
-}
-
-h2 {
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-// Links
-a {
-  color: var(--mau-accent);
-  &:hover { color: var(--mau-accent-hov); }
-}
-
-// ─── Layout helpers ───────────────────────────────────────────────────────────
-
-.container {
-  max-width: 1300px;
-  margin-inline: auto;
-  padding-inline: 1.5rem;
-}
-
-.section {
-  padding-block: 5rem;
-}
-
-.section--surface {
-  background-color: var(--mau-surface);
-
-  // Override Pico heading colors for better contrast on mau-surface
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--mau-text);
-  }
-
-  p, li {
-    color: var(--mau-text);
-  }
-}
-
-.section--dark {
-  background-color: var(--mau-text);
-  color: var(--mau-bg);
-
-  h1, h2, h3, h4, p { color: var(--mau-bg); }
-  a { color: var(--mau-accent); }
-}
-
-// ─── Header / Nav ─────────────────────────────────────────────────────────────
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: var(--mau-bg);
-  border-bottom: 1px solid var(--mau-border);
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  padding-block: 1rem;
-}
-
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.85rem;
-  color: var(--mau-text);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.0325em;
-  margin-right: auto; // Push nav items/toggle to the right of the logo
-  order: 0;
-
-  span {
-    color: var(--mau-accent);
-    // letter-spacing: 0.1875em;
-    font-weight: 900; // Fat weight for MAU
-  }
-
-  &:hover { color: var(--mau-text); }
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  list-style: none;
   margin: 0;
+  background: $ink;
+  color: $paper;
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+// Pico adds a max-width container and block padding to header/main/footer; the design
+// controls its own widths and gutters per section.
+body > header,
+body > main,
+body > footer {
   padding: 0;
-  order: 2;
-
-  a {
-    color: var(--mau-text);
-    text-decoration: none;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-transform: uppercase;
-
-    &:hover { color: var(--mau-accent); }
-  }
+  max-width: none;
+  margin: 0;
 }
 
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  order: 3;
-}
-
-.nav-lang {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--mau-muted);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-
-  &:hover { color: var(--mau-accent); }
-}
-
-.nav-cta {
-  display: inline-block;
-  padding: 0.5rem 1.25rem;
-  background-color: var(--mau-accent);
-  color: var(--mau-bg) !important;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    background-color: var(--mau-accent-hov);
-    color: var(--mau-bg) !important;
-  }
-}
-
-// Mobile nav
-.nav-toggle {
-  display: none;
-  order: 1;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.25rem;
-  color: var(--mau-text);
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-@media (max-width: 1170px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav-links,
-  .nav-actions {
-    display: none;
-  }
-
-  // When nav is open (toggled via JS)
-  .nav-inner[data-open='true'] {
-    flex-wrap: wrap;
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
-      gap: 0;
-      border-top: 1px solid var(--mau-border);
-      padding-top: 1rem;
-      margin-top: 0.5rem;
-
-      li { width: 100%; }
-
-      a {
-        display: block;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--mau-border);
-        font-size: 1rem;
-      }
-    }
-
-    .nav-actions {
-      display: flex;
-      width: 100%;
-      padding-bottom: 1rem;
-    }
-  }
-}
-
-// ─── Footer ───────────────────────────────────────────────────────────────────
-
-.site-footer {
-  background-color: var(--mau-text);
-  color: var(--mau-bg);
-  padding-block: 3rem;
-  margin-top: 0;
-
-  a {
-    --pico-background-color: transparent;
-    background-color: transparent;
-  }
-}
-
-.footer-inner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: start;
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-.footer-brand {
-  .footer-logo {
-    font-family: var(--font-display);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--mau-bg);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-
-    span {
-      color: var(--mau-accent);
-      font-weight: 900; // Fat weight for MAU
-    }
-  }
-
-  .footer-tagline {
-    margin-top: 0.5rem;
-    font-size: 0.9375rem;
-    color: rgba(247, 244, 238, 0.6);
-  }
-
-  .footer-NÍTIDA {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-size: 0.8125rem;
-    color: rgba(247, 244, 238, 0.5);
-    text-decoration: none;
-
-    &:hover { color: var(--mau-accent); }
-  }
-}
-
-.footer-nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  h4 {
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(247, 244, 238, 0.5);
-    margin-bottom: 1rem;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
-  li {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    margin: 0;
-    color: rgba(247, 244, 238, 0.75);
-    text-decoration: none;
-    font-size: 0.9375rem;
-
-    &:hover { color: var(--mau-accent); }
-  }
-}
-
-.footer-bottom {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(247, 244, 238, 0.1);
-  font-size: 0.8125rem;
-  color: rgba(247, 244, 238, 0.4);
-}
-
-// ─── Hero ─────────────────────────────────────────────────────────────────────
-
-.hero {
-  padding-block: 6rem 5rem;
-
-  @media (max-width: 640px) {
-    padding-block: 4rem 3rem;
-  }
-}
-
-.hero__eyebrow {
-  display: inline-block;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--mau-muted);
-  margin-bottom: 1.5rem;
-}
-
-.hero__headline {
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: 0.0225em;
-  color: var(--mau-text);
-  margin-bottom: 0.25rem;
-}
-
-.hero__headline--accent {
-  color: var(--mau-accent);
+main {
   display: block;
 }
 
-.hero__subheadline {
-  font-size: clamp(1.0625rem, 2vw, 1.25rem);
-  color: var(--mau-muted);
-  max-width: 560px;
-  margin-top: 1.25rem;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: inherit;
+  font-family: $font-body;
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  --pico-text-decoration: none;
+}
+
+// Text links in running copy (privacy page etc.) opt in with .link
+.link {
+  color: $lime;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+::selection {
+  background: $lime;
+  color: $ink;
+}
+
+// Lime focus ring everywhere (keyboard only)
+:focus-visible {
+  outline: 2px solid $lime;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+// Form fields per README: 56px (52 mobile), transparent, 1px .28 border, radius 14,
+// focus → lime border. Pico's box-shadow focus ring is removed in favour of the border.
+input:not([type='checkbox'], [type='radio']),
+textarea,
+select {
+  background: transparent;
+  color: $paper;
+  border: 1px solid $border-ui;
+  border-radius: $r-input;
+  font: 400 16px/1.4 $font-body;
+  min-height: 56px;
+  margin-bottom: 0;
+  @include bp-mobile {
+    min-height: 52px;
+  }
+
+  &::placeholder {
+    color: $placeholder;
+  }
+
+  &:focus,
+  &:active {
+    border-color: $lime;
+    box-shadow: none;
+    background: transparent;
+  }
+}
+
+textarea {
+  min-height: 0;
+  resize: vertical;
+}
+
+// Visually hidden but readable by screen readers
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// ── Buttons ────────────────────────────────────────────────────────────────
+// Markup: <a class="btn btn--primary" href="…">Label<span class="chev" aria-hidden="true">›</span></a>
+//   variants: btn--primary (lime), btn--secondary (outline), btn--ink (ink on lime bands).
+//   Forward CTAs end in .chev (always ›, never →). Backward/neutral buttons omit it.
+// Chevron nudge: .btn is a flex row with gap 6px; on hover (hover-capable devices only)
+// the gap grows to 10px and margin-right goes -4px, so the button's box — and the
+// neighbours — don't move. Also works on plain links: add class "chev-link".
+.btn,
+.chev-link {
+  display: inline-flex;
   align-items: center;
+  gap: 6px;
+  transition: gap 0.15s, margin 0.15s, background-color 0.2s, color 0.2s;
 }
-
-// ─── Buttons ──────────────────────────────────────────────────────────────────
 
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  text-transform: uppercase;
+  flex: none;
+  white-space: nowrap;
+  justify-content: center;
+  padding: 20px 32px;
+  border: 1px solid transparent;
+  border-radius: $r-pill;
+  font: 700 16px/1 $font-body;
   cursor: pointer;
-  border: 2px solid transparent;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
+  text-decoration: none;
 
-.btn--primary {
-  background-color: var(--mau-accent);
-  color: var(--mau-bg);
-  border-color: var(--mau-accent);
-
-  &:hover {
-    background-color: var(--mau-accent-hov);
-    border-color: var(--mau-accent-hov);
-    color: var(--mau-bg);
+  &--primary {
+    background: $lime;
+    color: $ink;
   }
-}
-
-.btn--secondary {
-  background-color: transparent;
-  color: var(--mau-text);
-  border-color: var(--mau-border);
-
-  &:hover {
-    border-color: var(--mau-accent);
-    color: var(--mau-accent);
-  }
-}
-
-.btn--ghost {
-  background-color: transparent;
-  color: var(--mau-bg);
-  border-color: rgba(247, 244, 238, 0.4);
-
-  &:hover {
-    border-color: var(--mau-accent);
-    color: var(--mau-accent);
-  }
-}
-
-// ─── Section headings ─────────────────────────────────────────────────────────
-
-.section-heading {
-  margin-bottom: 0.5rem;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-}
-
-.section-subheading {
-  color: var(--mau-muted);
-  font-size: 1.0625rem;
-  margin-bottom: 3rem;
-  max-width: 540px;
-}
-
-// ─── Service Cards ────────────────────────────────────────────────────────────
-
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-.service-card {
-  background-color: var(--mau-surface);
-  border: 1px solid var(--mau-border);
-  border-radius: 6px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  // Ensure text has proper contrast on surface background
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--mau-text);
-  }
-
-  &__title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--mau-text);
-    margin: 0;
-  }
-
-  &__problem {
-    font-size: 0.9375rem;
-    color: var(--mau-muted);
-    font-style: italic;
-    margin: 0;
-  }
-
-  &__outcome {
-    font-size: 0.9375rem;
-    color: var(--mau-text);
-    margin: 0;
-    flex: 1;
-  }
-
-  // Fixed prices are a selling point of the Oct 2026 offer, so they sit above the CTA
-  &__price {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--mau-accent);
-    margin: 0;
-  }
-
-  &__cta {
-    margin-top: 1rem;
-    align-self: flex-start;
-    font-size: 0.9375rem;
+  &--secondary {
+    background: transparent;
+    color: $paper;
+    border-color: $border-ui;
     font-weight: 600;
-    color: var(--mau-accent);
-    text-decoration: none;
-
-    &:hover { color: var(--mau-accent-hov); }
-
-    &::after { content: ' →'; }
+  }
+  &--ink {
+    background: $ink;
+    color: $lime;
   }
 }
 
-// ─── AI Block ─────────────────────────────────────────────────────────────────
-
-.ai-block {
-  padding: 3rem;
-  background-color: var(--mau-surface);
-  border-radius: 6px;
-  border-left: 4px solid var(--mau-accent);
-
-  @media (max-width: 640px) {
-    padding: 2rem 1.5rem;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--mau-text);
-    margin-bottom: 1rem;
-  }
-
-  p {
-    color: var(--mau-muted);
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    max-width: 640px;
-    margin: 0;
+@include hover-only {
+  .btn:hover,
+  .chev-link:hover {
+    gap: 10px;
+    margin-right: -4px;
   }
 }
 
-// ─── Process Steps ────────────────────────────────────────────────────────────
-
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-}
-
-.process-step {
-  &__number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--mau-accent);
-    opacity: 0.4;
-    line-height: 1;
-    margin-bottom: 0.75rem;
-  }
-
-  &__title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  &__body {
-    font-size: 0.9375rem;
-    color: var(--mau-muted);
-    line-height: 1.6;
-  }
-}
-
-// ─── CTA Block ────────────────────────────────────────────────────────────────
-
-.cta-block {
-  background-color: var(--mau-text);
-  color: var(--mau-bg);
-  padding: 4rem 3rem;
-  border-radius: 6px;
-  text-align: center;
-
-  @media (max-width: 640px) {
-    padding: 2.5rem 1.5rem;
-  }
-
-  h2 {
-    color: var(--mau-bg);
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 0.75rem;
-  }
-
-  p {
-    color: rgba(247, 244, 238, 0.7);
-    font-size: 1.0625rem;
-    margin-bottom: 2rem;
-    max-width: 480px;
-    margin-inline: auto;
-  }
-}
-
-// ─── Contact Form ─────────────────────────────────────────────────────────────
-
-.contact-form-wrap {
-  max-width: 680px;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-
-  label {
+// Mobile: stacked, full-width buttons (56px primary / 52px secondary)
+@include bp-mobile {
+  .btn--block {
     display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--mau-text);
-  }
-
-  input, select, textarea {
     width: 100%;
-    padding: 0.625rem 0.875rem;
-    border: 1px solid var(--mau-border);
-    border-radius: 4px;
-    background-color: #fff;
-    color: var(--mau-text);
-    font-size: 0.9375rem;
-    font-family: inherit;
-    transition: border-color 0.15s ease;
-
-    &:focus {
-      outline: none;
-      border-color: var(--mau-accent);
-      box-shadow: 0 0 0 3px rgba(201, 106, 43, 0.15);
-    }
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-
-    @media (max-width: 580px) {
-      grid-template-columns: 1fr;
+    height: 56px;
+    padding: 0 20px;
+    &.btn--secondary {
+      height: 52px;
+      font-size: 15px;
     }
   }
 }
 
-// Contact form feedback states
-.form-message {
-  display: none;
-  margin-bottom: 1rem;
-  padding: 0.875rem 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--mau-border);
-  background-color: var(--mau-surface);
-  color: var(--mau-text);
-  font-size: 0.9375rem;
-}
-
-.form-message.success {
-  border-color: #b6d1bb;
-  background-color: #eef7ef;
-  color: #1f5d2b;
-}
-
-.form-message.error {
-  border-color: #d8b6b6;
-  background-color: #f7e9e9;
-  color: #6f1d1b;
-}
-
-.contact-error {
-  display: none;
-  margin-bottom: 1rem;
-  padding: 0.875rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #d8b6b6;
-  background-color: #f7e9e9;
-  color: #6f1d1b;
-  font-size: 0.9375rem;
-}
-
-// Thank-you message
-.contact-thanks {
-  display: none;
-  padding: 2rem;
-  background-color: var(--mau-surface);
-  border: 1px solid var(--mau-border);
-  border-radius: 6px;
-  border-left: 4px solid var(--mau-accent);
-
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--mau-text);
-    margin-bottom: 0.5rem;
+// ── Motion ─────────────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  p { color: var(--mau-muted); margin: 0; }
-}
-
-// ─── Page hero (inner pages) ──────────────────────────────────────────────────
-
-.page-hero {
-  padding-block: 4rem 3rem;
-  border-bottom: 1px solid var(--mau-border);
-  margin-bottom: 3rem;
-
-  h1 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1.0625rem;
-    color: var(--mau-muted);
-    max-width: 540px;
-    line-height: 1.6;
-    margin: 0;
-  }
-}
-
-// ─── About page ───────────────────────────────────────────────────────────────
-
-.NÍTIDA-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background-color: var(--mau-surface);
-  border: 1px solid var(--mau-border);
-  border-radius: 2rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--mau-text); // Changed from --mau-muted for better contrast
-  letter-spacing: 0.04em;
-  margin-bottom: 1.5rem;
-}
-
-.approach-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-
-  .approach-item {
-    h3 {
-      font-size: 1.0625rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 0.9375rem;
-      color: var(--mau-muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-  }
-}
-
-// ─── Service detail page ──────────────────────────────────────────────────────
-
-.service-detail {
-  .detail-section {
-    margin-bottom: 3.5rem;
-
-    h2 {
-      font-size: 1.375rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--mau-accent);
-      display: inline-block;
-    }
-
-    p {
-      font-size: 1.0625rem;
-      line-height: 1.7;
-      color: var(--mau-text);
-      margin-bottom: 1rem;
-
-      &:last-child { margin-bottom: 0; }
-    }
-
-    ul {
-      padding-left: 1.5rem;
-      margin: 1rem 0 0;
-
-      li {
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
-        color: var(--mau-text);
-        line-height: 1.5;
-      }
-    }
-
-    &--price {
-      li { font-weight: 600; }
-      ul + p { margin-top: 1rem; font-size: 0.9375rem; color: var(--mau-muted); }
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }

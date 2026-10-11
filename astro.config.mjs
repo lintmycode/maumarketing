@@ -11,5 +11,10 @@ export default defineConfig({
     '/en/services/landing-pages': '/en/services/mau',
     '/en/services/local-visibility': '/en/services/inspection',
     '/en/services/crm-follow-up': '/en/services/',
+    // Redesign dropped these pages; send them to the services pages
+    '/como-funciona': '/servicos/',
+    '/sobre': '/servicos/',
+    '/en/how-it-works': '/en/services/',
+    '/en/about': '/en/services/',
   },
 });

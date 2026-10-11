@@ -10,6 +10,9 @@ Astro static site (PT default, EN under `/en/`). A NÍTIDA Digital brand.
   `src/pages/sitemap.xml.ts` and `src/pages/llms.txt.ts` (generated from the i18n copy), `public/robots.txt` (AI crawlers allowed).
   No og:image yet and no GA4 yet (needs a measurement ID + consent).
 - Old service URLs are redirected in `astro.config.mjs` — add a redirect when renaming a page.
-- Styles: `src/styles/global.scss`. A new theme is in progress (design team), so keep styling changes minimal.
+- Styles (dark redesign, SCSS only): tokens + mixins in `src/styles/_tokens.scss` (use `@use '../styles/tokens' as *;` in component `<style lang="scss">`; also exposed as `--lime`, `--paper`… CSS vars); base, Pico overrides, `.btn` / `.chev` in `src/styles/global.scss`. Spec: `design/handoff/design_handoff_mau_site/README.md`.
+- Site constants (`EMAIL`, `bookingUrl(lang)`, `paths`) in `src/data/site.ts`; "Marcar chamada" goes to `/contacto#falar` (no booking tool, decided 2026-10-11).
+- Share image: `design/og/og.html` rendered to `public/og.png` (1200x630) with headless Chrome `--screenshot`.
+- "Como funciona" / "Sobre" pages were dropped; their URLs redirect to the services pages (astro.config.mjs).
 - `node_modules` may come from another machine; if the build fails on `@rollup/rollup-darwin-arm64`, run
   `npm i --no-save @rollup/rollup-darwin-arm64@<rollup version>`.

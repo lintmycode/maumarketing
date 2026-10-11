@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt"><head><meta charset="utf-8"><title>MAU og:image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0d0d0b}
+.card{width:1200px;height:630px;background:#0d0d0b;color:#f2f0e9;padding:64px 72px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:center;overflow:hidden}
+.l{display:flex;flex-direction:column;height:100%;justify-content:space-between}
+.mark{font:400 26px/1 'Archivo Black',sans-serif;letter-spacing:-.02em}
+h1{margin:0;font:400 76px/.98 'Archivo Black',sans-serif;letter-spacing:-.045em;text-transform:uppercase}
+h1 span,.sub span{color:#c8f000}
+.sub{font:600 22px/1 Archivo,sans-serif;color:rgba(242,240,233,.75)}
+.lime{background:#c8f000;border-radius:28px;padding:22px;transform:rotate(2deg)}
+/* Agent demo, copied from the handoff's Agent Demo mock (pt) */
+.demo{background:#0d0d0b;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;font-family:Archivo,sans-serif}
+.from{font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,240,233,.5)}
+.bub{align-self:flex-start;background:#c8f000;color:#0d0d0b;border-radius:16px 16px 16px 4px;padding:12px 14px 8px;font:600 16px/1.3 Archivo,sans-serif;max-width:260px}
+.bub i{display:block;text-align:right;font:500 10px/1 'IBM Plex Mono',monospace;color:rgba(13,13,11,.55);margin-top:6px;font-style:normal}
+.after{font:500 11px/1 'IBM Plex Mono',monospace;color:#c8f000}
+.br{background:#f2f0e9;color:#0d0d0b;border-radius:10px;overflow:hidden}
+.bar{display:flex;gap:5px;align-items:center;padding:8px 10px;border-bottom:1px solid rgba(13,13,11,.1)}
+.bar b{width:7px;height:7px;border-radius:50%;background:rgba(13,13,11,.2)}
+.bar em{margin-left:6px;font:500 10px/1 'IBM Plex Mono',monospace;color:rgba(13,13,11,.5);font-style:normal}
+.rows{padding:12px 14px 14px;display:grid;gap:6px;font:400 13px/1.2 Archivo,sans-serif}
+.rows h4{margin:0 0 2px;font:800 12px/1 Archivo,sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.r{display:flex;justify-content:space-between;align-items:center;padding:4px 6px}
+.r.hl{background:#c8f000;border-radius:4px;font-weight:700;gap:8px}
+.r.hl s{font:600 9px/1 'IBM Plex Mono',monospace;text-transform:uppercase;background:#0d0d0b;color:#c8f000;padding:3px 4px;border-radius:3px;text-decoration:none;margin-right:6px}
+.r.dim{color:rgba(13,13,11,.5)}
+</style></head><body>
+<div class="card">
+ <div class="l">
+  <span class="mark">MAU</span>
+  <h1>Nem todo o marketing é <span>MAU</span>. Mas devia.</h1>
+  <span class="sub">Site + Google + agente · <span>49€/mês</span></span>
+ </div>
+ <div class="lime"><div class="demo">
+  <span class="from">Tu → agente MAU</span>
+  <div class="bub">sábado abrimos das 9h às 13h<i>10:42 ✓✓</i></div>
+  <span class="after">→ 40 s depois</span>
+  <div class="br"><div class="bar"><b></b><b></b><b></b><em>oteunegocio.pt</em></div>
+   <div class="rows"><h4>Horário</h4>
+    <div class="r"><span>Seg–Sex</span><span>9h–19h</span></div>
+    <div class="r hl"><span>Sábado</span><span><s>novo</s>9h–13h</span></div>
+    <div class="r dim"><span>Domingo</span><span>Fechado</span></div></div></div>
+ </div></div>
+</div></body></html>

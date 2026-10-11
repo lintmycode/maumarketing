@@ -1,7 +1,7 @@
 // Site-wide constants and path helpers shared by pages and components.
 import type { Lang } from '../i18n/index';
 
-export const EMAIL = 'ola@maumarketing.pt'; // inbox must exist before deploy
+export const EMAIL = 'ola@maumarketing.pt';
 
 // Canonical page paths per language (trailing slash matches the directory build)
 export const paths = {

@@ -68,7 +68,7 @@ export const pt: Record<string, string> = {
   // ─── Inspeção ─────────────────────────────────────────────────────────────────────
   'service.inspecao.title': 'Inspeção',
   'service.inspecao.problem': 'Já tens site? Leva-o à inspeção.',
-  'service.inspecao.outcome': 'Auditoria, correções de SEO e Google Business, Analytics e Search Console ligados. Sai com selo.',
+  'service.inspecao.outcome': 'Auditoria completa com lista de prioridades, e Google Business, Analytics e Search Console ligados. Sai com a ficha da inspeção.',
   'service.inspecao.price': '349€, uma vez',
   'service.inspecao.href': '/servicos/inspecao',
 
@@ -149,7 +149,7 @@ export const pt: Record<string, string> = {
   'mau-page.price.heading': 'Preço',
   'mau-page.price.item1': 'Arranque — 99€',
   'mau-page.price.item2': '49€/mês, mínimo 12 meses',
-  'mau-page.price.note': 'Preços sem IVA. Queres sair antes dos 12 meses? Pagas o que falta, ou 300€ e o site fica teu.',
+  'mau-page.price.note': 'Preços sem IVA.',
 
   // ─── MUITO MAU Plan Page ──────────────────────────────────────────────────────────
   'muito-mau-page.title': 'MUITO MAU — WordPress com Tema à Medida — MAU Marketing',
@@ -173,21 +173,21 @@ export const pt: Record<string, string> = {
   'muito-mau-page.price.note': 'Preços sem IVA. Precisas de algo ainda maior? Isso já é conversa para a NÍTIDA Digital.',
 
   // ─── Inspeção Page ────────────────────────────────────────────────────────────────
-  'inspecao-page.title': 'Inspeção — Auditoria, SEO e Google — MAU Marketing',
-  'inspecao-page.description': 'Já tens site? Auditoria, correções de SEO e Google Business, Analytics e Search Console ligados. 349€.',
+  'inspecao-page.title': 'Inspeção — Auditoria e Google — MAU Marketing',
+  'inspecao-page.description': 'Já tens site? Auditoria completa com prioridades, e Google Business, Analytics e Search Console ligados. 349€.',
   'inspecao-page.hero.heading': 'Já tens site? Leva-o à inspeção.',
-  'inspecao-page.hero.subheading': 'Vemos o que está partido, corrigimos o que trava o Google e ligamos tudo: Business Profile, Analytics e Search Console. Sai com selo.',
+  'inspecao-page.hero.subheading': 'Vemos o que está partido, dizemos-te por que ordem arranjar e ligamos tudo ao Google: Business Profile, Analytics e Search Console. Sai com a ficha da inspeção.',
   'inspecao-page.problem.heading': 'O problema',
   'inspecao-page.problem.body': 'Google Business meio preenchido. Analytics que ninguém configurou. Search Console que nunca ninguém abriu. Títulos em falta, páginas lentas, erros que ninguém vê. Resultado: o concorrente aparece, tu não.',
-  'inspecao-page.what.heading': 'O que verificamos (e arranjamos)',
-  'inspecao-page.what.body': 'Diagnóstico, reparação, medição. Por esta ordem.',
+  'inspecao-page.what.heading': 'O que verificamos',
+  'inspecao-page.what.body': 'Diagnóstico e medição. As reparações ficam à parte.',
   'inspecao-page.what.item1': 'Auditoria técnica e de SEO, com prioridades claras',
-  'inspecao-page.what.item2': 'Correções no site: títulos, descrições, velocidade, erros de indexação',
+  'inspecao-page.what.item2': 'Lista de reparações por prioridade: o que arranjar primeiro e porquê',
   'inspecao-page.what.item3': 'Google Business Profile completo e com boa cara',
   'inspecao-page.what.item4': 'Google Analytics 4 a contar contactos, chamadas e cliques no WhatsApp',
-  'inspecao-page.what.item5': 'Search Console ligada, sitemap submetido, erros resolvidos',
+  'inspecao-page.what.item5': 'Search Console ligada e sitemap submetido',
   'inspecao-page.outcome.heading': 'O que podes esperar',
-  'inspecao-page.outcome.body': 'Saber exatamente como está o site, aparecer onde eras invisível e começar a contar os contactos que chegam. Gostaste? Passa para o MAU e fica tudo tratado todos os meses.',
+  'inspecao-page.outcome.body': 'Saber exatamente como está o site, aparecer no Google e começar a contar os contactos que chegam. Queres as reparações feitas? Orçamentamos à parte — ou passas para o MAU e fica tudo resolvido.',
   'inspecao-page.price.heading': 'Preço',
   'inspecao-page.price.item1': 'Inspeção completa — 349€',
   'inspecao-page.price.note': 'Preço sem IVA, pagamento único.',

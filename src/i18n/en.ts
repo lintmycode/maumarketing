@@ -68,7 +68,7 @@ export const en: Record<string, string> = {
   // ─── Inspeção ─────────────────────────────────────────────────────────────────────
   'service.inspecao.title': 'Inspection',
   'service.inspecao.problem': 'Already have a site? Bring it in for inspection.',
-  'service.inspecao.outcome': 'Audit, SEO fixes, and Google Business, Analytics and Search Console connected. Leaves with a pass sticker.',
+  'service.inspecao.outcome': 'A full audit with a priority list, plus Google Business, Analytics and Search Console connected. Leaves with an inspection report.',
   'service.inspecao.price': '€349, once',
   'service.inspecao.href': '/en/services/inspection',
 
@@ -149,7 +149,7 @@ export const en: Record<string, string> = {
   'mau-page.price.heading': 'Price',
   'mau-page.price.item1': 'Setup — €99',
   'mau-page.price.item2': '€49/month, 12-month minimum',
-  'mau-page.price.note': 'Prices exclude VAT. Want out before 12 months? Pay the remaining months, or €300 and the site is yours.',
+  'mau-page.price.note': 'Prices exclude VAT.',
 
   // ─── MUITO MAU Plan Page ──────────────────────────────────────────────────────────
   'muito-mau-page.title': 'MUITO MAU — WordPress with a Custom Theme — MAU Marketing',
@@ -173,21 +173,21 @@ export const en: Record<string, string> = {
   'muito-mau-page.price.note': 'Prices exclude VAT. Need something even bigger? That is a job for NÍTIDA Digital.',
 
   // ─── Inspeção Page ────────────────────────────────────────────────────────────────
-  'inspecao-page.title': 'Inspection — Audit, SEO and Google — MAU Marketing',
-  'inspecao-page.description': 'Already have a site? Audit, SEO fixes, and Google Business, Analytics and Search Console connected. €349.',
+  'inspecao-page.title': 'Inspection — Audit and Google — MAU Marketing',
+  'inspecao-page.description': 'Already have a site? A full audit with priorities, plus Google Business, Analytics and Search Console connected. €349.',
   'inspecao-page.hero.heading': 'Already have a site? Bring it in for inspection.',
-  'inspecao-page.hero.subheading': "We find what's broken, fix what's holding Google back and connect everything: Business Profile, Analytics and Search Console. Leaves with a pass sticker.",
+  'inspecao-page.hero.subheading': "We find what's broken, tell you what to fix first and connect everything to Google: Business Profile, Analytics and Search Console. Leaves with an inspection report.",
   'inspecao-page.problem.heading': 'The problem',
   'inspecao-page.problem.body': "Google Business half-filled. Analytics nobody set up. Search Console nobody ever opened. Missing titles, slow pages, errors nobody sees. Result: your competitor shows up, you don't.",
-  'inspecao-page.what.heading': 'What we check (and fix)',
-  'inspecao-page.what.body': 'Diagnose, repair, measure. In that order.',
+  'inspecao-page.what.heading': 'What we check',
+  'inspecao-page.what.body': 'Diagnose and measure. Repairs are separate.',
   'inspecao-page.what.item1': 'Technical and SEO audit with clear priorities',
-  'inspecao-page.what.item2': 'On-site fixes: titles, descriptions, speed, indexing errors',
+  'inspecao-page.what.item2': 'A repair list by priority: what to fix first and why',
   'inspecao-page.what.item3': 'A complete, good-looking Google Business Profile',
   'inspecao-page.what.item4': 'Google Analytics 4 counting contacts, calls and WhatsApp clicks',
-  'inspecao-page.what.item5': 'Search Console connected, sitemap submitted, errors fixed',
+  'inspecao-page.what.item5': 'Search Console connected and sitemap submitted',
   'inspecao-page.outcome.heading': 'What to expect',
-  'inspecao-page.outcome.body': 'Know exactly where your site stands, show up where you were invisible, and start counting the contacts that come in. Liked it? Move to MAU and it all gets handled every month.',
+  'inspecao-page.outcome.body': 'Know exactly where your site stands, show up on Google and start counting the contacts that come in. Want the repairs done? We quote them separately — or move to MAU and it all gets sorted.',
   'inspecao-page.price.heading': 'Price',
   'inspecao-page.price.item1': 'Full inspection — €349',
   'inspecao-page.price.note': 'Price excludes VAT, one-off payment.',

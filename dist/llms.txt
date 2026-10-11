@@ -1,0 +1,21 @@
+# MAU Marketing
+
+> Nem todo o marketing é MAU. Mas devia. Site, Google e um agente que muda o site quando lhe mandas mensagem. Desde 49€/mês. Sem reuniões, sem PowerPoints, sem gravatas. MAU Marketing é uma marca da NÍTIDA Digital (https://nitida.pt), em Portugal. Preços sem IVA.
+
+## Serviços
+
+- [MAU](https://maumarketing.pt/servicos/mau/): Site, Google e um agente: mandas mensagem, o site muda. Custa menos do que o café da equipa. E trabalha mais. Preço: 99€ de arranque + 49€/mês.
+- [MUITO MAU](https://maumarketing.pt/servicos/muito-mau/): WordPress com tema à medida. Nada de templates que o vizinho também tem. Tudo do MAU, mais páginas, catálogo, blog e uma cara que ninguém confunde. Preço: 1.490€ + 99€/mês.
+- [Auditoria](https://maumarketing.pt/servicos/auditoria/): Já tens site? Leva-o à inspecção. Auditoria completa com lista de prioridades, e Google Business, Analytics e Search Console ligados. Sai com a ficha da inspecção. Preço: 249€, uma vez.
+
+## Páginas
+
+- [Serviços](https://maumarketing.pt/servicos/): Fazemos o site, pomos-te no Google e tratamos das alterações por ti. Só tens de escolher quão MAU queres ser. Preços sem IVA.
+- [Contacto](https://maumarketing.pt/contacto/): Fala connosco sobre o teu negócio. Sem compromisso, sem pitch agressivo.
+
+## English
+
+- [MAU](https://maumarketing.pt/en/services/mau/): A website, Google and an agent: text it, and your site changes. Price: €99 setup + €49/month.
+- [MUITO MAU (very bad)](https://maumarketing.pt/en/services/muito-mau/): WordPress with a custom theme. No templates your neighbour also has. Price: €1,490 + €99/month.
+- [Audit](https://maumarketing.pt/en/services/audit/): Already have a site? Bring it in for inspection. Price: €249, once.
+- [Contact](https://maumarketing.pt/en/contact/)

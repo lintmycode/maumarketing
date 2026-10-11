@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CTABlock from '../../../components/CTABlock.astro';
+import { useTranslations } from '../../../i18n/index';
+
+const lang = 'en';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={t('care-page.title')}
+  description={t('care-page.description')}
+  lang={lang}
+  alternateLangUrl="/servicos/plano-mensal"
+>
+  <div class="page-hero">
+    <div class="container">
+      <h1>{t('care-page.hero.heading')}</h1>
+      <p>{t('care-page.hero.subheading')}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container service-detail">
+      <div class="detail-section">
+        <h2>{t('care-page.problem.heading')}</h2>
+        <p>{t('care-page.problem.body')}</p>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('care-page.what.heading')}</h2>
+        <p>{t('care-page.what.body')}</p>
+        <ul>
+          <li>{t('care-page.what.item1')}</li>
+          <li>{t('care-page.what.item2')}</li>
+          <li>{t('care-page.what.item3')}</li>
+          <li>{t('care-page.what.item4')}</li>
+          <li>{t('care-page.what.item5')}</li>
+        </ul>
+      </div>
+
+      <div class="detail-section">
+        <h2>{t('care-page.outcome.heading')}</h2>
+        <p>{t('care-page.outcome.body')}</p>
+      </div>
+
+      <div class="detail-section detail-section--price">
+        <h2>{t('care-page.price.heading')}</h2>
+        <ul>
+          <li>{t('care-page.price.item1')}</li>
+          <li>{t('care-page.price.item2')}</li>
+        </ul>
+        <p>{t('care-page.price.note')}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABlock
+    heading={t('cta.default.heading')}
+    body={t('cta.default.body')}
+    buttonLabel={t('cta.default.button')}
+    buttonHref="/en/contact"
+  />
+</BaseLayout>

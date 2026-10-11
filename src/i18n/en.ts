@@ -60,14 +60,14 @@ export const en: Record<string, string> = {
   'service.muito-mau.price': '€1,490 + €99/month',
 
   // ─── Inspeção ─────────────────────────────────────────────────────────────────────
-  'service.inspecao.title': 'Inspection',
+  'service.inspecao.title': 'Audit',
   'service.inspecao.problem': 'Already have a site? Bring it in for inspection.',
   'service.inspecao.outcome': 'A full audit with a priority list, plus Google Business, Analytics and Search Console connected. Leaves with an inspection report.',
   'service.inspecao.price': '€249, once',
 
   // ─── Services Overview Page ───────────────────────────────────────────────────
   'services-page.title': 'Services — MAU Marketing',
-  'services-page.description': 'MAU: website, Google and an agent for €49/month. MUITO MAU: custom WordPress. Inspection: audit, SEO and Google for existing sites.',
+  'services-page.description': 'MAU: website, Google and an agent for €49/month. MUITO MAU: custom WordPress. Audit: SEO and Google for existing sites.',
   'services-page.intro': 'We build the site, put you on Google and handle the changes for you. All you do is pick how MAU (bad) you want to be. Prices exclude VAT.',
 
   // ─── MAU Plan Page ────────────────────────────────────────────────────────────────
@@ -79,7 +79,7 @@ export const en: Record<string, string> = {
   'muito-mau-page.description': 'WordPress with a custom design, an agent for updates by message, maintenance and reports. €1,490 + €99/month.',
 
   // ─── Inspeção Page ────────────────────────────────────────────────────────────────
-  'inspecao-page.title': 'Inspection — Audit and Google — MAU Marketing',
+  'inspecao-page.title': 'Audit — SEO and Google — MAU Marketing',
   'inspecao-page.description': 'Already have a site? A full audit with priorities, plus Google Business, Analytics and Search Console connected. €249.',
 
   // ─── Serviços (redesign) ──────────────────────────────────────────────────────

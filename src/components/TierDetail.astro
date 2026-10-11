@@ -222,7 +222,7 @@ const sheetList = [1, 2, 3, 4].map((n) => t(`sv.in.l${n}`));
     line-height: 0.9;
     letter-spacing: -0.05em;
     @include bp-mobile {
-      // 13vw: EN "INSPECTION" (10 letters) overflowed a 390px screen at 15vw
+      // 13vw keeps the longest tier word (PT "AUDITORIA") inside a 390px screen
       font-size: clamp(40px, 13vw, 72px);
     }
   }

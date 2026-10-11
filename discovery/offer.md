@@ -11,7 +11,7 @@ Headline: **Nem todo o marketing é MAU. / Mas devia.** (EN: *Not all marketing 
 |---|---|---|---|---|
 | **MAU** | €99 setup + €49/mo, 12-mo min | Static (Astro) site ≤6 pages, Google trio (GBP + GA4 + Search Console) + schema JSON-LD, WhatsApp/call buttons, hosting, monthly report, agent (≤10 simple requests/mo) | `service.mau.*`, `mau-page.*` | `/servicos/mau` · `/en/services/mau` |
 | **MUITO MAU** | €1,490 + €99/mo, 12-mo min | WordPress with custom theme, unlimited pages, catalogue/stock/blog, WP updates, custom schema for catalogue/events, agent (≤25 requests/mo) | `service.muito-mau.*`, `muito-mau-page.*` | `/servicos/muito-mau` · `/en/services/muito-mau` |
-| **Inspeção** | €249 one-off | Audit + priority repair list + GBP, GA4, Search Console + schema setup — no fixes (quoted separately, or move to MAU) | `service.inspecao.*`, `inspecao-page.*` | `/servicos/inspecao` · `/en/services/inspection` |
+| **Auditoria** | €249 one-off | Audit + priority repair list + GBP, GA4, Search Console + schema setup — no fixes (quoted separately, or move to MAU) | `service.inspecao.*`, `inspecao-page.*` | `/servicos/auditoria` · `/en/services/audit` |
 
 The agent works on both stacks: on static sites it edits the Astro content and a human approves the build/deploy;
 on WordPress it edits through WP. Every change gets a human review before it goes live.
@@ -27,7 +27,7 @@ Businesses with stock or a catalogue (e.g. car dealers) are MUITO MAU — MAU ha
 - MAU: a 6-page static build costs ~€300–400 of time; €99 + €49/mo pays it back in ~7 months. Year one €687, then €588/yr.
   The 12-month minimum is what makes the €99 setup safe. No early exit, no buyout.
 - MAU vs market: DIY builders ~€25/mo with no human; "unlimited edits" agencies start ~€200/mo. €49 with an agent sits in the gap.
-- Inspeção: ~5 h (audit + Google setup, no fixes). Priced low as the easy first yes that leads into MAU.
+- Auditoria: ~5 h (audit + Google setup, no fixes). Priced low as the easy first yes that leads into MAU.
 - MUITO MAU: custom theme ~25–30 h. Kept well under NÍTIDA's custom work — the page says "bigger than this is a NÍTIDA job".
 - Monthly cost is mostly human review time; the agent's model cost is cents per edit. Request caps limit review time.
 
@@ -37,7 +37,8 @@ Businesses with stock or a catalogue (e.g. car dealers) are MUITO MAU — MAU ha
 - Agent caps: 10 requests/mo (MAU), 25 requests/mo (MUITO MAU).
 - Google trio (GBP, GA4, Search Console) + schema JSON-LD are in every tier.
 - AI-ready in every tier: llms.txt, robots.txt allowing AI crawlers, sitemap. maumarketing.pt itself ships all of it.
-- MAU: 12-month minimum, no early exit. Inspeção: no fixes, €249.
+- MAU: 12-month minimum, no early exit. Auditoria: no fixes, €249.
+- Inspeção renamed to Auditoria (2026-10-11); the car-inspection metaphor stays in the copy ("Leva-o à inspeção", inspection sheet, stamp).
 
 ## Open decisions
 

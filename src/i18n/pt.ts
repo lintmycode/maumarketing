@@ -61,14 +61,14 @@ export const pt: Record<string, string> = {
   'service.muito-mau.price': '1.490€ + 99€/mês',
 
   // ─── Inspeção ─────────────────────────────────────────────────────────────────────
-  'service.inspecao.title': 'Inspeção',
+  'service.inspecao.title': 'Auditoria',
   'service.inspecao.problem': 'Já tens site? Leva-o à inspeção.',
   'service.inspecao.outcome': 'Auditoria completa com lista de prioridades, e Google Business, Analytics e Search Console ligados. Sai com a ficha da inspeção.',
   'service.inspecao.price': '249€, uma vez',
 
   // ─── Services Overview Page ───────────────────────────────────────────────────
   'services-page.title': 'Serviços — MAU Marketing',
-  'services-page.description': 'MAU: site, Google e agente por 49€/mês. MUITO MAU: WordPress à medida. Inspeção: auditoria, SEO e Google para quem já tem site.',
+  'services-page.description': 'MAU: site, Google e agente por 49€/mês. MUITO MAU: WordPress à medida. Auditoria: SEO e Google para quem já tem site.',
   'services-page.intro': 'Fazemos o site, pomos-te no Google e tratamos das alterações por ti. Só tens de escolher quão MAU queres ser. Preços sem IVA.',
 
   // ─── MAU Plan Page ────────────────────────────────────────────────────────────────
@@ -80,7 +80,7 @@ export const pt: Record<string, string> = {
   'muito-mau-page.description': 'WordPress com design à medida, agente para atualizações por mensagem, manutenção e relatórios. 1.490€ + 99€/mês.',
 
   // ─── Inspeção Page ────────────────────────────────────────────────────────────────
-  'inspecao-page.title': 'Inspeção — Auditoria e Google — MAU Marketing',
+  'inspecao-page.title': 'Auditoria — SEO e Google — MAU Marketing',
   'inspecao-page.description': 'Já tens site? Auditoria completa com prioridades, e Google Business, Analytics e Search Console ligados. 249€.',
 
   // ─── Serviços (redesign) ──────────────────────────────────────────────────────

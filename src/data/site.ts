@@ -10,8 +10,8 @@ export const GA_ID = 'G-FPTQ0SHX6T';
 export const paths = {
   home: { pt: '/', en: '/en/' },
   services: { pt: '/servicos/', en: '/en/services/' },
-  contact: { pt: '/contacto', en: '/en/contact' },
-  privacy: { pt: '/privacidade', en: '/en/privacy' },
+  contact: { pt: '/contacto/', en: '/en/contact/' },
+  privacy: { pt: '/privacidade/', en: '/en/privacy/' },
 } as const;
 
 // "Marcar chamada" target: calls are booked through the contact page (decided 2026-10-11).

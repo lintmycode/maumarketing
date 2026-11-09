@@ -38,4 +38,9 @@ Live on **jaws** (NÍTIDA's nginx box behind Cloudflare; static vhost serving `d
 
 - [x] `ola@maumarketing.pt` inbox exists (shown on the site, used in the privacy page). Done 2026-10-11.
 - [x] Send one real test through the contact form and check the EmailJS template still renders (subject is now "Contacto pelo site"). Done 2026-10-11.
-- [ ] Rebuild `dist/` (it is tracked in git).
+- [x] Rebuild `dist/` (it is tracked in git).
+
+**Redesign live since 2026-11-09** (jaws `/var/www/maumarketing` fast-forwarded from `0ff19ab`, the May 2026 site).
+Deploy = commit the rebuilt `dist/`, merge, then on jaws:
+`cd /var/www/maumarketing && GIT_SSH_COMMAND="ssh -i ~/.ssh/maumarketing -o IdentitiesOnly=yes" git pull --ff-only`.
+Internal links and redirect targets end in `/` (pages are `<page>/index.html`; nginx 301s the slashless form).

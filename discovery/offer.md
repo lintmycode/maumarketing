@@ -53,6 +53,7 @@ Infra decisions: `~/projects/sys/specs/site-agent.md`.
 | Setup | **none** (Nuno, 2026-11-10). Setup time (~2–4 h/site) is paid back from the monthly fee in ~5 months, so the monthly option needs a minimum term |
 | Extra site on the same bot | +€10/mo |
 | Extra request over the cap | €5 |
+| Domain | **not included**: billed yearly at renewal, or the client keeps their own registrar (2026-11-10) |
 | WhatsApp | later, as a paid extra (price TBD). **Launch is Telegram only** (2026-11-10) |
 
 Includes: hosting on jaws, WP core/plugin updates (already part of yearly hosting, so they stay in),

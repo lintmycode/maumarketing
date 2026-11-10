@@ -53,6 +53,7 @@ Infra decisions: `~/projects/sys/specs/site-agent.md`.
 | Setup | €99 (connect the site, agent user, map post types/fields, test) |
 | Extra site on the same bot | +€10/mo |
 | Extra request over the cap | €5 |
+| WhatsApp | later, as a paid extra (price TBD). **Launch is Telegram only** (2026-11-10) |
 
 Includes: hosting on jaws, WP core/plugin updates (already part of yearly hosting, so they stay in),
 agent with **10 requests/mo**, one site, one language. The client approves each change ("Publicar");

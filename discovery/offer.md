@@ -40,43 +40,40 @@ Businesses with stock or a catalogue (e.g. car dealers) are MUITO MAU — MAU ha
 - MAU: 12-month minimum, no early exit. Auditoria: no fixes, €249.
 - Inspeção renamed to Auditoria (2026-10-11); the car-inspection metaphor stays in the copy ("Leva-o à inspeção", inspection sheet, stamp).
 
-## Agente WP — standalone agent for existing WordPress sites (decided 2026-11-10)
+## Agente WP — the package (closed 2026-11-10)
 
-The MAU agent sold on its own to NÍTIDA's existing WordPress clients on jaws. It **replaces the yearly
-hosting line** (that's the pitch: same hosting + updates, plus "manda mensagem, o site muda").
-Infra decisions: `~/projects/sys/specs/site-agent.md`.
+The MAU agent sold on its own to existing NÍTIDA clients (WordPress or static) on jaws. It **replaces the
+yearly hosting line**: same hosting and updates, plus "manda mensagem, o site muda".
+Infra: `~/projects/sys/specs/site-agent.md`.
 
-| | Price (+IVA) |
-|---|---|
-| Monthly | **€29/mo, static or WordPress** (one price, decided 2026-11-10) |
-| Annual (2 months free) | €290/yr, prepaid |
-| Setup | **none** (Nuno, 2026-11-10). Setup time (~2–4 h/site) is paid back from the monthly fee in ~5 months, so the monthly option needs a minimum term |
-| Extra site on the same bot | +€10/mo |
-| Extra request over the cap | €5 |
-| Domain | **not included**: billed yearly at renewal, or the client keeps their own registrar (2026-11-10) |
-| WhatsApp | later, as a paid extra (price TBD). **Launch is Telegram only** (2026-11-10) |
+**€29/mo +IVA** (or €290/yr prepaid, 2 months free). No setup fee. Includes:
 
-Includes: hosting on jaws, WP core/plugin updates (already part of yearly hosting, so they stay in),
-agent with **10 requests/mo**, one site, one language. The client approves each change ("Publicar");
-Nuno sees every change and can undo. Below MAU (€49: new site + reports) and MUITO MAU (€99: 25 requests).
+- hosting on jaws + WP core/plugin updates (as in today's yearly hosting);
+- **10 agent updates/month on Telegram**, one bot per client; the client approves each one ("Publicar"),
+  Nuno sees every change and can undo;
+- **images become content**: a poster, vehicle photos or a spec sheet sent to the bot turns into a post,
+  event or listing;
+- wp-admin stays available: editing by hand doesn't count against the 10.
 
-Internal: direct cost ≈ €5–6/site/month (model ~€1 at one post a week, VPS ~€5 shared, jaws share ~€2.50),
-so ~€23/site/month before Nuno's time. Works if updates are batched across sites (wp-cli) and time
-stays under ~30 min/site/month.
+Not included: domain (billed yearly at renewal, or the client keeps their own registrar). Extras, priced
+later: updates over the cap (€5 proposed), WhatsApp, extra site on the same bot (+€10 proposed).
 
-Who (annual figures at the monthly price, +IVA):
-- **Viking Cars** — best use case (add/update a vehicle from photos). Overdue invoice paid (2026-11-10).
-  Today €120/yr → €348/yr (€290 prepaid). Setup (mapping the vehicle post type and fields) is on us.
-- **PrismInfinito** — **€29 for both sites for now** (Nuno, 2026-11-10): today's €120/yr covers 2 sites
-  and only one gets updates, so no +€10 yet. €348/yr (€290 prepaid). Margin ~€21/mo (two jaws shares).
-- **CINCA** — not on this plan: Nuno is building a CINCA retainer that includes the agent at €29 or a
-  higher update package (2026-11-10). See `~/Documents/todo/cinca.md`.
-- **Not moving:** Casino, JNA, Vinyldisc keep yearly hosting.
-- Static sites: parked until a static client wants it (MAU already includes the agent).
+**Early adopters / proof of concept: Viking Cars and PrismInfinito** (both €120/yr today).
+- Viking: vehicles from photos is the showcase. €348/yr (€290 prepaid). Overdue invoice paid 2026-11-10.
+- Prism: €29 covers both sites for now (only one gets updates today).
+- CINCA: inside its own retainer (agent at €29 or a bigger update package). Casino, JNA, Vinyldisc keep yearly hosting.
+
+Internal (never on the site):
+- Setup target **≤ 2 h per site**, repeatable (`wp-mu-agent` + one client config file). For the
+  early adopters Nuno's time is the investment; no setup fee.
+- Per site/month: model ~€1–2, VPS ~€1.70 (€5 shared), jaws share ~€2.43 → margin ~€21–23.
+  Viking + Prism: €696/yr revenue (€580 prepaid) vs €240 today; margin ~€533/yr (€417 prepaid).
+- Relation to tiers: MAU (€49) adds a new site + reports; MUITO MAU (€99) adds a custom WP build + 25 updates.
 
 ## Open decisions
 
 - ~~Existing hosting clients on cheap annual plans: move them to MAU or leave them as they are?~~
-  Leave them; offer Agente WP to Viking, Prism, CINCA (2026-11-10).
-- Agente WP: minimum term for the monthly option (proposed 6 months).
+  Leave them; Viking and Prism move to Agente WP as early adopters (2026-11-10).
+- Agente WP: minimum term for the monthly option; whether "inbox" (form messages to Telegram) joins the
+  base package; WhatsApp price.
 - Old service URLs redirect via `astro.config.mjs`. Earlier drafts (2-day launch, AI updates, custom CRM) are in `_drafts/`.

@@ -50,7 +50,7 @@ Infra decisions: `~/projects/sys/specs/site-agent.md`.
 |---|---|
 | Monthly | **€29/mo, static or WordPress** (one price, decided 2026-11-10) |
 | Annual (2 months free) | €290/yr, prepaid |
-| Setup | €99 (connect the site, agent user, map post types/fields, test) |
+| Setup | **none** (Nuno, 2026-11-10). Setup time (~2–4 h/site) is paid back from the monthly fee in ~5 months, so the monthly option needs a minimum term |
 | Extra site on the same bot | +€10/mo |
 | Extra request over the cap | €5 |
 | WhatsApp | later, as a paid extra (price TBD). **Launch is Telegram only** (2026-11-10) |
@@ -65,7 +65,7 @@ stays under ~30 min/site/month.
 
 Who (annual figures at the monthly price, +IVA):
 - **Viking Cars** — best use case (add/update a vehicle from photos). Overdue invoice paid (2026-11-10).
-  €348/yr (€290 prepaid) + €99 setup; setup includes mapping the vehicle post type and fields.
+  Today €120/yr → €348/yr (€290 prepaid). Setup (mapping the vehicle post type and fields) is on us.
 - **PrismInfinito** — €29 + €10 for assistencia = €468/yr (€390 prepaid) vs €120 today. Only sells if
   they post regularly.
 - **CINCA** — €29 does not cover their dedicated hosting (€420/yr, floor €360). At the mid-December

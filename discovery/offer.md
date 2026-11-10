@@ -67,11 +67,10 @@ stays under ~30 min/site/month.
 Who (annual figures at the monthly price, +IVA):
 - **Viking Cars** — best use case (add/update a vehicle from photos). Overdue invoice paid (2026-11-10).
   Today €120/yr → €348/yr (€290 prepaid). Setup (mapping the vehicle post type and fields) is on us.
-- **PrismInfinito** — €29 + €10 for assistencia = €468/yr (€390 prepaid) vs €120 today. Only sells if
-  they post regularly.
-- **CINCA** — €29 does not cover their dedicated hosting (€420/yr, floor €360). At the mid-December
-  review: keep their hosting line and add the agent at €29/mo (€768/yr), translation per publication as
-  in the 2026-09-24 proposal; folds in the unbilled €170.
+- **PrismInfinito** — **€29 for both sites for now** (Nuno, 2026-11-10): today's €120/yr covers 2 sites
+  and only one gets updates, so no +€10 yet. €348/yr (€290 prepaid). Margin ~€21/mo (two jaws shares).
+- **CINCA** — not on this plan: Nuno is building a CINCA retainer that includes the agent at €29 or a
+  higher update package (2026-11-10). See `~/Documents/todo/cinca.md`.
 - **Not moving:** Casino, JNA, Vinyldisc keep yearly hosting.
 - Static sites: parked until a static client wants it (MAU already includes the agent).
 

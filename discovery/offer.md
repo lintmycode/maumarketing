@@ -40,7 +40,38 @@ Businesses with stock or a catalogue (e.g. car dealers) are MUITO MAU — MAU ha
 - MAU: 12-month minimum, no early exit. Auditoria: no fixes, €249.
 - Inspeção renamed to Auditoria (2026-10-11); the car-inspection metaphor stays in the copy ("Leva-o à inspeção", inspection sheet, stamp).
 
+## Agente WP — standalone agent for existing WordPress sites (decided 2026-11-10)
+
+The MAU agent sold on its own to NÍTIDA's existing WordPress clients on jaws. It **replaces the yearly
+hosting line** (that's the pitch: same hosting + updates, plus "manda mensagem, o site muda").
+Infra decisions: `~/projects/sys/specs/site-agent.md`.
+
+| | Price (+IVA) |
+|---|---|
+| Monthly | €49/mo |
+| Annual (2 months free) | €490/yr, prepaid |
+| Setup | €149 (connect the site, agent user, map post types/fields, test) |
+| Extra site on the same bot | +€15/mo |
+| Extra request over the cap | €5 |
+
+Includes: hosting on jaws, WP core/plugin updates (already part of yearly hosting, so they stay in),
+agent with **10 requests/mo**, one site, one language. The client approves each change ("Publicar");
+Nuno sees every change and can undo. Step below MUITO MAU (€99: 25 requests, reports, custom schema).
+
+Internal: direct cost ≈ €4–6/client/month (model under €1 at one post a week, VPS share, jaws share).
+
+Who:
+- **Viking Cars** — best use case (add/update a vehicle from photos). Only after the €799,50 overdue
+  invoice is paid; annual prepaid or monthly by direct debit; suspension rule in the terms.
+- **PrismInfinito** — €49 + €15 for assistencia = €768/yr vs €120 today. Only sells if they post regularly.
+- **CINCA** — custom at the mid-December hosting review, from €99/mo (hosting €35 + base maintenance €50
+  + agent), translation per publication as in the 2026-09-24 proposal; folds in the unbilled €170.
+- **Not moving:** Casino, JNA, Vinyldisc keep yearly hosting.
+- Static sites: parked until a static client wants it (MAU already includes the agent).
+
 ## Open decisions
 
-- Existing hosting clients on cheap annual plans: move them to MAU or leave them as they are?
+- ~~Existing hosting clients on cheap annual plans: move them to MAU or leave them as they are?~~
+  Leave them; offer Agente WP to Viking, Prism, CINCA (2026-11-10).
+- Agente WP: minimum term for the monthly option (proposed 6 months).
 - Old service URLs redirect via `astro.config.mjs`. Earlier drafts (2-day launch, AI updates, custom CRM) are in `_drafts/`.

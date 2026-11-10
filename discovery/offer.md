@@ -48,24 +48,28 @@ Infra decisions: `~/projects/sys/specs/site-agent.md`.
 
 | | Price (+IVA) |
 |---|---|
-| Monthly | €49/mo |
-| Annual (2 months free) | €490/yr, prepaid |
-| Setup | €149 (connect the site, agent user, map post types/fields, test) |
-| Extra site on the same bot | +€15/mo |
+| Monthly | **€29/mo, static or WordPress** (one price, decided 2026-11-10) |
+| Annual (2 months free) | €290/yr, prepaid |
+| Setup | €99 (connect the site, agent user, map post types/fields, test) |
+| Extra site on the same bot | +€10/mo |
 | Extra request over the cap | €5 |
 
 Includes: hosting on jaws, WP core/plugin updates (already part of yearly hosting, so they stay in),
 agent with **10 requests/mo**, one site, one language. The client approves each change ("Publicar");
-Nuno sees every change and can undo. Step below MUITO MAU (€99: 25 requests, reports, custom schema).
+Nuno sees every change and can undo. Below MAU (€49: new site + reports) and MUITO MAU (€99: 25 requests).
 
-Internal: direct cost ≈ €4–6/client/month (model under €1 at one post a week, VPS share, jaws share).
+Internal: direct cost ≈ €5–6/site/month (model ~€1 at one post a week, VPS ~€5 shared, jaws share ~€2.50),
+so ~€23/site/month before Nuno's time. Works if updates are batched across sites (wp-cli) and time
+stays under ~30 min/site/month.
 
-Who:
-- **Viking Cars** — best use case (add/update a vehicle from photos). Only after the €799,50 overdue
-  invoice is paid; annual prepaid or monthly by direct debit; suspension rule in the terms.
-- **PrismInfinito** — €49 + €15 for assistencia = €768/yr vs €120 today. Only sells if they post regularly.
-- **CINCA** — custom at the mid-December hosting review, from €99/mo (hosting €35 + base maintenance €50
-  + agent), translation per publication as in the 2026-09-24 proposal; folds in the unbilled €170.
+Who (annual figures at the monthly price, +IVA):
+- **Viking Cars** — best use case (add/update a vehicle from photos). Overdue invoice paid (2026-11-10).
+  €348/yr (€290 prepaid) + €99 setup; setup includes mapping the vehicle post type and fields.
+- **PrismInfinito** — €29 + €10 for assistencia = €468/yr (€390 prepaid) vs €120 today. Only sells if
+  they post regularly.
+- **CINCA** — €29 does not cover their dedicated hosting (€420/yr, floor €360). At the mid-December
+  review: keep their hosting line and add the agent at €29/mo (€768/yr), translation per publication as
+  in the 2026-09-24 proposal; folds in the unbilled €170.
 - **Not moving:** Casino, JNA, Vinyldisc keep yearly hosting.
 - Static sites: parked until a static client wants it (MAU already includes the agent).
 
